@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns="http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd">
+	<section1 name="Section1" xmlns="Section1.xsd">Sample text</section1>
+</config>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ConfigSectionSchema" targetNamespace="http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd" elementFormDefault="qualified" xmlns="http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd" xmlns:mstns="http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

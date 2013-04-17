@@ -40,6 +40,12 @@
     <Compile Include="ActiveParts\IActivePartManager.cs" />
     <Compile Include="ActiveParts\ActivePartInfo.cs" />
     <Compile Include="Annotations.cs" />
+    <Compile Include="AppResources\AppResourceAttribute.cs" />
+    <Compile Include="AppResources\AppResourceInfo.cs" />
+    <Compile Include="AppResources\AppResourceRequest.cs" />
+    <Compile Include="AppResources\AppResourceResponse.cs" />
+    <Compile Include="AppResources\IAppResource.cs" />
+    <Compile Include="AppResources\IAppResourceServer.cs" />
     <Compile Include="CommandLine\Checking\CmdLineRules.cs" />
     <Compile Include="CommandLine\Checking\CommandLineCheckException.cs" />
     <Compile Include="CommandLine\Checking\CommandQuantifier.cs" />

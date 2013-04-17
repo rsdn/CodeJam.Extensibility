@@ -39,6 +39,11 @@
     <Compile Include="ActiveParts\ActivePartManager.cs" />
     <Compile Include="ActiveParts\ActivePartRegStrategy.cs" />
     <Compile Include="ActiveParts\ActivePartsHelper.cs" />
+    <Compile Include="AppResources\AppResourceServer.cs" />
+    <Compile Include="AppResources\AppResourcesHelper.cs" />
+    <Compile Include="AppResources\AsmResourceResource.cs" />
+    <Compile Include="AppResources\RazorGenAppResource.cs" />
+    <Compile Include="AppResources\TextAppResource.cs" />
     <Compile Include="ClrType.cs" />
     <Compile Include="CollectionHelper.cs" />
     <Compile Include="CommandLine\CommandLineChecker.cs" />
@@ -146,6 +151,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Rx\System.Reactive.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

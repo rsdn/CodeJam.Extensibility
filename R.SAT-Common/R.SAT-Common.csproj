@@ -39,7 +39,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>rsat.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>../rsat.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActiveParts\ActivePartManager.cs" />

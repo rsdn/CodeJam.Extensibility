@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\R.SAT-Common.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>rsat.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActiveParts\ActivePartManager.cs" />
     <Compile Include="ActiveParts\ActivePartRegStrategy.cs" />
@@ -182,6 +188,9 @@
       <LastGenOutput>ServiceResources.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Rsdn.SmartApp</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="rsat.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

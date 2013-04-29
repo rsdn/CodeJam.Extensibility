@@ -13,13 +13,27 @@ namespace Rsdn.SmartApp
 		private IDictionary<string, string> _vars;
 		private AppResourceRequest _request;
 
+		/// <summary>
+		/// Initialize instance.
+		/// </summary>
 		protected TextAppResource(IServiceProvider svcProvider)
 		{
 			_svcProvider = svcProvider;
 		}
 
+		/// <summary>
+		/// Resource MIME type.
+		/// </summary>
 		protected virtual string MimeType { get { return "text/html"; } }
+
+		/// <summary>
+		/// Resource length in bytes.
+		/// </summary>
 		protected virtual long Length { get { return -1; } }
+
+		/// <summary>
+		/// Write text to output.
+		/// </summary>
 		protected abstract void WriteText(AppResourceRequest request, TextWriter writer);
 
 		/// <summary>

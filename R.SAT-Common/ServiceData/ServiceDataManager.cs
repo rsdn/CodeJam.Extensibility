@@ -11,7 +11,7 @@ using JetBrains.Annotations;
 
 using Rsdn.SmartApp;
 
-[assembly: InternalsVisibleTo(ServiceDataManager.ImplementationTypesAssemblyName)]
+//[assembly: InternalsVisibleTo(ServiceDataManager.ImplementationTypesAssemblyName)]
 
 namespace Rsdn.SmartApp
 {

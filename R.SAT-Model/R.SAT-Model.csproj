@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\R.SAT-Model.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>rsat.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActiveParts\ActivePartAttribute.cs" />
     <Compile Include="ActiveParts\ActivePartManagerState.cs" />
@@ -106,6 +112,7 @@
     <None Include="Configuration\ConfigSectionSchema.xsx">
       <DependentUpon>ConfigSectionSchema.xsd</DependentUpon>
     </None>
+    <None Include="rsat.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

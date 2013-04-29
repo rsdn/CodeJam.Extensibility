@@ -70,6 +70,12 @@ namespace Rsdn.SmartApp
 			get { return Type == null; }
 		}
 
+		/// <summary>
+		/// Gets the service object of the specified type.
+		/// </summary>
+		/// <returns>
+		/// A service object of type <paramref name="serviceType"/>.-or- null if there is no service object of type <paramref name="serviceType"/>.
+		/// </returns>
 		public object GetService(Type serviceType)
 		{
 			return _provider.GetService(serviceType);

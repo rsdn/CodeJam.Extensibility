@@ -54,6 +54,9 @@ namespace Rsdn.SmartApp
 			}
 		}
 
+		/// <summary>
+		/// Scan specific type.
+		/// </summary>
 		public void Scan(
 			[NotNull] IExtensionAttachmentStrategy strategy,
 			[NotNull] params Type[] types)

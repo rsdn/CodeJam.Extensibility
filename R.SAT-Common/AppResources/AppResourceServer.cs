@@ -34,6 +34,9 @@ namespace Rsdn.SmartApp
 								.ToDictionary(p => p.Template, p => p.Resource)));
 		}
 
+		/// <summary>
+		/// Get application resource.
+		/// </summary>
 		public AppResourceResponse GetResource(AppResourceRequest request)
 		{
 			var table = _templateTable.Value;

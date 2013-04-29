@@ -11,7 +11,14 @@ namespace Rsdn.SmartApp
 	/// </summary>
 	public abstract class AsmResourceResource : IAppResource
 	{
+		/// <summary>
+		/// Returns assembly that contains resources.
+		/// </summary>
 		protected abstract Assembly GetAssembly();
+
+		/// <summary>
+		/// Returns resources prefix (resorces root folder).
+		/// </summary>
 		protected abstract string GetResourcePrefix();
 
 		private readonly Lazy<IDictionary<string, Func<Stream>>> _resMap;
@@ -588,6 +595,9 @@ namespace Rsdn.SmartApp
 			return _mimeTypeMap.TryGetValue(extension, out mime) ? mime : "text/plain";
 		}
 
+		/// <summary>
+		/// Initialize instance.
+		/// </summary>
 		protected AsmResourceResource()
 		{
 			_resMap =
@@ -607,6 +617,9 @@ namespace Rsdn.SmartApp
 					});
 		}
 
+		/// <summary>
+		/// Get resource.
+		/// </summary>
 		public AppResourceResponse GetResource(AppResourceRequest request, IDictionary<string, string> vars)
 		{
 			var resname = request.Uri.GetComponents(UriComponents.Path, UriFormat.Unescaped).Replace('/', '.');

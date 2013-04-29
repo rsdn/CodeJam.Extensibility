@@ -12,6 +12,9 @@ namespace Rsdn.SmartApp
 	{
 		private TextWriter _writer;
 
+		/// <summary>
+		/// Initialize instance.
+		/// </summary>
 		protected RazorGenAppResource(IServiceProvider svcProvider) : base(svcProvider)
 		{}
 
@@ -20,6 +23,9 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public abstract void Execute();
 
+		/// <summary>
+		/// Write text to output.
+		/// </summary>
 		protected override void WriteText(AppResourceRequest request, TextWriter writer)
 		{
 			_writer = writer;
@@ -27,11 +33,17 @@ namespace Rsdn.SmartApp
 				Execute();
 		}
 
+		/// <summary>
+		/// Write string literal to output.
+		/// </summary>
 		protected void WriteLiteral(string literal)
 		{
 			_writer.Write(literal);
 		}
 
+		/// <summary>
+		/// Write object to output.
+		/// </summary>
 		protected void Write(object value)
 		{
 			if ((value == null))

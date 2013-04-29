@@ -34,6 +34,9 @@ namespace Rsdn.SmartApp
 			get { return _supportedAttrNames; }
 		}
 
+		/// <summary>
+		/// Attach specified type.
+		/// </summary>
 		protected abstract void Attach(ExtensionAttachmentContext context, CustomAttributeData attribute);
 
 		/// <summary>
@@ -41,6 +44,8 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		protected virtual bool IsSuitable(CustomAttributeData attributeData)
 		{
+			if (attributeData.Constructor.DeclaringType == null)
+				return false;
 			var attrName = attributeData.Constructor.DeclaringType.AssemblyQualifiedName;
 			return _supportedAttrNames.Any(name => name == attrName);
 		}

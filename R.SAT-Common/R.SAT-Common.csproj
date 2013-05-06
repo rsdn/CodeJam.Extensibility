@@ -48,7 +48,9 @@
     <Compile Include="AppResources\AppResourceServer.cs" />
     <Compile Include="AppResources\AppResourcesHelper.cs" />
     <Compile Include="AppResources\AsmResourceResource.cs" />
-    <Compile Include="AppResources\RazorGenAppResource.cs" />
+    <Compile Include="AppResources\Razor\RazorGenAppResource.cs" />
+    <Compile Include="AppResources\Razor\RazorGenAppResource{TLayout}.cs" />
+    <Compile Include="AppResources\Razor\RazorLayout.cs" />
     <Compile Include="AppResources\TextAppResource.cs" />
     <Compile Include="ClrType.cs" />
     <Compile Include="CollectionHelper.cs" />
@@ -193,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="rsat.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,13 +23,19 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public abstract void Execute();
 
+		protected IDisposable WriterGuard(TextWriter writer)
+		{
+			var oldWriter = _writer;
+			_writer = writer;
+			return Disposable.Create(() => _writer = oldWriter);
+		}
+
 		/// <summary>
 		/// Write text to output.
 		/// </summary>
 		protected override void WriteText(AppResourceRequest request, TextWriter writer)
 		{
-			_writer = writer;
-			using (Disposable.Create(() => _writer = null))
+			using (WriterGuard(writer))
 				Execute();
 		}
 

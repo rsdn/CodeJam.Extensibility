@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Reactive;
-using System.Reactive.Disposables;
 using System.Reflection;
 
 using JetBrains.Annotations;
@@ -53,7 +52,7 @@ namespace CodeJam.Extensibility.EventBroker
 						(method, attr) =>
 							WrapException(
 								() => eventBroker.SubscribeMethod(attr.EventName, method, instance),
-								() => "Error subscribing method '{0}'.".FormatStr(method)))
+								() => $"Error subscribing method \'{method}\'."))
 					.Merge();
 		}
 
@@ -92,7 +91,7 @@ namespace CodeJam.Extensibility.EventBroker
 						(property, attr) =>
 							WrapException(
 								() => eventBroker.RegisterProperty(attr.EventName, property, instance),
-								() => "Error while registring property '{0}'.".FormatStr(property)))
+								() => $"Error while registring property \'{property}\'."))
 						.Concat(
 							instanceType
 								.GetEvents(BindingFlags.Instance | BindingFlags.Public)
@@ -101,7 +100,7 @@ namespace CodeJam.Extensibility.EventBroker
 									(ev, attr) =>
 										WrapException(
 											() => eventBroker.RegisterEvent(attr.EventName, ev, instance),
-											() => "Error while registering event '{0}'.".FormatStr(ev))))
+											() => $"Error while registering event \'{ev}\'.")))
 						.Merge();
 		}
 

@@ -153,7 +153,7 @@ namespace CodeJam.Extensibility.CommandLine.Parsing
 				var value = ParseQuotedOrNonquotedValue(name.InputRest.GetNext());
 				if (value.Result.Text.Length == 0)
 					throw new ParsingException(
-						"option '{0}' value not specified".FormatStr(name.Result),
+						"option '{0}' value not specified".FormatWith(name.Result),
 						value.Result.Position);
 				return
 					new ParseResult<OptionNode>(

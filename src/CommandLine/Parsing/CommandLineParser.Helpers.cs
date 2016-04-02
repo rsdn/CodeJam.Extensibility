@@ -41,7 +41,7 @@ namespace CodeJam.Extensibility.CommandLine.Parsing
 		{
 			if (input.Current != charToConsume)
 				throw new ParsingException(
-					"'{0}' expected, but '{1}' found".FormatStr(charToConsume, input.Current),
+					"'{0}' expected, but '{1}' found".FormatWith(charToConsume, input.Current),
 					input.Position);
 			return input.GetNext();
 		}

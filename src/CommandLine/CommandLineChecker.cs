@@ -22,7 +22,7 @@ namespace CodeJam.Extensibility.CommandLine
 			var cmds = new HashSet<string>();
 			foreach (var command in rules.Commands)
 				if (!cmds.Add(command.Name))
-					throw new CommandLineCheckException("Duplicate commands '{0}'".FormatStr(command.Name));
+					throw new CommandLineCheckException($"Duplicate commands \'{command.Name}\'");
 			var cmdOpts = new ElementsCache<string, HashSet<string>>(cn => new HashSet<string>());
 			foreach (var cmdOpt in 
 				rules
@@ -36,11 +36,11 @@ namespace CodeJam.Extensibility.CommandLine
 				if (!cmdOpts.Get(cmdOpt.Cmd).Add(cmdOpt.Opt))
 					throw new CommandLineCheckException(
 						"Duplicate option {0}{1}"
-							.FormatStr(
+							.FormatWith(
 								cmdOpt.Opt,
 								cmdOpt.Cmd == ""
 									? ""
-									: " in command {0}".FormatStr(cmdOpt.Cmd)));
+									: " in command {0}".FormatWith(cmdOpt.Cmd)));
 			}
 
 			// Check command quantity
@@ -77,7 +77,7 @@ namespace CodeJam.Extensibility.CommandLine
 					.ToArray();
 			if (unkCmds.Length > 0)
 				throw new CommandLineCheckException(
-					"Unknown commands :{0}".FormatStr(unkCmds.Select(cmd => "'" + cmd.Text + "'").Join(", ")));
+					"Unknown commands :{0}".FormatWith(unkCmds.Select(cmd => "'" + cmd.Text + "'").Join(", ")));
 
 			// Check for unknown options
 			var optRules = rules.Options.ToDictionary(cr => cr.Name);
@@ -88,7 +88,7 @@ namespace CodeJam.Extensibility.CommandLine
 					.ToArray();
 			if (unkOpts.Length > 0)
 				throw new CommandLineCheckException(
-					"Unknown options :{0}".FormatStr(unkOpts.Select(opt => "'" + opt.Text + "'").Join(", ")));
+					"Unknown options :{0}".FormatWith(unkOpts.Select(opt => "'" + opt.Text + "'").Join(", ")));
 
 			// Option values check
 			foreach (var option in commandLine.Options)
@@ -98,11 +98,11 @@ namespace CodeJam.Extensibility.CommandLine
 					switch (rule.Type)
 					{
 						case OptionType.Valueless:
-							throw new CommandLineCheckException("Option '{0}' cannot have value".FormatStr(rule.Name));
+							throw new CommandLineCheckException("Option '{0}' cannot have value".FormatWith(rule.Name));
 						case OptionType.Bool:
-							throw new CommandLineCheckException("'+' or '-' must be specified for option '{0}'".FormatStr(rule.Name));
+							throw new CommandLineCheckException("'+' or '-' must be specified for option '{0}'".FormatWith(rule.Name));
 						case OptionType.Value:
-							throw new CommandLineCheckException("Value must be specified for option '{0}'".FormatStr(rule.Name));
+							throw new CommandLineCheckException("Value must be specified for option '{0}'".FormatWith(rule.Name));
 						default:
 							throw new ArgumentOutOfRangeException();
 					}
@@ -119,10 +119,10 @@ namespace CodeJam.Extensibility.CommandLine
 				if (existed && dependent && !hasMasterCmd)
 					throw new CommandLineCheckException(
 						"{0} command(s) must be specified for use {1} option."
-							.FormatStr(optRule.DependOnCommands.FormatStr("'{0}'").Join(", "), optRule.Name));
+							.FormatWith(optRule.DependOnCommands.Select(c => c).Join(", "), optRule.Name));
 
 				if (!existed && optRule.Required && (!dependent || hasMasterCmd))
-					throw new CommandLineCheckException("Required option '{0}' absent.".FormatStr(optRule.Name));
+					throw new CommandLineCheckException("Required option '{0}' absent.".FormatWith(optRule.Name));
 			}
 		}
 	}

@@ -24,7 +24,7 @@ namespace CodeJam.Extensibility.CommandLine
 			var contract = typeof (ICommandLineRulesProvider);
 			if (contract.IsAssignableFrom(context.Type))
 				throw new ExtensibilityException(
-					"Type '{0}' must implement interface '{1}".FormatStr(context.Type, contract));
+					"Type '{0}' must implement interface '{1}".FormatWith(context.Type, contract));
 			return new CommandLineRulesProviderInfo(context.Type);
 		}
 	}

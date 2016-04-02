@@ -88,8 +88,7 @@ namespace CodeJam.Extensibility.Configuration
 			var elem = elems[0];
 			if (elems.Length > 1)
 				if (!sectionInfo.AllowMerge)
-					throw new ApplicationException(
-						"Section '{0}' does not allow merge".FormatStr(sectionInfo.Name));
+					throw new ApplicationException($"Section '{sectionInfo.Name}' does not allow merge");
 				else
 					for (var i = 1; i < elems.Length; i++)
 						foreach (var sibChild in elems[i].Nodes())

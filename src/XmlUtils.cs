@@ -67,7 +67,7 @@ namespace CodeJam.Extensibility
 			if (name == null) throw new ArgumentNullException(nameof(name));
 			var root = RequiredRoot(document);
 			if (root.Name != name)
-				throw new ArgumentException("Root '{0}' expected, but {1} found".FormatStr(name, root.Name));
+				throw new ArgumentException($"Root \'{name}\' expected, but {root.Name} found");
 			return root;
 		}
 
@@ -83,7 +83,7 @@ namespace CodeJam.Extensibility
 				throw new ArgumentNullException(nameof(name));
 			var res = element.Element(name);
 			if (res == null)
-				throw new ArgumentException("Element contains no child with specified name: '{0}'".FormatStr(name));
+				throw new ArgumentException($"Element contains no child with specified name: \'{name}\'");
 			return res;
 		}
 

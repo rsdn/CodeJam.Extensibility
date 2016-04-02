@@ -46,7 +46,7 @@ namespace CodeJam.Extensibility
 			IActivePart part;
 			// ReSharper disable once AssignNullToNotNullAttribute
 			if (!_parts.TryGetValue(type.AssemblyQualifiedName, out part))
-				throw new ArgumentException("Part for type '{0}' is not registered".FormatStr(type));
+				throw new ArgumentException($"Part for type \'{type}\' is not registered");
 			return part;
 		}
 

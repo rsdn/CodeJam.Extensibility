@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Reflection;
 
 using CodeJam.Extensibility.Registration;
@@ -224,9 +223,7 @@ namespace CodeJam.Extensibility
 				TAttr attr)
 			{
 				if (_elementType != null && !_elementType.IsAssignableFrom(context.Type))
-					throw new ExtensibilityException(
-						"Type '{0}' must inherit/implement '{1}'"
-							.FormatStr(context.Type, _elementType));
+					throw new ExtensibilityException($"Type \'{context.Type}\' must inherit/implement \'{_elementType}\'");
 				return _creator(context, attr);
 			}
 		}
@@ -254,9 +251,7 @@ namespace CodeJam.Extensibility
 			public override TInfo CreateElement(ExtensionAttachmentContext context, TAttr attr)
 			{
 				if (_elementType != null && !_elementType.IsAssignableFrom(context.Type))
-					throw new ExtensibilityException(
-						"Type '{0}' must inherit/implement '{1}'"
-							.FormatStr(context.Type, _elementType));
+					throw new ExtensibilityException($"Type \'{context.Type}\' must inherit/implement \'{_elementType}\'");
 				return _creator(context, attr);
 			}
 		}

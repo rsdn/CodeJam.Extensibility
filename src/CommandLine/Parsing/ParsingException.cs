@@ -28,7 +28,7 @@ namespace CodeJam.Extensibility.CommandLine.Parsing
 		/// <param name="message">A message that describes the error.</param>
 		/// <param name="position">position, where error occurs</param>
 		public ParsingException(string message, int position)
-			: base(@"Error at ({1}): {0}.".FormatStr(message, position))
+			: base(@"Error at ({1}): {0}.".FormatWith(message, position))
 		{}
 
 		/// <summary>

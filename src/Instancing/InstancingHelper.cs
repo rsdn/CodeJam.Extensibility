@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Reflection;
 
 using JetBrains.Annotations;
@@ -70,7 +69,7 @@ namespace CodeJam.Extensibility.Instancing
 			var custParamsHash = new HashSet<string>(ctorParams.Select(prm => prm.Name));
 			foreach (var prm in customParamsMap.Values)
 				if (!prm.Optional && !custParamsHash.Contains(prm.Name))
-					throw new ArgumentException("Required parameter '{0}' not found in constructor".FormatStr(prm.Name));
+					throw new ArgumentException($"Required parameter \'{prm.Name}\' not found in constructor");
 			try
 			{
 				return ctor.Invoke(ctorParamValues.ToArray());

@@ -1,4 +1,6 @@
-﻿using CodeJam.Extensibility.Registration;
+﻿using System.Diagnostics;
+
+using CodeJam.Extensibility.Registration;
 
 namespace CodeJam.Extensibility
 {
@@ -19,7 +21,8 @@ namespace CodeJam.Extensibility
 			var contract = typeof (IActivePart).AssemblyQualifiedName;
 			if (contract != null && !context.Type.IsImplemented(contract))
 				throw new ExtensibilityException(
-					"Type '{0}' must implement interface '{1}".FormatStr(context.Type, contract));
+					$"Type \'{context.Type}\' must implement interface \'{contract}");
+			Debug.Assert(context.Type.AssemblyQualifiedName != null, "context.Type.AssemblyQualifiedName != null");
 			return new ActivePartInfo(context.Type.AssemblyQualifiedName);
 		}
 	}

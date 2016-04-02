@@ -1,13 +1,14 @@
-namespace Rsdn.SmartApp.Extensibility
+using CodeJam.Extensibility.SystemType;
+
+using Rsdn.SmartApp.Extensibility;
+
+namespace CodeJam.Extensibility
 {
 	internal class SimpleExtensionStrategy : AttachmentStrategyBase<SimpleExtensionAttribute>
 	{
 		private static string _lastExtensionTypeName;
 
-		public static string LastExtensionTypeName
-		{
-			get { return _lastExtensionTypeName; }
-		}
+		public static string LastExtensionTypeName => _lastExtensionTypeName;
 
 		/// <summary>
 		/// Подключает расширение.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Extension manager contract.

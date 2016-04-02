@@ -1,4 +1,6 @@
-﻿namespace Rsdn.SmartApp.Configuration
+﻿using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	[XmlSerializerSection(typeof (Section4))]
 	public interface ISection4

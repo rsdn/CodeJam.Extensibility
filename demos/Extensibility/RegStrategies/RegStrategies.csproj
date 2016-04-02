@@ -8,7 +8,7 @@
     <ProjectGuid>{966CD925-722D-47A1-907D-3EE1F0EACC2D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rsdn.SmartApp.Demos</RootNamespace>
+    <RootNamespace>CodeJam.Extensibility.Demos</RootNamespace>
     <AssemblyName>RegStrategies</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

@@ -2,7 +2,7 @@
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Базовая реализация класса, использующего автоматическое получение сервисов.
@@ -17,7 +17,7 @@ namespace Rsdn.SmartApp
 		protected ServiceConsumer([NotNull] IServiceProvider provider)
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 
 			_provider = provider;
 
@@ -27,9 +27,6 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Instance of service provider.
 		/// </summary>
-		public IServiceProvider ServiceProvider
-		{
-			get { return _provider; }
-		}
+		public IServiceProvider ServiceProvider => _provider;
 	}
 }

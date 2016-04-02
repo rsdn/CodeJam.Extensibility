@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Стратегия подключения расширения.

@@ -1,10 +1,13 @@
 using System;
+using System.Linq;
+
+using CodeJam.Extensibility.Instancing;
 
 using JetBrains.Annotations;
 
-using System.Linq;
+using Rsdn.SmartApp;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Keyed extension instances cache.
@@ -26,7 +29,7 @@ namespace Rsdn.SmartApp
 			[CanBeNull] Func<TInfo, TElement> instanceCreator)
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			_provider = provider;
 			_customParams = EmptyArray<InstancingCustomParam>.Value;
 			_cache =
@@ -57,12 +60,8 @@ namespace Rsdn.SmartApp
 		{
 			var info = GetExtensionInfo(key);
 			return
-				info != null
-					? (TElement)
-						info
-							.Type
-							.CreateInstance(_provider, _customParams)
-					: null;
+				(TElement) info?.Type
+					.CreateInstance(_provider, _customParams);
 		}
 
 		/// <summary>

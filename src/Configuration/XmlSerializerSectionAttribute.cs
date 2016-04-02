@@ -1,10 +1,13 @@
 using System;
 using System.Linq;
-using System.Xml.Serialization;
-using System.Xml.Schema;
 using System.Reflection;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
-namespace Rsdn.SmartApp.Configuration
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Помечает секцию конфигурации с использованием <see cref="XmlSerializer"/>
@@ -53,7 +56,7 @@ namespace Rsdn.SmartApp.Configuration
 		/// <summary>
 		/// Тип, реализующий конфигурацию. Должен быть сериализуемым в XML.
 		/// </summary>
-		public Type ImplementationType { get; private set; }
+		public Type ImplementationType { get; }
 
 		/// <summary>
 		/// Имя ресурса со схемой.
@@ -79,7 +82,7 @@ namespace Rsdn.SmartApp.Configuration
 		private static string GetSectionNamespace(Type type)
 		{
 			var xra = _rootAttrs.Get(type);
-			return xra == null || xra.Namespace == null ? "" : xra.Namespace; 
+			return xra.Namespace ?? ""; 
 		}
 
 		/// <summary>
@@ -99,9 +102,9 @@ namespace Rsdn.SmartApp.Configuration
 				ResourceName = resName;
 			}
 
-			public Assembly Assembly { get; private set; }
+			public Assembly Assembly { get; }
 
-			public string ResourceName { get; private set; }
+			public string ResourceName { get; }
 
 			public override bool Equals(object obj)
 			{

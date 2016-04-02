@@ -4,12 +4,17 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	partial class ServicesHelper
 	{
 		#region Nested type: AssignHelper
-		private class AssignHelper
+		/// <summary>
+		/// 
+		/// </summary>
+		public class AssignHelper
 		{
 			private static readonly ElementsCache<Type, AssignDelegate> _assignMethods =
 				new ElementsCache<Type, AssignDelegate>(CreateAssignMethod);
@@ -17,8 +22,7 @@ namespace Rsdn.SmartApp
 			private static readonly MethodInfo _getRequiredServiceMethod =
 				typeof (ServicesHelper).GetMethod("GetRequiredService", new[] {typeof (IServiceProvider)});
 
-			private static readonly MethodInfo _getServiceMethod =
-				typeof (ServicesHelper).GetMethod("GetService");
+			private static readonly MethodInfo _getServiceMethod = typeof (ServicesHelper).GetMethod("GetService");
 
 			private static AssignDelegate CreateAssignMethod(Type type)
 			{
@@ -28,7 +32,7 @@ namespace Rsdn.SmartApp
 							new
 							{
 								Info = info,
-								Attr = info.GetCustomAttribute<ExpectServiceAttribute>(false)
+								Attr = ReflectionHelper.GetCustomAttribute<ExpectServiceAttribute>(info, false)
 							})
 						.Where(pair => pair.Attr != null)
 						.Select(pair =>
@@ -73,16 +77,18 @@ namespace Rsdn.SmartApp
 				return (AssignDelegate) method.CreateDelegate(typeof (AssignDelegate));
 			}
 
+			/// <summary>
+			/// 
+			/// </summary>
 			public static void Assign(object instance, IServiceProvider provider)
 			{
 				if (instance == null)
-					throw new ArgumentNullException("instance");
+					throw new ArgumentNullException(nameof(instance));
 				if (provider == null)
-					throw new ArgumentNullException("provider");
+					throw new ArgumentNullException(nameof(provider));
 
 				var method = _assignMethods.Get(instance.GetType());
-				if (method != null)
-					method(provider, instance);
+				method?.Invoke(provider, instance);
 			}
 
 			private static IEnumerable<FieldInfo> GetAllFields(Type type)

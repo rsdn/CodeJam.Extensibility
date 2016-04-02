@@ -1,6 +1,11 @@
 using System;
 
-namespace Rsdn.SmartApp
+using CodeJam.Extensibility.Registration;
+using CodeJam.Extensibility.StratFactories;
+
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	using FactoriesSvc = IRegKeyedElementsService<Type, ExtensionStrategyFactoryInfo>;
 

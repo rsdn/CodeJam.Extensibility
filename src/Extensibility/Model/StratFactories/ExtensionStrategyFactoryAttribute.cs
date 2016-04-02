@@ -1,8 +1,10 @@
 using System;
 
+using CodeJam.Extensibility.StratFactories;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Атрибут, помечающий реализацию <see cref="IExtensionStrategyFactory"/>

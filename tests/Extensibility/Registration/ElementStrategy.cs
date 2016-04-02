@@ -1,4 +1,11 @@
-namespace Rsdn.SmartApp.Extensibility.Registration
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Extensibility.Registration;
+
+using ElementInfo = Rsdn.SmartApp.Extensibility.Registration.ElementInfo;
+
+namespace CodeJam.Extensibility
 {
 	internal class ElementStrategy : RegElementsStrategy<ElementInfo, ElementAttribute>
 	{

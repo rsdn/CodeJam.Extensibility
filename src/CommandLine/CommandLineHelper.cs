@@ -1,8 +1,13 @@
 using System;
 using System.IO;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+using CommandLineParser = CodeJam.Extensibility.CommandLine.Parsing.CommandLineParser;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Helper methods for work with command line.
@@ -41,9 +46,9 @@ namespace Rsdn.SmartApp.CommandLine
 			[NotNull] TextWriter writer,
 			[NotNull] PrintUsageSettings settings)
 		{
-			if (rules == null) throw new ArgumentNullException("rules");
-			if (writer == null) throw new ArgumentNullException("writer");
-			if (settings == null) throw new ArgumentNullException("settings");
+			if (rules == null) throw new ArgumentNullException(nameof(rules));
+			if (writer == null) throw new ArgumentNullException(nameof(writer));
+			if (settings == null) throw new ArgumentNullException(nameof(settings));
 
 			UsagePrinter.PrintUsage(rules, writer, settings);
 		}

@@ -1,6 +1,10 @@
 using System;
 
-namespace Rsdn.SmartApp
+using CodeJam.Extensibility.SystemType;
+
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Вспомогательный класс для реализации атрибутов регистрации.
@@ -8,25 +12,20 @@ namespace Rsdn.SmartApp
 	public abstract class RegElementsStrategy<TInfo, TAttribute> : AttachmentStrategyBase<TAttribute>
 		where TAttribute : Attribute where TInfo : class
 	{
-		private readonly IServicePublisher _publisher;
-
 		/// <summary>
 		/// Инициализирует экземпляр.
 		/// </summary>
 		protected RegElementsStrategy(IServicePublisher publisher)
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
-			_publisher = publisher;
+				throw new ArgumentNullException(nameof(publisher));
+			Publisher = publisher;
 		}
 
 		/// <summary>
 		/// Публикатор сервисов.
 		/// </summary>
-		protected IServicePublisher Publisher
-		{
-			get { return _publisher; }
-		}
+		protected IServicePublisher Publisher { get; }
 
 		/// <summary>
 		/// Подключает расширение.

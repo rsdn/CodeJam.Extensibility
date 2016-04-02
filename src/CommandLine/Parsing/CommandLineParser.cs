@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Command line parser.
@@ -37,7 +39,7 @@ namespace Rsdn.SmartApp.CommandLine
 			var programName = ParseQuotedOrNonquotedValue(input);
 			var rest = programName.InputRest;
 
-			var cmdOrOpts = rest.ConsumeTillEof(inp => ParseCommandOrOption(inp));
+			var cmdOrOpts = rest.ConsumeTillEof(ParseCommandOrOption);
 			var cmds = new List<CommandNode>();
 			var opts = new List<OptionNode>();
 			foreach (var cmdOrOpt in cmdOrOpts.Result)
@@ -171,28 +173,19 @@ namespace Rsdn.SmartApp.CommandLine
 		#region CommandOrOption class
 		private class CommandOrOption
 		{
-			private readonly OptionNode _option;
-			private readonly CommandNode _command;
-
 			public CommandOrOption(CommandNode command)
 			{
-				_command = command;
+				Command = command;
 			}
 
 			public CommandOrOption(OptionNode option)
 			{
-				_option = option;
+				Option = option;
 			}
 
-			public OptionNode Option
-			{
-				get { return _option; }
-			}
+			public OptionNode Option { get; }
 
-			public CommandNode Command
-			{
-				get { return _command; }
-			}
+			public CommandNode Command { get; }
 		}
 		#endregion
 	}

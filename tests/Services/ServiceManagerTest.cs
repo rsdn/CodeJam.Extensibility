@@ -3,7 +3,10 @@ using System.Reflection;
 
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.Services
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Services;
+
+namespace CodeJam.Extensibility.Services
 {
 	[TestFixture]
 	public class ServiceManagerTest

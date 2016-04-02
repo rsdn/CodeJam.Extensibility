@@ -1,7 +1,10 @@
 using System.Reactive;
+
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.EventBrokerTests
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.EventBroker
 {
 	[TestFixture]
 	public class EventBrokerTest
@@ -9,7 +12,7 @@ namespace Rsdn.SmartApp.EventBrokerTests
 		[Test]
 		public void RegisterSubscribeTest()
 		{
-			var eb = new EventBroker();
+			var eb = new Rsdn.SmartApp.EventBroker();
 			var i = 0;
 			const string eventName = "TestEvent";
 			using (eb.Subscribe(eventName, Observer.Create<int>(item => i += item)))
@@ -30,7 +33,7 @@ namespace Rsdn.SmartApp.EventBrokerTests
 		{
 			using (var serviceManager = new ServiceManager())
 			{
-				serviceManager.Publish<IEventBroker>(new EventBroker());
+				serviceManager.Publish<IEventBroker>(new Rsdn.SmartApp.EventBroker());
 
 				using (var testObject = new MappingTestObject(serviceManager))
 				{

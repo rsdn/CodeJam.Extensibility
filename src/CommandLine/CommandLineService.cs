@@ -3,7 +3,9 @@ using System.Linq;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Implementation of <see cref="ICommandLineService"/>
@@ -20,7 +22,7 @@ namespace Rsdn.SmartApp.CommandLine
 		/// </summary>
 		public CommandLineService([NotNull] Func<CmdLineRules> rulesGetter)
 		{
-			if (rulesGetter == null) throw new ArgumentNullException("rulesGetter");
+			if (rulesGetter == null) throw new ArgumentNullException(nameof(rulesGetter));
 
 			_rulesGetter = rulesGetter;
 		}

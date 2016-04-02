@@ -8,8 +8,8 @@
     <ProjectGuid>{7D9CAEC6-4973-4592-A321-54C9EFACA0F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rsdn.SmartApp</RootNamespace>
-    <AssemblyName>R.SAT-Common</AssemblyName>
+    <RootNamespace>CodeJam.Extensibility</RootNamespace>
+    <AssemblyName>CodeJam.Extensibility</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\R.SAT-Common.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\CodeJam.Extensibility.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\R.SAT-Common.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\CodeJam.Extensibility.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>

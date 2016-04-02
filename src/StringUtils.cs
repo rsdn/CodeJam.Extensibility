@@ -5,7 +5,7 @@ using System.Text;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Строковые утилиты.

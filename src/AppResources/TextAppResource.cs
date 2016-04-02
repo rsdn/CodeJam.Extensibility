@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Text app resource.
 	/// </summary>
 	public abstract class TextAppResource : IAppResource
 	{
-		private readonly IServiceProvider _svcProvider;
 		private IDictionary<string, string> _vars;
 		private AppResourceRequest _request;
 
@@ -18,18 +17,18 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		protected TextAppResource(IServiceProvider svcProvider)
 		{
-			_svcProvider = svcProvider;
+			SvcProvider = svcProvider;
 		}
 
 		/// <summary>
 		/// Resource MIME type.
 		/// </summary>
-		protected virtual string MimeType { get { return "text/html"; } }
+		protected virtual string MimeType => "text/html";
 
 		/// <summary>
 		/// Resource length in bytes.
 		/// </summary>
-		protected virtual long Length { get { return -1; } }
+		protected virtual long Length => -1;
 
 		/// <summary>
 		/// Write text to output.
@@ -39,26 +38,17 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Request variables.
 		/// </summary>
-		public IDictionary<string, string> Vars
-		{
-			get { return _vars; }
-		}
+		public IDictionary<string, string> Vars => _vars;
 
 		/// <summary>
 		/// Request.
 		/// </summary>
-		protected AppResourceRequest Request
-		{
-			get { return _request; }
-		}
+		protected AppResourceRequest Request => _request;
 
 		/// <summary>
 		/// Service provider.
 		/// </summary>
-		protected IServiceProvider SvcProvider
-		{
-			get { return _svcProvider; }
-		}
+		protected IServiceProvider SvcProvider { get; }
 
 		AppResourceResponse IAppResource.GetResource(AppResourceRequest request, IDictionary<string, string> vars)
 		{

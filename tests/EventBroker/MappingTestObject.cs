@@ -3,7 +3,9 @@ using System.Reactive.Subjects;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.EventBrokerTests
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.EventBroker
 {
 	public delegate void TestDelegate(int arg);
 
@@ -19,7 +21,7 @@ namespace Rsdn.SmartApp.EventBrokerTests
 		public MappingTestObject([NotNull] IServiceProvider serviceProvider)
 		{
 			if (serviceProvider == null)
-				throw new ArgumentNullException("serviceProvider");
+				throw new ArgumentNullException(nameof(serviceProvider));
 
 			_eventSourcesRegistration = EventBrokerHelper.RegisterEventSources(this, serviceProvider);
 			_eventHandlersSubscription = EventBrokerHelper.SubscribeEventHandlers(this, serviceProvider);
@@ -30,15 +32,11 @@ namespace Rsdn.SmartApp.EventBrokerTests
 
 		public void FireTestEvent(int item)
 		{
-			if (TestEvent != null)
-				TestEvent(item);
+			TestEvent?.Invoke(item);
 		}
 
 		[EventSource(_eventName)]
-		public IObservable<int> TestObservable
-		{
-			get { return _observable; }
-		}
+		public IObservable<int> TestObservable => _observable;
 
 		public void FireTestObservable(int item)
 		{

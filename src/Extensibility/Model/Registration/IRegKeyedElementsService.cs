@@ -1,9 +1,11 @@
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Сервис регистрации именованных элементов.
 	/// </summary>
-	public interface IRegKeyedElementsService<TKey, TInfo> : IRegElementsService<TInfo>
+	public interface IRegKeyedElementsService<in TKey, TInfo> : IRegElementsService<TInfo>
 		where TInfo : IKeyedElementInfo<TKey>
 	{
 		/// <summary>

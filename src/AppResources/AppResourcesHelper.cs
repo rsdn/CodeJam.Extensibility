@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Helper methods for app resource infrastructure.

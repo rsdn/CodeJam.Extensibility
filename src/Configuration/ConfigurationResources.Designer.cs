@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rsdn.SmartApp.Configuration {
+namespace CodeJam.Extensibility.Configuration {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Rsdn.SmartApp.Configuration {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rsdn.SmartApp.Configuration.ConfigurationResources", typeof(ConfigurationResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CodeJam.Extensibility.Configuration.ConfigurationResources", typeof(ConfigurationResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

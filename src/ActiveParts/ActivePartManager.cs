@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rsdn.SmartApp
+using CodeJam.Extensibility.Instancing;
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	using IRegSvc = IRegElementsService<ActivePartInfo>;
 
@@ -27,10 +32,7 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Current state.
 		/// </summary>
-		public ActivePartManagerState State
-		{
-			get { return _state; }
-		}
+		public ActivePartManagerState State => _state;
 
 		/// <summary>
 		/// Получить экземпляр active part.
@@ -38,11 +40,12 @@ namespace Rsdn.SmartApp
 		public object GetPartInstance(Type type)
 		{
 			if (type == null)
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException(nameof(type));
 			if (State != ActivePartManagerState.Activated)
 				throw new InvalidOperationException("This operation allowed only in 'Activated' state");
 
 			IActivePart part;
+			// ReSharper disable once AssignNullToNotNullAttribute
 			if (!_parts.TryGetValue(type.AssemblyQualifiedName, out part))
 				throw new ArgumentException("Part for type '{0}' is not registered".FormatStr(type));
 			return part;

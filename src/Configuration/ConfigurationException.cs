@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
+using CodeJam.Extensibility.Configuration;
+
 namespace Rsdn.SmartApp.Configuration
 {
 	/// <summary>

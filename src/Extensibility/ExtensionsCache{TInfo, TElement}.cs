@@ -1,9 +1,13 @@
 using System;
 using System.Linq;
 
+using CodeJam.Extensibility.Instancing;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Extension instances cache.
@@ -26,7 +30,7 @@ namespace Rsdn.SmartApp
 			[CanBeNull] Func<TInfo, TElement> instanceCreator)
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			_provider = provider;
 			_customParams = EmptyArray<InstancingCustomParam>.Value;
 			_instanceCreator = instanceCreator;

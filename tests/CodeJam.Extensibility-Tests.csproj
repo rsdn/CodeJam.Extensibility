@@ -8,8 +8,8 @@
     <ProjectGuid>{3A3D1193-17F3-43ED-909E-12B9CF4D7784}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rsdn.SmartApp</RootNamespace>
-    <AssemblyName>R.SAT-UnitTests</AssemblyName>
+    <RootNamespace>CodeJam.Extensibility</RootNamespace>
+    <AssemblyName>CodeJam.Extensibility-Tests</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>

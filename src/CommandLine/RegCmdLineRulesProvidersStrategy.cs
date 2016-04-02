@@ -1,4 +1,9 @@
-namespace Rsdn.SmartApp.CommandLine
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Strategy for registering command line rules provider.

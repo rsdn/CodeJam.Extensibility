@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Reactive.Disposables;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Хелперный класс для работы с сервисами.
@@ -51,9 +54,9 @@ namespace Rsdn.SmartApp
 			where T : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (serviceInstance == null)
-				throw new ArgumentNullException("serviceInstance");
+				throw new ArgumentNullException(nameof(serviceInstance));
 
 			return publisher.Publish(typeof (T), serviceInstance);
 		}
@@ -79,9 +82,9 @@ namespace Rsdn.SmartApp
 			where T : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (serviceCreator == null)
-				throw new ArgumentNullException("serviceCreator");
+				throw new ArgumentNullException(nameof(serviceCreator));
 
 			return publisher.Publish(typeof (T), (type, pub) => serviceCreator(pub));
 		}
@@ -114,7 +117,7 @@ namespace Rsdn.SmartApp
 			[NotNull] IServicePublisher publisher)
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			return new ServicePublishingStrategy(publisher);
 		}
 	}
@@ -122,5 +125,5 @@ namespace Rsdn.SmartApp
 	/// <summary>
 	/// Generic версия <see cref="ServiceCreator"/>
 	/// </summary>
-	public delegate T ServiceCreator<T>(IServicePublisher publisher);
+	public delegate T ServiceCreator<out T>(IServicePublisher publisher);
 }

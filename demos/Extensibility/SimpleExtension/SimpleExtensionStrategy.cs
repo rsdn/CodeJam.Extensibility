@@ -1,6 +1,10 @@
 using System.IO;
 
-namespace Rsdn.SmartApp.Demos
+using CodeJam.Extensibility.SystemType;
+
+using Rsdn.SmartApp.Demos;
+
+namespace CodeJam.Extensibility.Demos
 {
 	internal class SimpleExtensionStrategy
 		: AttachmentStrategyBase<SimpleExtensionAttribute>
@@ -17,10 +21,7 @@ namespace Rsdn.SmartApp.Demos
 		/// </summary>
 		protected override void Attach(ExtensionAttachmentContext context, SimpleExtensionAttribute attribute)
 		{
-			_writer.WriteLine(
-				string.Format("{0}({1})",
-				attribute.Name,
-				context.Type.FullName));
+			_writer.WriteLine($"{attribute.Name}({context.Type.FullName})");
 		}
 	}
 }

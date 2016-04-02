@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reflection;
-using System.Linq;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Instancing
 {
 	/// <summary>
 	/// Вспомогательный класс для создания экземпляров.
@@ -32,22 +34,21 @@ namespace Rsdn.SmartApp
 			IServiceProvider provider,
 			params InstancingCustomParam[] customParams)
 		{
-			if (type == null) throw new ArgumentNullException("type");
+			if (type == null) throw new ArgumentNullException(nameof(type));
 
 			if (type.Assembly.ReflectionOnly)
 			{
 				if (type.AssemblyQualifiedName == null)
-					throw new ArgumentException("Invalid type", "type");
+					throw new ArgumentException("Invalid type", nameof(type));
 				var newType = Type.GetType(type.AssemblyQualifiedName, true);
 				if (newType == null)
-					throw new ArgumentException("Could not load type for execution", "type");
+					throw new ArgumentException("Could not load type for execution", nameof(type));
 				type = newType;
 			}
 
 			var customParamsMap =
-				customParams == null
-					? new Dictionary<string, InstancingCustomParam>()
-					: customParams.ToDictionary(prm => prm.Name);
+				customParams?.ToDictionary(prm => prm.Name)
+					?? new Dictionary<string, InstancingCustomParam>();
 
 			var ctor = FindCtor(type);
 			var ctorParamValues = new List<object>();

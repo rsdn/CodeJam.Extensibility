@@ -1,10 +1,12 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.SystemType
 {
 	/// <summary>
 	/// Базовая generic-реализация стратегии для <see cref="Type"/>.
@@ -15,7 +17,7 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Инициализирует экземпляр.
 		/// </summary>
-		protected AttachmentStrategyBase() : base(new [] {typeof (TAttribute)})
+		protected AttachmentStrategyBase() : base(typeof (TAttribute))
 		{}
 
 		/// <summary>
@@ -30,13 +32,13 @@ namespace Rsdn.SmartApp
 		{
 			var ctor = attributeData.Constructor;
 			var srcType = ctor.DeclaringType;
+			Debug.Assert(srcType != null, "attrType != null");
 			var roMode = srcType.Assembly.ReflectionOnly;
 			if (roMode)
 			{
 				if (srcType.AssemblyQualifiedName == null)
 					throw new ExtensibilityException("Invalid attribute type");
 				srcType = Type.GetType(srcType.AssemblyQualifiedName, true);
-				Debug.Assert(srcType != null, "attrType != null");
 				ctor =
 					srcType
 						.GetConstructor(

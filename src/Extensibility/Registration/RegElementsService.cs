@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Базовая реализация <see cref="IRegElementsService{EI}"/>
@@ -17,7 +17,7 @@ namespace Rsdn.SmartApp
 		public virtual void Register(TInfo elementInfo)
 		{
 			if (elementInfo == null)
-				throw new ArgumentNullException("elementInfo");
+				throw new ArgumentNullException(nameof(elementInfo));
 			_elements.Add(elementInfo);
 		}
 

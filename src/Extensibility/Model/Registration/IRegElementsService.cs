@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Сервис регистрации элементов.

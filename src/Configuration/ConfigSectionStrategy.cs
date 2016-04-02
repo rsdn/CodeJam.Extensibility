@@ -1,6 +1,11 @@
 using System;
 
-namespace Rsdn.SmartApp.Configuration
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Стратегия подключения секций конфигурации.

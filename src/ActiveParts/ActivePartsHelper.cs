@@ -2,7 +2,9 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Telper methods for active parts.
@@ -15,7 +17,7 @@ namespace Rsdn.SmartApp
 		public static ActivePartManager CreateAndPublishManager([NotNull] IServicePublisher servicePublisher)
 		{
 			if (servicePublisher == null)
-				throw new ArgumentNullException("servicePublisher");
+				throw new ArgumentNullException(nameof(servicePublisher));
 
 			var mgr = new ActivePartManager(servicePublisher);
 			servicePublisher.Publish<IActivePartManager>(mgr);

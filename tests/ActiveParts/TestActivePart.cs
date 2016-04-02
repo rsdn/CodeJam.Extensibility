@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.ActiveParts
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.ActiveParts
 {
 	[ActivePart]
 	public class TestActivePart : IActivePart, IDisposable

@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Helper methods for <see cref="ICharInput"/>.

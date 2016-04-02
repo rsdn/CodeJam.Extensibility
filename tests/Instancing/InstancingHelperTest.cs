@@ -2,7 +2,10 @@
 
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.Instancing
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Instancing;
+
+namespace CodeJam.Extensibility.Instancing
 {
 	[TestFixture]
 	public class InstancingHelperTest

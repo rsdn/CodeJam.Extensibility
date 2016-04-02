@@ -1,4 +1,9 @@
-namespace Rsdn.SmartApp.Extensibility.Registration
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Extensibility.Registration;
+
+namespace CodeJam.Extensibility
 {
 	internal class NamedElementStrategy :
 		RegKeyedElementsStrategy<string, TestNamedElementInfo, TestNamedElementAttribute>

@@ -1,8 +1,10 @@
 using System;
 
+using CodeJam.Extensibility.EventBroker;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Базовая реализация <see cref="IActivePart"/>.

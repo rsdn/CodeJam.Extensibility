@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Утилитный класс для работы с XML.
@@ -52,7 +52,7 @@ namespace Rsdn.SmartApp
 		public static XElement RequiredRoot([NotNull] this XDocument document)
 		{
 			if (document == null)
-				throw new ArgumentNullException("document");
+				throw new ArgumentNullException(nameof(document));
 			if (document.Root == null)
 				throw new ArgumentException("Document is empty");
 			return document.Root;
@@ -64,7 +64,7 @@ namespace Rsdn.SmartApp
 		[NotNull]
 		public static XElement RequiredRoot([NotNull] this XDocument document, [NotNull] XName name)
 		{
-			if (name == null) throw new ArgumentNullException("name");
+			if (name == null) throw new ArgumentNullException(nameof(name));
 			var root = RequiredRoot(document);
 			if (root.Name != name)
 				throw new ArgumentException("Root '{0}' expected, but {1} found".FormatStr(name, root.Name));
@@ -78,9 +78,9 @@ namespace Rsdn.SmartApp
 		public static XElement RequiredElement([NotNull] this XElement element, [NotNull] XName name)
 		{
 			if (element == null)
-				throw new ArgumentNullException("element");
+				throw new ArgumentNullException(nameof(element));
 			if (name == null)
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			var res = element.Element(name);
 			if (res == null)
 				throw new ArgumentException("Element contains no child with specified name: '{0}'".FormatStr(name));
@@ -93,10 +93,10 @@ namespace Rsdn.SmartApp
 		[NotNull]
 		public static XElement RequiredElementAlt([NotNull] this XElement element, params XName[] names)
 		{
-			if (element == null) throw new ArgumentNullException("element");
+			if (element == null) throw new ArgumentNullException(nameof(element));
 			var res =
 				names
-					.Select(n => element.Element(n))
+					.Select(element.Element)
 					.FirstOrDefault(e => e != null);
 			if (res == null)
 				throw new ArgumentException(
@@ -112,9 +112,9 @@ namespace Rsdn.SmartApp
 		public static XAttribute RequiredAttribute([NotNull] this XElement element, [NotNull] XName attrName)
 		{
 			if (element == null)
-				throw new ArgumentNullException("element");
+				throw new ArgumentNullException(nameof(element));
 			if (attrName == null)
-				throw new ArgumentNullException("attrName");
+				throw new ArgumentNullException(nameof(attrName));
 			var attr = element.Attribute(attrName);
 			if (attr == null)
 				throw new ArgumentException("Element contains no attribute with specified name");
@@ -130,9 +130,9 @@ namespace Rsdn.SmartApp
 			[NotNull] Func<string, T> valueParser,
 			T defaultValue)
 		{
-			if (element == null) throw new ArgumentNullException("element");
-			if (attrName == null) throw new ArgumentNullException("attrName");
-			if (valueParser == null) throw new ArgumentNullException("valueParser");
+			if (element == null) throw new ArgumentNullException(nameof(element));
+			if (attrName == null) throw new ArgumentNullException(nameof(attrName));
+			if (valueParser == null) throw new ArgumentNullException(nameof(valueParser));
 
 			var attr = element.Attribute(attrName);
 			return attr != null ? valueParser(attr.Value) : defaultValue;
@@ -146,11 +146,11 @@ namespace Rsdn.SmartApp
 			[NotNull] XName attrName,
 			string defaultValue)
 		{
-			if (element == null) throw new ArgumentNullException("element");
-			if (attrName == null) throw new ArgumentNullException("attrName");
+			if (element == null) throw new ArgumentNullException(nameof(element));
+			if (attrName == null) throw new ArgumentNullException(nameof(attrName));
 
 			var attr = element.Attribute(attrName);
-			return attr != null ? attr.Value : defaultValue;
+			return attr?.Value ?? defaultValue;
 		}
 
 		/// <summary>
@@ -172,11 +172,11 @@ namespace Rsdn.SmartApp
 			T defaultValue,
 			params XName[] names)
 		{
-			if (parent == null) throw new ArgumentNullException("parent");
-			if (selector == null) throw new ArgumentNullException("selector");
-			if (names == null) throw new ArgumentNullException("names");
+			if (parent == null) throw new ArgumentNullException(nameof(parent));
+			if (selector == null) throw new ArgumentNullException(nameof(selector));
+			if (names == null) throw new ArgumentNullException(nameof(names));
 
-			var elem = names.Select(n => parent.Element(n)).FirstOrDefault(e => e != null);
+			var elem = names.Select(parent.Element).FirstOrDefault(e => e != null);
 			if (elem == null)
 				return defaultValue;
 			return selector(elem);
@@ -191,7 +191,7 @@ namespace Rsdn.SmartApp
 			T defaultValue,
 			[NotNull] XName name)
 		{
-			if (name == null) throw new ArgumentNullException("name");
+			if (name == null) throw new ArgumentNullException(nameof(name));
 			return OptionalElementAltValue(parent, selector, defaultValue, name);
 		}
 
@@ -200,7 +200,7 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public static IEnumerable<XElement> ElementsAlt([NotNull] this XElement parent, params XName[] names)
 		{
-			if (parent == null) throw new ArgumentNullException("parent");
+			if (parent == null) throw new ArgumentNullException(nameof(parent));
 			var namesHash = new HashSet<XName>(names);
 			return parent.Elements().Where(e => namesHash.Contains(e.Name));
 		}

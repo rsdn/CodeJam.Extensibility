@@ -5,7 +5,7 @@ using System.Reflection;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Reflection helper methods.
@@ -22,7 +22,7 @@ namespace Rsdn.SmartApp
 			where T : Attribute
 		{
 			if (attrsProvider == null)
-				throw new ArgumentNullException("attrsProvider");
+				throw new ArgumentNullException(nameof(attrsProvider));
 
 			return
 				attrsProvider
@@ -40,7 +40,7 @@ namespace Rsdn.SmartApp
 			where T : Attribute
 		{
 			if (attrsProvider == null)
-				throw new ArgumentNullException("attrsProvider");
+				throw new ArgumentNullException(nameof(attrsProvider));
 
 			return
 				attrsProvider
@@ -55,7 +55,7 @@ namespace Rsdn.SmartApp
 		public static ParameterInfo[] GetDelegateParams([NotNull] Type delegateType)
 		{
 			if (delegateType == null)
-				throw new ArgumentNullException("delegateType");
+				throw new ArgumentNullException(nameof(delegateType));
 // ReSharper disable PossibleNullReferenceException
 			return delegateType.GetMethod("Invoke").GetParameters();
 // ReSharper restore PossibleNullReferenceException
@@ -84,9 +84,9 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public static bool IsImplemented([NotNull] this Type type, [NotNull] string assemblyQualifiedContractName)
 		{
-			if (type == null) throw new ArgumentNullException("type");
+			if (type == null) throw new ArgumentNullException(nameof(type));
 			if (assemblyQualifiedContractName.IsNullOrEmpty())
-				throw new ArgumentNullException("assemblyQualifiedContractName");
+				throw new ArgumentNullException(nameof(assemblyQualifiedContractName));
 			return
 				GetAllContracts(type).Any(
 					ct => StringComparer.Ordinal.Equals(ct.AssemblyQualifiedName, assemblyQualifiedContractName));

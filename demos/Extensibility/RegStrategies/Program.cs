@@ -1,6 +1,11 @@
 using System;
 
-namespace Rsdn.SmartApp.Demos
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Demos;
+
+namespace CodeJam.Extensibility.Demos
 {
 	using FruitSvc = IRegElementsService<FruitInfo>;
 	using KeyedFruitSvc = IRegKeyedElementsService<string, FruitInfo>;

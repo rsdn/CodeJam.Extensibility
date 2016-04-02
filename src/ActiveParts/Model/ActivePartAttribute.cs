@@ -2,7 +2,9 @@
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Помечает active part класс.

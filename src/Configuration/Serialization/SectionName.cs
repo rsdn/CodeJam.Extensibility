@@ -2,7 +2,9 @@
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Rsdn.SmartApp.Configuration
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	/// <summary>
 	/// Имя секции.
@@ -28,16 +30,16 @@ namespace Rsdn.SmartApp.Configuration
 		private SectionName(string localName, string ns)
 		{
 			if (ns == null)
-				throw new ArgumentNullException("ns");
+				throw new ArgumentNullException(nameof(ns));
 			if (localName.IsNullOrEmpty())
-				throw new ArgumentNullException("localName");
+				throw new ArgumentNullException(nameof(localName));
 
 			LocalName = localName;
 			Namespace = ns;
 		}
 
-		private string LocalName { get; set; }
-		private string Namespace { get; set; }
+		private string LocalName { get; }
+		private string Namespace { get; }
 
 		/// <summary>
 		/// See <see cref="object.Equals(object)"/>

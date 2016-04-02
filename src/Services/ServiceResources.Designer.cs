@@ -39,7 +39,7 @@ namespace Rsdn.SmartApp {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rsdn.SmartApp.Services.ServiceResources", typeof(ServiceResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CodeJam.Extensibility.Services.ServiceResources", typeof(ServiceResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

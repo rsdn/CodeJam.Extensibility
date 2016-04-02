@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	[XmlRoot("section3")]
 	public class Section3 : ISection3

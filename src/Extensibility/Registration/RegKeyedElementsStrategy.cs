@@ -1,6 +1,8 @@
 using System;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Вспомогательный класс для реализации атрибутов регистрации.

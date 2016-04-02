@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 
+using CodeJam.Extensibility;
+
 namespace Rsdn.SmartApp.CommandLine
 {
 	internal static class UsagePrinter
@@ -174,24 +176,15 @@ namespace Rsdn.SmartApp.CommandLine
 		#region ItemDescriptor class
 		private class ItemDescriptor
 		{
-			private readonly string _name;
-			private readonly string _description;
-
 			public ItemDescriptor(string name, string description)
 			{
-				_name = name;
-				_description = description;
+				Name = name;
+				Description = description;
 			}
 
-			public string Name
-			{
-				get { return _name; }
-			}
+			public string Name { get; }
 
-			public string Description
-			{
-				get { return _description; }
-			}
+			public string Description { get; }
 		}
 		#endregion
 	}

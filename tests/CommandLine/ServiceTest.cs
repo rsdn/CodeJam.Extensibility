@@ -1,6 +1,8 @@
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	[TestFixture]
 	public class ServiceTest

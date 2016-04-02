@@ -1,6 +1,8 @@
-namespace Rsdn.SmartApp.Configuration
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
-	[XmlSerializerSectionAttribute(typeof (Section1),
+	[XmlSerializerSection(typeof (Section1),
 		SchemaResource = "Rsdn.SmartApp.Configuration.Section1.xsd")]
 	public interface ISection1
 	{

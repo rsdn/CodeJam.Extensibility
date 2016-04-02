@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 
-namespace Rsdn.SmartApp.ActiveParts
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.ActiveParts
 {
 	[TestFixture]
 	public class ActivePartsTest

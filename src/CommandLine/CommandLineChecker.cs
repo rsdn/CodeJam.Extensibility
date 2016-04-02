@@ -1,9 +1,12 @@
- using System;
- using System.Collections.Generic;
- using System.ComponentModel;
- using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Methods for checking command line semantics.

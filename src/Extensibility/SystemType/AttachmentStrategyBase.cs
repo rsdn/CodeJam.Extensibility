@@ -2,15 +2,15 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.SystemType
 {
 	/// <summary>
 	/// Базовая реализация стратегии для <see cref="Type"/>.
 	/// </summary>
 	public abstract class AttachmentStrategyBase : IExtensionAttachmentStrategy
 	{
-		private readonly string[] _supportedAttrNames;
-
 		/// <summary>
 		/// Initialize instance by attribute types.
 		/// </summary>
@@ -23,16 +23,13 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		protected AttachmentStrategyBase(params string[] supportedAttrNames)
 		{
-			_supportedAttrNames = supportedAttrNames;
+			SupportedAttrNames = supportedAttrNames;
 		}
 
 		/// <summary>
 		/// Поддерживаемые типы.
 		/// </summary>
-		public string[] SupportedAttrNames
-		{
-			get { return _supportedAttrNames; }
-		}
+		public string[] SupportedAttrNames { get; }
 
 		/// <summary>
 		/// Attach specified type.
@@ -47,7 +44,7 @@ namespace Rsdn.SmartApp
 			if (attributeData.Constructor.DeclaringType == null)
 				return false;
 			var attrName = attributeData.Constructor.DeclaringType.AssemblyQualifiedName;
-			return _supportedAttrNames.Any(name => name == attrName);
+			return SupportedAttrNames.Any(name => name == attrName);
 		}
 
 		void IExtensionAttachmentStrategy.Attach(ExtensionAttachmentContext context, CustomAttributeData attribute)

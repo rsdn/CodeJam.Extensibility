@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rsdn.SmartApp.Configuration
+using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	using SectionRegSvc = IRegKeyedElementsService<Type, ConfigSectionInfo>;
 

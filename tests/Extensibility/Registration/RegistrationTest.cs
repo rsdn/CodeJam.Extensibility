@@ -2,9 +2,16 @@ using System;
 using System.Linq;
 using System.Reflection;
 
+using CodeJam.Extensibility.Registration;
+
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.Extensibility.Registration
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Extensibility.Registration;
+
+using ElementInfo = Rsdn.SmartApp.Extensibility.Registration.ElementInfo;
+
+namespace CodeJam.Extensibility
 {
 	using INamedSvc = IRegKeyedElementsService<string, TestNamedElementInfo>;
 	using NamedSvc = RegKeyedElementsService<string, TestNamedElementInfo>;

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Вспомогательный класс для работы со средой.
@@ -11,16 +11,11 @@ namespace Rsdn.SmartApp
 	{
 		private static readonly bool _isMono =
 			Type.GetType("Mono.Runtime") != null;
-		private static readonly ClrType _clrType =
-			_isMono ? ClrType.Mono : ClrType.DotNet;
 
 		/// <summary>
 		/// Тип рантайма.
 		/// </summary>
-		public static ClrType ClrType
-		{
-			get { return _clrType;  }
-		}
+		public static ClrType ClrType { get; } = _isMono ? ClrType.Mono : ClrType.DotNet;
 
 		/// <summary>
 		/// Выполнить ветку в зависимости от типа фреймворка.

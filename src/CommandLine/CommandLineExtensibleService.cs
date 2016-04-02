@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
+
+using CodeJam.Extensibility.Instancing;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+using Rsdn.SmartApp.CommandLine;
+
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Extensible command line service.
@@ -18,8 +23,8 @@ namespace Rsdn.SmartApp.CommandLine
 				CommandQuantifier commandQuantifier)
 			: base(() => CreateRules(serviceProvider, providerInfosGetter, commandQuantifier))
 		{
-			if (serviceProvider == null) throw new ArgumentNullException("serviceProvider");
-			if (providerInfosGetter == null) throw new ArgumentNullException("providerInfosGetter");
+			if (serviceProvider == null) throw new ArgumentNullException(nameof(serviceProvider));
+			if (providerInfosGetter == null) throw new ArgumentNullException(nameof(providerInfosGetter));
 		}
 
 		private static CmdLineRules CreateRules(

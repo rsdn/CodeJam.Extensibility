@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-namespace Rsdn.SmartApp.Configuration
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	internal class ConfigSerializer : IDisposable
 	{
@@ -37,8 +39,7 @@ namespace Rsdn.SmartApp.Configuration
 			foreach (var provider in _providers)
 			{
 				var disp = provider as IDisposable;
-				if (disp != null)
-					disp.Dispose();
+				disp?.Dispose();
 			}
 			ClearProviders();
 		}
@@ -178,12 +179,11 @@ namespace Rsdn.SmartApp.Configuration
 			_providers.Clear();
 		}
 
-		public event EventHandler<ConfigSerializer> ConfigChanged;
+		public event Rsdn.SmartApp.EventHandler<ConfigSerializer> ConfigChanged;
 
 		private void OnConfigChanged()
 		{
-			if (ConfigChanged != null)
-				ConfigChanged(this);
+			ConfigChanged?.Invoke(this);
 		}
 	}
 }

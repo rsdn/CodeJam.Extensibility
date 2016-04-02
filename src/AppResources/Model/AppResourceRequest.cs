@@ -1,28 +1,23 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// App resource request.
 	/// </summary>
 	public class AppResourceRequest
 	{
-		private readonly Uri _uri;
-
 		/// <summary>
 		/// Initialize instance.
 		/// </summary>
 		public AppResourceRequest(Uri uri)
 		{
-			_uri = uri;
+			Uri = uri;
 		}
 
 		/// <summary>
 		/// Request URI.
 		/// </summary>
-		public Uri Uri
-		{
-			get { return _uri; }
-		}
+		public Uri Uri { get; }
 	}
 }

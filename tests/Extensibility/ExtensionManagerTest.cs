@@ -3,12 +3,11 @@ using System.Reflection;
 
 using NUnit.Framework;
 
-using Rsdn.SmartApp.Extensibility.Registration;
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Extensibility;
 
-namespace Rsdn.SmartApp.Extensibility
+namespace CodeJam.Extensibility
 {
-	using INamedSvc = IRegKeyedElementsService<string, TestNamedElementInfo>;
-
 	[TestFixture]
 	public class ExtensionManagerTest
 	{

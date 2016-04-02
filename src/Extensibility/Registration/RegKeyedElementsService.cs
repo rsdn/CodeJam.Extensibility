@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using CodeJam.Extensibility.Registration;
+
 namespace Rsdn.SmartApp
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace Rsdn.SmartApp
 		public bool ContainsElement(TKey key)
 		{
 			if (key == null)
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			return _byNameMap.ContainsKey(key);
 		}
 

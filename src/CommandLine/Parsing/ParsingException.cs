@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Parsing exception.

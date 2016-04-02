@@ -5,7 +5,9 @@ using System.Reflection;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Базовая реализация менеджера расширений.
@@ -29,10 +31,7 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Внутренний ServiceManager.
 		/// </summary>
-		protected ServiceManager ServiceManager
-		{
-			get { return _serviceManager; }
-		}
+		protected ServiceManager ServiceManager => _serviceManager;
 
 		#region IExtensionManager Members
 		/// <summary>
@@ -41,9 +40,9 @@ namespace Rsdn.SmartApp
 		public void Scan(IExtensionAttachmentStrategy strategy, [NotNull] params Assembly[] assemblies)
 		{
 			if (strategy == null)
-				throw new ArgumentNullException("strategy");
+				throw new ArgumentNullException(nameof(strategy));
 			if (assemblies == null)
-				throw new ArgumentNullException("assemblies");
+				throw new ArgumentNullException(nameof(assemblies));
 
 			foreach (var asm in assemblies)
 			{
@@ -61,8 +60,8 @@ namespace Rsdn.SmartApp
 			[NotNull] IExtensionAttachmentStrategy strategy,
 			[NotNull] params Type[] types)
 		{
-			if (strategy == null) throw new ArgumentNullException("strategy");
-			if (types == null) throw new ArgumentNullException("types");
+			if (strategy == null) throw new ArgumentNullException(nameof(strategy));
+			if (types == null) throw new ArgumentNullException(nameof(types));
 			foreach (var group in types.GroupBy(t => t.Assembly))
 				Scan(group.Key, group, strategy);
 		}

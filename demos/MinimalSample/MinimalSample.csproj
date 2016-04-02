@@ -8,7 +8,7 @@
     <ProjectGuid>{3211CBBF-E208-4457-BB92-391B03C560D3}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rsdn.SmartApp.Demos</RootNamespace>
+    <RootNamespace>CodeJam.Extensibility.Demos</RootNamespace>
     <AssemblyName>MinimalSample</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>

@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rsdn.SmartApp.Configuration
+using CodeJam.Extensibility.Configuration.Serialization;
+
+using Rsdn.SmartApp;
+using Rsdn.SmartApp.Configuration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Стандартная реализация <see cref="IConfigService"/>
 	/// </summary>
 	public class ConfigService : IConfigService, IDisposable
 	{
-		private readonly Dictionary<Type, ConfigSectionInfo> _sectionInfos =
-			new Dictionary<Type, ConfigSectionInfo>();
-		private readonly IConfigDataProvider _dataProvider;
+		private readonly Dictionary<Type, ConfigSectionInfo> _sectionInfos;
 		private readonly ElementsCache<ConfigSectionInfo, object> _sections;
 		private readonly ConfigSerializer _serializer;
 
@@ -24,11 +27,10 @@ namespace Rsdn.SmartApp.Configuration
 			IDictionary<string, string> externalVars)
 		{
 			if (sectionInfos == null)
-				throw new ArgumentNullException("sectionInfos");
+				throw new ArgumentNullException(nameof(sectionInfos));
 
 			_sectionInfos = sectionInfos.ToDictionary(info => info.ContractType);
-			_dataProvider = dataProvider;
-			_serializer = new ConfigSerializer(_dataProvider, externalVars);
+			_serializer = new ConfigSerializer(dataProvider, externalVars);
 			_sections = new ElementsCache<ConfigSectionInfo, object>(DeserializeSection);
 			_serializer.ConfigChanged += SerializerConfigChanged;
 		}
@@ -48,7 +50,7 @@ namespace Rsdn.SmartApp.Configuration
 		/// <summary>
 		/// Вызывается при изменении конфигурации.
 		/// </summary>
-		public event EventHandler<IConfigService> ConfigChanged;
+		public event Rsdn.SmartApp.EventHandler<IConfigService> ConfigChanged;
 
 		/// <summary>
 		/// Получить содержимое секции.
@@ -78,8 +80,7 @@ namespace Rsdn.SmartApp.Configuration
 		/// </summary>
 		protected virtual void OnConfigChanged()
 		{
-			if (ConfigChanged != null)
-				ConfigChanged(this);
+			ConfigChanged?.Invoke(this);
 		}
 
 		private object DeserializeSection(ConfigSectionInfo sectionInfo)

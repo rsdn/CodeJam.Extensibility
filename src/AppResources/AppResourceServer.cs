@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace Rsdn.SmartApp
+using CodeJam.Extensibility.Instancing;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Default implementation of <see cref="IAppResourceServer"/>
@@ -49,9 +51,8 @@ namespace Rsdn.SmartApp
 						table.BaseAddress,
 						request.Uri.GetComponents(UriComponents.HostAndPort | UriComponents.PathAndQuery, UriFormat.Unescaped)));
 			return
-				match == null
-					? null
-					: ((IAppResource)match.Data).GetResource(
+				((IAppResource) match?.Data)?
+					.GetResource(
 						request,
 						match
 							.BoundVariables

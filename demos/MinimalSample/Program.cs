@@ -2,7 +2,9 @@
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.Demos
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Demos
 {
 	public interface IFruit
 	{
@@ -16,28 +18,19 @@ namespace Rsdn.SmartApp.Demos
 	[Fruit]
 	public class Apple : IFruit
 	{
-		public string Name
-		{
-			get { return "Apple"; }
-		}
+		public string Name => "Apple";
 	}
 
 	[Fruit]
 	public class Pear : IFruit
 	{
-		public string Name
-		{
-			get { return "Pear"; }
-		}
+		public string Name => "Pear";
 	}
 
 	[Fruit]
 	public class Peach : IFruit
 	{
-		public string Name
-		{
-			get { return "Peach"; }
-		}
+		public string Name => "Peach";
 	}
 
 	public class FruitInfo : ElementInfo

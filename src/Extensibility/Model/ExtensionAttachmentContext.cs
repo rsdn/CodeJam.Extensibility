@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Extension attachment context.
@@ -9,9 +11,6 @@ namespace Rsdn.SmartApp
 	public class ExtensionAttachmentContext : IServiceProvider
 	{
 		private readonly IServiceProvider _provider;
-		private readonly IExtensionManager _extensionManager;
-		private readonly Assembly _assembly;
-		private readonly Type _type;
 
 		/// <summary>
 		/// Initialize instance by assembly.
@@ -33,42 +32,30 @@ namespace Rsdn.SmartApp
 			Type type)
 		{
 			_provider = provider;
-			_extensionManager = extensionManager;
-			_assembly = assembly;
-			_type = type;
+			ExtensionManager = extensionManager;
+			Assembly = assembly;
+			Type = type;
 		}
 
 		/// <summary>
 		/// Current extension manager.
 		/// </summary>
-		public IExtensionManager ExtensionManager
-		{
-			get { return _extensionManager; }
-		}
+		public IExtensionManager ExtensionManager { get; }
 
 		/// <summary>
 		/// Assembly for assembly level attribute.
 		/// </summary>
-		public Assembly Assembly
-		{
-			get { return _assembly; }
-		}
+		public Assembly Assembly { get; }
 
 		/// <summary>
 		/// Type.
 		/// </summary>
-		public Type Type
-		{
-			get { return _type; }
-		}
+		public Type Type { get; }
 
 		/// <summary>
 		/// Returns true, if scan on assembly level.
 		/// </summary>
-		public bool IsAssemblyLevel
-		{
-			get { return Type == null; }
-		}
+		public bool IsAssemblyLevel => Type == null;
 
 		/// <summary>
 		/// Gets the service object of the specified type.

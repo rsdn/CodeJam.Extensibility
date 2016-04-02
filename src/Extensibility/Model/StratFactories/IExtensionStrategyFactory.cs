@@ -2,7 +2,7 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.StratFactories
 {
 	/// <summary>
 	/// »нтерфейс класса, предоставл€ющего специфические стратегии.

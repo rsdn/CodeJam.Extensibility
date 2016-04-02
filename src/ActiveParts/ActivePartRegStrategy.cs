@@ -1,4 +1,8 @@
-﻿namespace Rsdn.SmartApp
+﻿using CodeJam.Extensibility.Registration;
+
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Стратегия регистрации active parts.
@@ -15,7 +19,7 @@
 		public override ActivePartInfo CreateElement(ExtensionAttachmentContext context, ActivePartAttribute attr)
 		{
 			var contract = typeof (IActivePart).AssemblyQualifiedName;
-			if (!context.Type.IsImplemented(contract))
+			if (contract != null && !context.Type.IsImplemented(contract))
 				throw new ExtensibilityException(
 					"Type '{0}' must implement interface '{1}".FormatStr(context.Type, contract));
 			return new ActivePartInfo(context.Type.AssemblyQualifiedName);

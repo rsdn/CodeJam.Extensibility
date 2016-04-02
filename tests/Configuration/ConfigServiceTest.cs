@@ -6,7 +6,7 @@ using System.Xml.Schema;
 
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	[TestFixture]
 	public class ConfigServiceTest

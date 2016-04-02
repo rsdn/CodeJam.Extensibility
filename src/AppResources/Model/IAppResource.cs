@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// App resource provider.

@@ -1,6 +1,11 @@
 using System;
 
-namespace Rsdn.SmartApp
+using CodeJam.Extensibility.Instancing;
+using CodeJam.Extensibility.SystemType;
+
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Помогает обеспечить декларативную публикацию сервисов.

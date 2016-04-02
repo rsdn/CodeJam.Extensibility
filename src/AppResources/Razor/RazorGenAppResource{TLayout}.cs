@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.Razor
 {
 	/// <summary>
 	/// Base page with layout.
@@ -24,11 +26,11 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Layout instance.
 		/// </summary>
-		public TLayout Layout
-		{
-			get { return _layout; }
-		}
+		public TLayout Layout => _layout;
 
+		/// <summary>
+		/// Write text to output.
+		/// </summary>
 		protected override void WriteText(AppResourceRequest request, TextWriter writer)
 		{
 			var body = new StringWriter();
@@ -56,6 +58,9 @@ namespace Rsdn.SmartApp
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		protected void DefineSection(string name, Action sectionWriter)
 		{
 			_sections.Add(name, sectionWriter);

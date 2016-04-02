@@ -3,9 +3,13 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reflection;
 
+using CodeJam.Extensibility.Registration;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Helper methods for extensibility infa.
@@ -24,9 +28,9 @@ namespace Rsdn.SmartApp
 			where TInfo : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 
 			return new DelegateStrategy<TInfo, TAttr>(publisher, infoCreator, null);
 		}
@@ -43,9 +47,9 @@ namespace Rsdn.SmartApp
 			where TKey : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 
 			return new DelegateStrategy<TKey, TInfo, TAttr>(publisher, infoCreator, null);
 		}
@@ -62,9 +66,9 @@ namespace Rsdn.SmartApp
 			where TInfo : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 
 			return CreateStrategy(publisher, infoCreator, typeof (TElement));
 		}
@@ -82,9 +86,9 @@ namespace Rsdn.SmartApp
 			where TKey : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 
 			return CreateStrategy<TKey, TInfo, TAttr>(publisher, infoCreator, typeof(TElement));
 		}
@@ -102,11 +106,11 @@ namespace Rsdn.SmartApp
 			where TInfo : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 			if (elementType == null)
-				throw new ArgumentNullException("elementType");
+				throw new ArgumentNullException(nameof(elementType));
 
 			return new DelegateStrategy<TInfo, TAttr>(publisher, infoCreator, elementType);
 		}
@@ -124,11 +128,11 @@ namespace Rsdn.SmartApp
 			where TInfo : class, IKeyedElementInfo<TKey> where TKey : class
 		{
 			if (publisher == null)
-				throw new ArgumentNullException("publisher");
+				throw new ArgumentNullException(nameof(publisher));
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 			if (elementType == null)
-				throw new ArgumentNullException("elementType");
+				throw new ArgumentNullException(nameof(elementType));
 
 			return new DelegateStrategy<TKey, TInfo, TAttr>(publisher, infoCreator, elementType);
 		}
@@ -144,7 +148,7 @@ namespace Rsdn.SmartApp
 			where TInfo : class
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			var publisher = provider.GetRequiredService<IServicePublisher>();
 			return CreateStrategy(publisher, infoCreator);
 		}
@@ -161,7 +165,7 @@ namespace Rsdn.SmartApp
 			where TKey : class
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			var publisher = provider.GetRequiredService<IServicePublisher>();
 			return CreateStrategy<TKey, TInfo, TAttr>(publisher, infoCreator);
 		}
@@ -177,7 +181,7 @@ namespace Rsdn.SmartApp
 			where TInfo : class
 		{
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 			return CreateStrategy<TInfo, TAttr>(provider, (ctx, attr) => infoCreator(ctx.Type));
 		}
 
@@ -193,7 +197,7 @@ namespace Rsdn.SmartApp
 			where TKey : class
 		{
 			if (infoCreator == null)
-				throw new ArgumentNullException("infoCreator");
+				throw new ArgumentNullException(nameof(infoCreator));
 			return CreateStrategy<TKey, TInfo, TAttr>(provider, (ctx, attr) => infoCreator(ctx.Type));
 		}
 
@@ -212,7 +216,7 @@ namespace Rsdn.SmartApp
 				: base(publisher)
 			{
 				if (publisher == null)
-					throw new ArgumentNullException("publisher");
+					throw new ArgumentNullException(nameof(publisher));
 				_creator = creator;
 				_elementType = elementType;
 			}
@@ -244,7 +248,7 @@ namespace Rsdn.SmartApp
 				: base(publisher)
 			{
 				if (publisher == null)
-					throw new ArgumentNullException("publisher");
+					throw new ArgumentNullException(nameof(publisher));
 				_creator = creator;
 				_elementType = elementType;
 			}
@@ -281,12 +285,12 @@ namespace Rsdn.SmartApp
 			params string[] asmNames)
 		{
 			if (manager == null)
-				throw new ArgumentNullException("manager");
+				throw new ArgumentNullException(nameof(manager));
 
 			using (ReflectionResolverScope())
 				manager.Scan(
 					strategy,
-					asmNames.Select(name => Assembly.ReflectionOnlyLoad(name)).ToArray());
+					asmNames.Select(Assembly.ReflectionOnlyLoad).ToArray());
 		}
 
 		/// <summary>
@@ -298,12 +302,12 @@ namespace Rsdn.SmartApp
 			params string[] asmFiles)
 		{
 			if (manager == null)
-				throw new ArgumentNullException("manager");
+				throw new ArgumentNullException(nameof(manager));
 
 			using (ReflectionResolverScope())
 				manager.Scan(
 					strategy,
-					asmFiles.Select(name => Assembly.ReflectionOnlyLoadFrom(name)).ToArray());
+					asmFiles.Select(Assembly.ReflectionOnlyLoadFrom).ToArray());
 		}
 
 		/// <summary>
@@ -315,9 +319,9 @@ namespace Rsdn.SmartApp
 			params IExtensionAttachmentStrategy[] strategies)
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			if (types == null)
-				throw new ArgumentNullException("types");
+				throw new ArgumentNullException(nameof(types));
 			var extMgr = new ExtensionManager(provider);
 			foreach (var strategy in strategies)
 				extMgr.Scan(strategy, types);
@@ -333,7 +337,7 @@ namespace Rsdn.SmartApp
 			params IExtensionAttachmentStrategy[] strategies)
 		{
 			if (assembly == null)
-				throw new ArgumentNullException("assembly");
+				throw new ArgumentNullException(nameof(assembly));
 			return ScanExtensions(provider, assembly.GetTypes(), strategies);
 		}
 
@@ -356,7 +360,7 @@ namespace Rsdn.SmartApp
 			params IExtensionAttachmentStrategy[] strategies)
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			var extMgr = new ExtensionManager(provider);
 			foreach (var strategy in strategies)
 				extMgr.ReflectionOnlyScan(strategy, asmNames);
@@ -419,12 +423,9 @@ namespace Rsdn.SmartApp
 			where TInfo : class, IKeyedElementInfo<TKey>
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			var svc = provider.GetRegService<TKey, TInfo>();
-			return
-				svc == null
-					? null
-					: svc.GetElement(key);
+			return svc?.GetElement(key);
 		}
 
 		/// <summary>
@@ -436,7 +437,7 @@ namespace Rsdn.SmartApp
 			where TInfo : IKeyedElementInfo<TKey>
 		{
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 			var svc = provider.GetRegService<TKey, TInfo>();
 			return svc != null && svc.ContainsElement(key);
 		}

@@ -6,7 +6,9 @@ using System.Reflection;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.EventBroker
 {
 	/// <summary>
 	/// Хелперный класс для работы с Event Broker.
@@ -22,11 +24,11 @@ namespace Rsdn.SmartApp
 			[NotNull] Action<T> nextAction)
 		{
 			if (eventBroker == null)
-				throw new ArgumentNullException("eventBroker");
+				throw new ArgumentNullException(nameof(eventBroker));
 			if (eventName == null)
-				throw new ArgumentNullException("eventName");
+				throw new ArgumentNullException(nameof(eventName));
 			if (nextAction == null)
-				throw new ArgumentNullException("nextAction");
+				throw new ArgumentNullException(nameof(nextAction));
 
 			return eventBroker.Subscribe(eventName, Observer.Create(nextAction));
 		}
@@ -39,9 +41,9 @@ namespace Rsdn.SmartApp
 			[NotNull] IServiceProvider provider)
 		{
 			if (instance == null)
-				throw new ArgumentNullException("instance");
+				throw new ArgumentNullException(nameof(instance));
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 
 			var eventBroker = provider.GetRequiredService<IEventBroker>();
 			return 
@@ -49,7 +51,7 @@ namespace Rsdn.SmartApp
 					.GetType()
 					.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
 					.SelectMany(
-						method => method.GetCustomAttributes<EventHandlerAttribute>(true),
+						method => ReflectionHelper.GetCustomAttributes<EventHandlerAttribute>(method, true),
 						(method, attr) =>
 							WrapException(
 								() => eventBroker.SubscribeMethod(attr.EventName, method, instance),
@@ -77,9 +79,9 @@ namespace Rsdn.SmartApp
 			[NotNull] IServiceProvider provider)
 		{
 			if (instance == null)
-				throw new ArgumentNullException("instance");
+				throw new ArgumentNullException(nameof(instance));
 			if (provider == null)
-				throw new ArgumentNullException("provider");
+				throw new ArgumentNullException(nameof(provider));
 
 			var eventBroker = provider.GetRequiredService<IEventBroker>();
 
@@ -88,7 +90,7 @@ namespace Rsdn.SmartApp
 				instanceType
 					.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
 					.SelectMany(
-						property => property.GetCustomAttributes<EventSourceAttribute>(true),
+						property => ReflectionHelper.GetCustomAttributes<EventSourceAttribute>(property, true),
 						(property, attr) =>
 							WrapException(
 								() => eventBroker.RegisterProperty(attr.EventName, property, instance),
@@ -97,7 +99,7 @@ namespace Rsdn.SmartApp
 							instanceType
 								.GetEvents(BindingFlags.Instance | BindingFlags.Public)
 								.SelectMany(
-									ev => ev.GetCustomAttributes<EventSourceAttribute>(true),
+									ev => ReflectionHelper.GetCustomAttributes<EventSourceAttribute>(ev, true),
 									(ev, attr) =>
 										WrapException(
 											() => eventBroker.RegisterEvent(attr.EventName, ev, instance),

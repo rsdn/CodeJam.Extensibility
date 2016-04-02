@@ -49,13 +49,9 @@
     <Compile Include="ServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\R.SAT-Common\R.SAT-Common.csproj">
+    <ProjectReference Include="..\..\..\R.SAT-Common\CodeJam.Extensibility.csproj">
       <Project>{7D9CAEC6-4973-4592-A321-54C9EFACA0F8}</Project>
-      <Name>R.SAT-Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\R.SAT-Model\R.SAT-Model.csproj">
-      <Project>{4F292719-A4B8-40EA-B90E-4EDB7D78E38B}</Project>
-      <Name>R.SAT-Model</Name>
+      <Name>CodeJam.Extensibility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

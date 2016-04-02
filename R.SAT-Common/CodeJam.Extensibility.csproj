@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D9CAEC6-4973-4592-A321-54C9EFACA0F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rsdn.SmartApp</RootNamespace>
+    <AssemblyName>R.SAT-Common</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\R.SAT-Common.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\R.SAT-Common.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../rsat.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ActiveParts\ActivePartManager.cs" />
+    <Compile Include="ActiveParts\ActivePartRegStrategy.cs" />
+    <Compile Include="ActiveParts\ActivePartsHelper.cs" />
+    <Compile Include="ActiveParts\Model\ActivePartAttribute.cs" />
+    <Compile Include="ActiveParts\Model\ActivePartInfo.cs" />
+    <Compile Include="ActiveParts\Model\ActivePartManagerState.cs" />
+    <Compile Include="ActiveParts\Model\IActivePart.cs" />
+    <Compile Include="ActiveParts\Model\IActivePartManager.cs" />
+    <Compile Include="AppResources\AppResourceServer.cs" />
+    <Compile Include="AppResources\AppResourcesHelper.cs" />
+    <Compile Include="AppResources\AsmResourceResource.cs" />
+    <Compile Include="AppResources\Model\AppResourceAttribute.cs" />
+    <Compile Include="AppResources\Model\AppResourceInfo.cs" />
+    <Compile Include="AppResources\Model\AppResourceRequest.cs" />
+    <Compile Include="AppResources\Model\AppResourceResponse.cs" />
+    <Compile Include="AppResources\Model\IAppResource.cs" />
+    <Compile Include="AppResources\Model\IAppResourceServer.cs" />
+    <Compile Include="AppResources\Razor\RazorGenAppResource.cs" />
+    <Compile Include="AppResources\Razor\RazorGenAppResource{TLayout}.cs" />
+    <Compile Include="AppResources\Razor\RazorLayout.cs" />
+    <Compile Include="AppResources\TextAppResource.cs" />
+    <Compile Include="ClrType.cs" />
+    <Compile Include="CollectionHelper.cs" />
+    <Compile Include="CommandLine\CommandLineChecker.cs" />
+    <Compile Include="CommandLine\CommandLineExtensibleService.cs" />
+    <Compile Include="CommandLine\CommandLineHelper.cs" />
+    <Compile Include="CommandLine\CommandLineService.cs" />
+    <Compile Include="CommandLine\Model\Checking\CmdLineRules.cs" />
+    <Compile Include="CommandLine\Model\Checking\CommandLineCheckException.cs" />
+    <Compile Include="CommandLine\Model\Checking\CommandQuantifier.cs" />
+    <Compile Include="CommandLine\Model\Checking\CommandRule.cs" />
+    <Compile Include="CommandLine\Model\Checking\OptionRule.cs" />
+    <Compile Include="CommandLine\Model\CommandLineRulesProviderAttribute.cs" />
+    <Compile Include="CommandLine\Model\CommandLineRulesProviderInfo.cs" />
+    <Compile Include="CommandLine\Model\ICommandLineRulesProvider.cs" />
+    <Compile Include="CommandLine\Model\ICommandLineService.cs" />
+    <Compile Include="CommandLine\Model\OptionType.cs" />
+    <Compile Include="CommandLine\OptionPrefix.cs" />
+    <Compile Include="CommandLine\Parsing\CharInput.cs" />
+    <Compile Include="CommandLine\Parsing\CommandLineParser.Helpers.cs" />
+    <Compile Include="CommandLine\Parsing\CmdLineNode.cs" />
+    <Compile Include="CommandLine\Parsing\CmdLineNodeBase.cs" />
+    <Compile Include="CommandLine\Parsing\CommandLineParser.cs" />
+    <Compile Include="CommandLine\Parsing\CommandNode.cs" />
+    <Compile Include="CommandLine\Parsing\ICharInput.cs" />
+    <Compile Include="CommandLine\Parsing\OptionNode.cs" />
+    <Compile Include="CommandLine\Parsing\ParseResult.cs" />
+    <Compile Include="CommandLine\Parsing\ParsingException.cs" />
+    <Compile Include="CommandLine\Parsing\QuotedOrNonquotedValueNode.cs" />
+    <Compile Include="CommandLine\PrintUsageSettings.cs" />
+    <Compile Include="CommandLine\RegCmdLineRulesProvidersStrategy.cs" />
+    <Compile Include="CommandLine\UsagePrinter.cs" />
+    <Compile Include="Configuration\ConfigHelper.cs" />
+    <Compile Include="Configuration\ConfigSectionStrategy.cs" />
+    <Compile Include="Configuration\ConfigService.cs" />
+    <Compile Include="Configuration\ConfigurationException.cs" />
+    <Compile Include="Configuration\ConfigurationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigurationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\ConfigurationResources.ru.Designer.cs">
+      <DependentUpon>ConfigurationResources.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Configuration\FileConfigDataProvider.cs" />
+    <Compile Include="Configuration\Model\ConfigSectionAttribute.cs" />
+    <Compile Include="Configuration\Model\ConfigSectionInfo.cs" />
+    <Compile Include="Configuration\Model\ConfigXmlConstants.cs" />
+    <Compile Include="Configuration\Model\IConfigDataProvider.cs" />
+    <Compile Include="Configuration\Model\IConfigSectionSerializer.cs" />
+    <Compile Include="Configuration\Model\IConfigService.cs" />
+    <Compile Include="Configuration\Serialization\Config.cs" />
+    <Compile Include="Configuration\Serialization\ConfigSerializer.cs" />
+    <Compile Include="Configuration\Serialization\ConfigVar.cs" />
+    <Compile Include="Configuration\Serialization\SectionName.cs" />
+    <Compile Include="Configuration\Serialization\VarsContainer.cs" />
+    <Compile Include="DisposableHelper.cs" />
+    <Compile Include="EventBroker\Model\EventHandlerAttribute.cs" />
+    <Compile Include="EventBroker\Model\EventSourceAttribute.cs" />
+    <Compile Include="EventBroker\Model\IEventBroker.cs" />
+    <Compile Include="EventHandler.cs" />
+    <Compile Include="Extensibility\ElementInfo.cs" />
+    <Compile Include="EnvironmentHelper.cs" />
+    <Compile Include="EventBroker\EventBroker.cs" />
+    <Compile Include="EventBroker\EventBrokerHelper.cs" />
+    <Compile Include="ActiveParts\ActivePartBase.cs" />
+    <Compile Include="Extensibility\ExtensibilityHelper.cs" />
+    <Compile Include="Extensibility\ExtensionsCache{TInfo, TKey, TElement}.cs" />
+    <Compile Include="Extensibility\ExtensionsCache{TInfo, TElement}.cs" />
+    <Compile Include="Extensibility\KeyedElementInfo.cs" />
+    <Compile Include="Extensibility\Model\ExtensibilityException.cs" />
+    <Compile Include="Extensibility\Model\ExtensionAttachmentContext.cs" />
+    <Compile Include="Extensibility\Model\IExtensionAttachmentStrategy.cs" />
+    <Compile Include="Extensibility\Model\IExtensionManager.cs" />
+    <Compile Include="Extensibility\Model\InvalidExtensionTypeException.cs" />
+    <Compile Include="Extensibility\Model\Registration\IKeyedElementInfo.cs" />
+    <Compile Include="Extensibility\Model\Registration\IRegElementsService.cs" />
+    <Compile Include="Extensibility\Model\Registration\IRegKeyedElementsService.cs" />
+    <Compile Include="Extensibility\Model\StratFactories\ExtensionStrategyFactoryAttribute.cs" />
+    <Compile Include="Extensibility\Model\StratFactories\ExtensionStrategyFactoryInfo.cs" />
+    <Compile Include="Extensibility\Model\StratFactories\IExtensionStrategyFactory.cs" />
+    <Compile Include="Extensibility\SystemType\AttachmentStrategyBase.cs" />
+    <Compile Include="Instancing\Model\DefaultConstructorAttribute.cs" />
+    <Compile Include="Instancing\Model\InstancingCustomParam.cs" />
+    <Compile Include="LocalizableStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizableStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReflectionHelper.cs" />
+    <Compile Include="ServiceData\IServiceDataManager.cs" />
+    <Compile Include="Services\Model\ExpectServiceAttribute.cs" />
+    <Compile Include="Services\Model\IServicePublisher.cs" />
+    <Compile Include="Services\Model\IServiceRegistrationCookie.cs" />
+    <Compile Include="Services\Model\ServiceCreator.cs" />
+    <Compile Include="Services\Model\ServiceNotFoundException.cs" />
+    <Compile Include="Services\ServiceAttribute.cs" />
+    <Compile Include="Path.cs" />
+    <Compile Include="PathHelper.cs" />
+    <Compile Include="Services\ServiceResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="XmlUtils.cs" />
+    <Compile Include="Configuration\XmlSectionSerializer.cs" />
+    <Compile Include="Configuration\XmlSerializerSectionAttribute.cs" />
+    <Compile Include="ElementsCache.cs" />
+    <Compile Include="EmptyArray.cs" />
+    <Compile Include="Extensibility\AssemblyScanHelper.cs" />
+    <Compile Include="Extensibility\SystemType\AttachmentStrategyBaseA.cs" />
+    <Compile Include="Extensibility\ExtensionManager.cs" />
+    <Compile Include="Extensibility\Registration\RegKeyedElementsStrategy.cs" />
+    <Compile Include="Extensibility\Registration\RegElementsStrategy.cs" />
+    <Compile Include="Extensibility\Registration\RegElementsService.cs" />
+    <Compile Include="Extensibility\Registration\RegKeyedElementsService.cs" />
+    <Compile Include="Extensibility\StrategyFactoryStrategy.cs" />
+    <Compile Include="Instancing\InstancingHelper.cs" />
+    <Compile Include="LimitedElementsCache.cs" />
+    <Compile Include="NamedElementAttribute.cs" />
+    <Compile Include="NamedElementInfo.cs" />
+    <Compile Include="Pair.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Threading\ReaderWriterLockHelper.cs" />
+    <Compile Include="ServiceData\ServiceDataManager.cs" />
+    <Compile Include="Services\ServiceConsumer.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\ServicePublishingStrategy.cs" />
+    <Compile Include="Services\ServicesHelper.AssignHelper.cs" />
+    <Compile Include="Services\ServicesHelper.cs" />
+    <Compile Include="StringUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommonXmlDocs.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\ConfigurationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigurationResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\ConfigurationResources.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigurationResources.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizableStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizableStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizableStrings.ru.resx" />
+    <EmbeddedResource Include="Services\ServiceResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ServiceResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Rsdn.SmartApp</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\Model\ConfigSectionSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Configuration\Model\ConfigSectionSchema.xsx">
+      <DependentUpon>ConfigSectionSchema.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

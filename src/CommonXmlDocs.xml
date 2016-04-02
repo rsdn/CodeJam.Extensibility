@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<common-docs>
+	<not-use-directly>
+		<summary>
+			В коде напрямую не использовать.
+		</summary>
+	</not-use-directly>
+	<def-ctor>
+		<summary>
+			Инициализирует экземпляр.
+		</summary>
+	</def-ctor>
+	<service-code>
+		<summary>
+			Для внутренних целей.
+		</summary>
+	</service-code>
+</common-docs>

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<config xmlns="http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd">
-	<section3 xmlns="">
-		<value>Value 2</value>
-	</section3>
-</config>

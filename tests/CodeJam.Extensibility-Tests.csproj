@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A3D1193-17F3-43ED-909E-12B9CF4D7784}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rsdn.SmartApp</RootNamespace>
+    <AssemblyName>R.SAT-UnitTests</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveParts\ActivePartsTest.cs" />
+    <Compile Include="ActiveParts\TestActivePart.cs" />
+    <Compile Include="CommandLine\CheckerTest.cs" />
+    <Compile Include="CommandLine\CmdLineProviderMock.cs" />
+    <Compile Include="CommandLine\CmdLineSvcMock.cs" />
+    <Compile Include="CommandLine\ParserTest.cs" />
+    <Compile Include="CommandLine\PrintUsageTest.cs" />
+    <Compile Include="CommandLine\ServiceTest.cs" />
+    <Compile Include="Configuration\ConfigServiceTest.cs" />
+    <Compile Include="Configuration\FileConfigDataProviderTest.cs" />
+    <Compile Include="Configuration\ISection1.cs" />
+    <Compile Include="Configuration\ISection2.cs" />
+    <Compile Include="Configuration\ISection3.cs" />
+    <Compile Include="Configuration\ISection4.cs" />
+    <Compile Include="Configuration\Section1.cs" />
+    <Compile Include="Configuration\Section2.cs" />
+    <Compile Include="Configuration\Section3.cs" />
+    <Compile Include="Configuration\Section4.cs" />
+    <Compile Include="EventBroker\EventBrokerTest.cs" />
+    <Compile Include="EventBroker\MappingTestObject.cs" />
+    <Compile Include="Extensibility\ExtensionManagerTest.cs" />
+    <Compile Include="Extensibility\Registration\ElementAttribute.cs" />
+    <Compile Include="Extensibility\Registration\ElementInfo.cs" />
+    <Compile Include="Extensibility\Registration\ElementStrategy.cs" />
+    <Compile Include="Extensibility\Registration\NamedElementStrategy.cs" />
+    <Compile Include="Extensibility\Registration\RegistrationTest.cs" />
+    <Compile Include="Extensibility\Registration\SampleElement.cs" />
+    <Compile Include="Extensibility\Registration\TestNamedElementAttribute.cs" />
+    <Compile Include="Extensibility\Registration\TestNamedElementInfo.cs" />
+    <Compile Include="Extensibility\SimpleExtension.cs" />
+    <Compile Include="Extensibility\SimpleExtensionAttribute.cs" />
+    <Compile Include="Extensibility\SimpleExtensionInfo.cs" />
+    <Compile Include="Extensibility\SimpleExtensionStrategy.cs" />
+    <Compile Include="Instancing\CustomParamsCtor.cs" />
+    <Compile Include="Instancing\InstancingHelperTest.cs" />
+    <Compile Include="Instancing\ITestSvc.cs" />
+    <Compile Include="Instancing\ITestSvc2.cs" />
+    <Compile Include="Instancing\MarkedDefaultCtor.cs" />
+    <Compile Include="Instancing\MultipleDefaultCtors.cs" />
+    <Compile Include="Instancing\NoDefaultCtor.cs" />
+    <Compile Include="Instancing\NoPublicCtors.cs" />
+    <Compile Include="Instancing\OnlyProviderParam.cs" />
+    <Compile Include="Observer\ObserverTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceData\ISimpleDataMock.cs" />
+    <Compile Include="ServiceData\ServiceDataManagerTest.cs" />
+    <Compile Include="Services\DisposableService.cs" />
+    <Compile Include="Services\IDisposableService.cs" />
+    <Compile Include="Services\ISampleService.cs" />
+    <Compile Include="Services\ISampleService2.cs" />
+    <Compile Include="Services\ISampleService3.cs" />
+    <Compile Include="Services\MultiContractSvc.cs" />
+    <Compile Include="Services\ServicesHelperTest.cs" />
+    <Compile Include="Services\SampleService.cs" />
+    <Compile Include="Services\ServiceManagerTest.cs" />
+    <Compile Include="Services\ServiceUser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\test-include.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\testconfig-invalid.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\testconfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\testvars.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\Section1.xsd">
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\CodeJam.Extensibility.csproj">
+      <Project>{7D9CAEC6-4973-4592-A321-54C9EFACA0F8}</Project>
+      <Name>CodeJam.Extensibility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

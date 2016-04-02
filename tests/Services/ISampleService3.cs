@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp.Services
+namespace CodeJam.Extensibility.Services
 {
 	public interface ISampleService3
 	{

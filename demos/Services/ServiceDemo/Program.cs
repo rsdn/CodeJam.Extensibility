@@ -1,8 +1,5 @@
 using System;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Demos;
-
 namespace CodeJam.Extensibility.Demos
 {
 	internal class Program

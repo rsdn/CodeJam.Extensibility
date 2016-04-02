@@ -85,7 +85,7 @@
     <Compile Include="EventBroker\MappingTestObject.cs" />
     <Compile Include="Extensibility\ExtensionManagerTest.cs" />
     <Compile Include="Extensibility\Registration\ElementAttribute.cs" />
-    <Compile Include="Extensibility\Registration\ElementInfo.cs" />
+    <Compile Include="Extensibility\Registration\TestElementInfo.cs" />
     <Compile Include="Extensibility\Registration\ElementStrategy.cs" />
     <Compile Include="Extensibility\Registration\NamedElementStrategy.cs" />
     <Compile Include="Extensibility\Registration\RegistrationTest.cs" />

@@ -6,11 +6,6 @@ using CodeJam.Extensibility.Registration;
 
 using NUnit.Framework;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Extensibility.Registration;
-
-using ElementInfo = Rsdn.SmartApp.Extensibility.Registration.ElementInfo;
-
 namespace CodeJam.Extensibility
 {
 	using INamedSvc = IRegKeyedElementsService<string, TestNamedElementInfo>;
@@ -32,7 +27,7 @@ namespace CodeJam.Extensibility
 		private ExtensionManager _extManager;
 
 		private static void TestRegElementsInService<TInfo>(IRegElementsService<TInfo> svc)
-			where TInfo : ElementInfo
+			where TInfo : TestElementInfo
 		{
 			var elems = svc.GetRegisteredElements();
 			Assert.IsNotNull(elems);
@@ -41,7 +36,7 @@ namespace CodeJam.Extensibility
 		}
 
 		private void TestRegElements<TInfo>()
-			where TInfo : ElementInfo
+			where TInfo : TestElementInfo
 		{
 			var svc = _extManager.GetService<IRegElementsService<TInfo>>();
 			Assert.IsNotNull(svc);
@@ -68,21 +63,21 @@ namespace CodeJam.Extensibility
 			_extManager.Scan(
 				new ElementStrategy(_svcManager),
 				Assembly.GetExecutingAssembly().GetTypes());
-			TestRegElements<ElementInfo>();
+			TestRegElements<TestElementInfo>();
 		}
 
 		[Test]
 		public void RegElementsService()
 		{
-			var svc = new RegElementsService<ElementInfo>();
-			svc.Register(new ElementInfo(typeof (SampleElement)));
+			var svc = new RegElementsService<TestElementInfo>();
+			svc.Register(new TestElementInfo(typeof (SampleElement)));
 			TestRegElementsInService(svc);
 		}
 
 		[Test]
 		public void RegElementsServiceInfoIsNull()
 		{
-			var svc = new RegElementsService<ElementInfo>();
+			var svc = new RegElementsService<TestElementInfo>();
 			Assert.Throws<ArgumentNullException>(() => svc.Register(null));
 		}
 

@@ -7,8 +7,6 @@ using CodeJam.Extensibility.Registration;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility
 {
 	/// <summary>

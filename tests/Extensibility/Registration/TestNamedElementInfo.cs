@@ -1,8 +1,10 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.Extensibility.Registration
+using CodeJam.Extensibility.Registration;
+
+namespace CodeJam.Extensibility
 {
-	internal class TestNamedElementInfo : ElementInfo, IKeyedElementInfo<string>
+	internal class TestNamedElementInfo : TestElementInfo, IKeyedElementInfo<string>
 	{
 		public TestNamedElementInfo(string key, Type type) : base(type)
 		{
@@ -10,7 +12,7 @@ namespace Rsdn.SmartApp.Extensibility.Registration
 		}
 
 		#region IKeyedElementInfo<string> Members
-		public string Key { get; private set; }
+		public string Key { get; }
 		#endregion
 	}
 }

@@ -3,9 +3,6 @@ using System.Reflection;
 
 using NUnit.Framework;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Services;
-
 namespace CodeJam.Extensibility.Services
 {
 	[TestFixture]

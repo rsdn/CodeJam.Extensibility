@@ -1,31 +1,21 @@
 using System;
 
-namespace Rsdn.SmartApp.Demos
+using CodeJam.Extensibility.Registration;
+
+namespace CodeJam.Extensibility.Demos.FruitModel
 {
 	public class FruitInfo : IKeyedElementInfo<string>
 	{
-		private readonly string _name;
-		private readonly Type _type;
-
 		public FruitInfo(string name, Type type)
 		{
-			_name = name;
-			_type = type;
+			Name = name;
+			Type = type;
 		}
 
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name { get; }
 
-		public Type Type
-		{
-			get { return _type; }
-		}
+		public Type Type { get; }
 
-		string IKeyedElementInfo<string>.Key
-		{
-			get { return Name; }
-		}
+		string IKeyedElementInfo<string>.Key => Name;
 	}
 }

@@ -4,9 +4,6 @@ using System.Reflection;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Configuration;
-
 namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>

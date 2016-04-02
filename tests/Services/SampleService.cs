@@ -1,4 +1,6 @@
-namespace Rsdn.SmartApp.Services
+using CodeJam.Extensibility.Instancing;
+
+namespace CodeJam.Extensibility.Services
 {
 	[Service(typeof (ISampleService))]
 	internal class SampleService : ISampleService

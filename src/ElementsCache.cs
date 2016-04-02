@@ -2,14 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Делегат для создания элемента кеша.
 	/// </summary>
-	public delegate TElement CreateElement<TKey, TElement>(TKey key);
+	public delegate TElement CreateElement<in TKey, out TElement>(TKey key);
 
 	/// <summary>
 	/// Кеш элементов. Для создания необходим параметр.
@@ -27,7 +30,7 @@ namespace Rsdn.SmartApp
 			[NotNull] CreateElement<TKey, TElement> elementCreator,
 			[CanBeNull] IEqualityComparer<TKey> comparer)
 		{
-			if (elementCreator == null) throw new ArgumentNullException("elementCreator");
+			if (elementCreator == null) throw new ArgumentNullException(nameof(elementCreator));
 			_elements = new Dictionary<TKey, TElement>(comparer);
 			_elementCreator = elementCreator;
 		}
@@ -43,10 +46,7 @@ namespace Rsdn.SmartApp
 		/// Создатель элементов.
 		/// </summary>
 		[NotNull]
-		public CreateElement<TKey, TElement> ElementCreator
-		{
-			get { return _elementCreator; }
-		}
+		public CreateElement<TKey, TElement> ElementCreator => _elementCreator;
 
 		/// <summary>
 		/// Коллекция всех ключей.
@@ -72,7 +72,7 @@ namespace Rsdn.SmartApp
 #pragma warning disable CompareNonConstrainedGenericWithNull
 			if (key == null)
 #pragma warning restore CompareNonConstrainedGenericWithNull
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			using (_cacheLock.GetUpgradeableReaderLock())
 			{
 				TElement element;
@@ -103,7 +103,7 @@ namespace Rsdn.SmartApp
 #pragma warning disable CompareNonConstrainedGenericWithNull
 			if (key == null)
 #pragma warning restore CompareNonConstrainedGenericWithNull
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			using (_cacheLock.GetReaderLock())
 				return _elements.TryGetValue(key, out element);
 		}
@@ -116,7 +116,7 @@ namespace Rsdn.SmartApp
 #pragma warning disable CompareNonConstrainedGenericWithNull
 			if (key == null)
 #pragma warning restore CompareNonConstrainedGenericWithNull
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			using (_cacheLock.GetReaderLock())
 				return _elements.ContainsKey(key);
 		}
@@ -126,10 +126,8 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public virtual void Drop([NotNull] TKey key)
 		{
-#pragma warning disable CompareNonConstrainedGenericWithNull
 			if (key == null)
-#pragma warning restore CompareNonConstrainedGenericWithNull
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			using (_cacheLock.GetWriterLock())
 				_elements.Remove(key);
 		}

@@ -2,12 +2,12 @@
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Model
 {
 	/// <summary>
 	/// Помечает поля, ожидающие сервиса.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
+	[AttributeUsage(AttributeTargets.Field)]
 	[MeansImplicitUse]
 	public class ExpectServiceAttribute : Attribute
 	{

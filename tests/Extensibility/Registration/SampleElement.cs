@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp.Extensibility.Registration
+namespace CodeJam.Extensibility
 {
 	[Element]
 	[TestNamedElement(Name)]

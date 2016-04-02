@@ -3,7 +3,9 @@ using System.IO;
 
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.ServiceData
+using Rsdn.SmartApp;
+
+namespace CodeJam.Extensibility.ServiceData
 {
 	[TestFixture]
 	[Ignore("Need to fix accessibility issues")]

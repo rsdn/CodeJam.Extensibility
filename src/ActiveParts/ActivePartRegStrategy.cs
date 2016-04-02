@@ -1,7 +1,5 @@
 ﻿using CodeJam.Extensibility.Registration;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility
 {
 	/// <summary>

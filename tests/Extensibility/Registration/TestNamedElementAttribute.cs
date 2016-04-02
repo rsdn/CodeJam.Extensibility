@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.Extensibility.Registration
+namespace CodeJam.Extensibility
 {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 	internal class TestNamedElementAttribute : NamedElementAttribute

@@ -2,8 +2,6 @@ using System;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility
 {
 	/// <summary>

@@ -1,7 +1,5 @@
 using CodeJam.Extensibility.SystemType;
 
-using Rsdn.SmartApp.Extensibility;
-
 namespace CodeJam.Extensibility
 {
 	internal class SimpleExtensionStrategy : AttachmentStrategyBase<SimpleExtensionAttribute>

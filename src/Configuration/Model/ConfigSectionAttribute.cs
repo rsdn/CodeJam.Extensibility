@@ -1,6 +1,6 @@
 using System;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Атрибут, поменчающий секцию конфигурации.

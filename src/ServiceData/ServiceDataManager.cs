@@ -13,7 +13,7 @@ using Rsdn.SmartApp;
 
 //[assembly: InternalsVisibleTo(ServiceDataManager.ImplementationTypesAssemblyName)]
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.ServiceData
 {
 	using IValsDic = IDictionary<string, object> ;
 	using ValsDic = Dictionary<string, object>;
@@ -187,7 +187,7 @@ namespace Rsdn.SmartApp
 		public ServiceDataManager(string dataFolder)
 		{
 			if (dataFolder == null)
-				throw new ArgumentNullException("dataFolder");
+				throw new ArgumentNullException(nameof(dataFolder));
 
 			if (!Directory.Exists(dataFolder))
 				Directory.CreateDirectory(dataFolder);
@@ -209,8 +209,7 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		protected void OnPropertyChanged(Type ifaceType, object instance, string propertyName)
 		{
-			if (PropertyChanged != null)
-				PropertyChanged(this, ifaceType, instance, propertyName);
+			PropertyChanged?.Invoke(this, ifaceType, instance, propertyName);
 		}
 
 		[MethodImpl(MethodImplOptions.Synchronized)]

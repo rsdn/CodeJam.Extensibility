@@ -1,6 +1,6 @@
 using System;
 
-namespace Rsdn.SmartApp.Extensibility
+namespace CodeJam.Extensibility
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	public class SimpleExtensionAttribute : Attribute

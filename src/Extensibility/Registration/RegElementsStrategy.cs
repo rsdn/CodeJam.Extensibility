@@ -2,8 +2,6 @@ using System;
 
 using CodeJam.Extensibility.SystemType;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>

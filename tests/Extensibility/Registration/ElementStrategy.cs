@@ -1,13 +1,8 @@
 using CodeJam.Extensibility.Registration;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Extensibility.Registration;
-
-using ElementInfo = Rsdn.SmartApp.Extensibility.Registration.ElementInfo;
-
 namespace CodeJam.Extensibility
 {
-	internal class ElementStrategy : RegElementsStrategy<ElementInfo, ElementAttribute>
+	internal class ElementStrategy : RegElementsStrategy<TestElementInfo, ElementAttribute>
 	{
 		public ElementStrategy(IServicePublisher publisher)
 			: base(publisher)
@@ -17,9 +12,9 @@ namespace CodeJam.Extensibility
 		/// <summary>
 		/// Создать элемент.
 		/// </summary>
-		public override ElementInfo CreateElement(ExtensionAttachmentContext context, ElementAttribute attr)
+		public override TestElementInfo CreateElement(ExtensionAttachmentContext context, ElementAttribute attr)
 		{
-			return new ElementInfo(context.Type);
+			return new TestElementInfo(context.Type);
 		}
 	}
 }

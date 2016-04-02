@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using Rsdn.SmartApp;
+using CodeJam.Extensibility.Model;
 
 namespace CodeJam.Extensibility
 {
@@ -32,7 +32,7 @@ namespace CodeJam.Extensibility
 							new
 							{
 								Info = info,
-								Attr = ReflectionHelper.GetCustomAttribute<ExpectServiceAttribute>(info, false)
+								Attr = info.GetCustomAttribute<ExpectServiceAttribute>(false)
 							})
 						.Where(pair => pair.Attr != null)
 						.Select(pair =>

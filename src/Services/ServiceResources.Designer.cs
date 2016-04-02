@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rsdn.SmartApp {
+namespace CodeJam.Extensibility {
     using System;
     
     

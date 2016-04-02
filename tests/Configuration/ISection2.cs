@@ -1,6 +1,6 @@
 namespace CodeJam.Extensibility.Configuration
 {
-	[XmlSerializerSection("Rsdn.SmartApp.Configuration.Section2, R.SAT-UnitTests")]
+	[XmlSerializerSection("CodeJam.Extensibility.Configuration.Section2, CodeJam.Extensibility-Tests")]
 	public interface ISection2
 	{
 		int Number { get; }

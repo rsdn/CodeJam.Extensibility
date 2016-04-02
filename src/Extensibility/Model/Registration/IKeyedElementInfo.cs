@@ -1,9 +1,9 @@
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Интерфейс именованного элемента.
 	/// </summary>
-	public interface IKeyedElementInfo<TKey>
+	public interface IKeyedElementInfo<out TKey>
 	{
 		/// <summary>
 		/// Ключ.

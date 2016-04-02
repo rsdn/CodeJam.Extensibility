@@ -5,7 +5,7 @@ using System.Reactive.Disposables;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Helper methods for <see cref="IDisposable"/>.
@@ -18,7 +18,7 @@ namespace Rsdn.SmartApp
 		public static void DisposeAll([NotNull] this IEnumerable<IDisposable> disposables)
 		{
 			if (disposables == null)
-				throw new ArgumentNullException("disposables");
+				throw new ArgumentNullException(nameof(disposables));
 
 			foreach (var disp in disposables)
 				disp.Dispose();
@@ -30,7 +30,7 @@ namespace Rsdn.SmartApp
 		public static IDisposable Merge([NotNull] this IEnumerable<IDisposable> disposables)
 		{
 			if (disposables == null)
-				throw new ArgumentNullException("disposables");
+				throw new ArgumentNullException(nameof(disposables));
 			var dispArray = disposables.ToArray();
 			if (dispArray.Any(d => d == null))
 				throw new ArgumentNullException();

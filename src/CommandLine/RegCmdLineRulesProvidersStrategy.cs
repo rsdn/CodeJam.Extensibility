@@ -1,6 +1,5 @@
 using CodeJam.Extensibility.Registration;
 
-using Rsdn.SmartApp;
 using Rsdn.SmartApp.CommandLine;
 
 namespace CodeJam.Extensibility.CommandLine

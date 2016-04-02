@@ -3,8 +3,6 @@ using System;
 using CodeJam.Extensibility.Instancing;
 using CodeJam.Extensibility.SystemType;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility
 {
 	/// <summary>

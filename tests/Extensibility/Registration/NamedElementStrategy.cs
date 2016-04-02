@@ -1,8 +1,5 @@
 using CodeJam.Extensibility.Registration;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Extensibility.Registration;
-
 namespace CodeJam.Extensibility
 {
 	internal class NamedElementStrategy :

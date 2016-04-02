@@ -4,8 +4,6 @@ using System.Reactive.Disposables;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility
 {
 	/// <summary>
@@ -74,7 +72,7 @@ namespace CodeJam.Extensibility
 		}
 
 		/// <summary>
-		/// Generic версия <see cref="IServicePublisher.Publish(System.Type,Rsdn.SmartApp.ServiceCreator)"/>
+		/// Generic версия <see cref="IServicePublisher.Publish(System.Type,ServiceCreator)"/>
 		/// </summary>
 		public static IServiceRegistrationCookie Publish<T>(
 			[NotNull] this IServicePublisher publisher,
@@ -90,7 +88,7 @@ namespace CodeJam.Extensibility
 		}
 
 		/// <summary>
-		/// Generic версия <see cref="IServicePublisher.Publish(System.Type,Rsdn.SmartApp.ServiceCreator)"/>
+		/// Generic версия <see cref="IServicePublisher.Publish(System.Type,ServiceCreator)"/>
 		/// </summary>
 		public static IDisposable PublishDisposable<T>(
 			[NotNull] this IServicePublisher publisher,

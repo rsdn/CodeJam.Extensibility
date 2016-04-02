@@ -1,6 +1,8 @@
 using System;
 
-namespace Rsdn.SmartApp.Configuration
+using CodeJam.Extensibility.Registration;
+
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Описание секции конфигурации.

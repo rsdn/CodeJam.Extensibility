@@ -1,23 +1,21 @@
-﻿namespace Rsdn.SmartApp.Instancing
+﻿using JetBrains.Annotations;
+
+namespace CodeJam.Extensibility.Instancing
 {
+	[UsedImplicitly]
 	public class MarkedDefaultCtor
 	{
-		private readonly string _message;
-
 		[DefaultConstructor]
 		public MarkedDefaultCtor()
 		{
-			_message = "default";
+			Message = "default";
 		}
 
 		public MarkedDefaultCtor(string message)
 		{
-			_message = message;
+			Message = message;
 		}
 
-		public string Message
-		{
-			get { return _message; }
-		}
+		public string Message { get; }
 	}
 }

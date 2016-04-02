@@ -2,8 +2,6 @@ using System.IO;
 
 using CodeJam.Extensibility.SystemType;
 
-using Rsdn.SmartApp.Demos;
-
 namespace CodeJam.Extensibility.Demos
 {
 	internal class SimpleExtensionStrategy

@@ -1,5 +1,7 @@
 using System;
 
+using CodeJam.Extensibility;
+
 using JetBrains.Annotations;
 
 namespace Rsdn.SmartApp
@@ -24,7 +26,7 @@ namespace Rsdn.SmartApp
 		/// </summary>
 		public static Path<T> ReplaceLastPathComponent<T>(this Path<T> path, T component)
 		{
-			return new Path<T>(path != null ? path.ParentPath : null, component);
+			return new Path<T>(path?.ParentPath, component);
 		}
 
 		/// <summary>
@@ -33,9 +35,9 @@ namespace Rsdn.SmartApp
 		public static Path<T> GetPathAt<T>([NotNull] this Path<T> path, int index)
 		{
 			if (path == null)
-				throw new ArgumentNullException("path");
+				throw new ArgumentNullException(nameof(path));
 			if (index < 0 || index >= path.Length)
-				throw new ArgumentOutOfRangeException("index");
+				throw new ArgumentOutOfRangeException(nameof(index));
 
 			var currentPath = path;
 			while (currentPath.Length - 1 > index)

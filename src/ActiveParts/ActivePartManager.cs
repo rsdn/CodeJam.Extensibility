@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using CodeJam.Extensibility.Instancing;
+using CodeJam.Extensibility.Model;
 using CodeJam.Extensibility.Registration;
-
-using Rsdn.SmartApp;
 
 namespace CodeJam.Extensibility
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Базовая реализация атрибута, которым можно помечать именованные расширения.
@@ -13,7 +13,7 @@ namespace Rsdn.SmartApp
 		protected NamedElementAttribute(string name)
 		{
 			if (string.IsNullOrEmpty(name))
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			Name = name;
 		}
 

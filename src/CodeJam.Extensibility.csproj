@@ -242,7 +242,7 @@
     <EmbeddedResource Include="Services\ServiceResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ServiceResources.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Rsdn.SmartApp</CustomToolNamespace>
+      <CustomToolNamespace>CodeJam.Extensibility</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

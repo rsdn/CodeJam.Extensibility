@@ -2,7 +2,7 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Mark autoinstantiated services.
@@ -17,7 +17,7 @@ namespace Rsdn.SmartApp
 		public ServiceAttribute([NotNull] params Type[] contractTypes)
 		{
 			if (contractTypes == null)
-				throw new ArgumentNullException("contractTypes");
+				throw new ArgumentNullException(nameof(contractTypes));
 			ContractTypes = contractTypes;
 		}
 

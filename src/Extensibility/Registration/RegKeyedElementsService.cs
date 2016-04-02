@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using CodeJam.Extensibility.Registration;
-
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Registration
 {
 	/// <summary>
 	/// Базовая реализация <see cref="IRegKeyedElementsService{K, EI}"/>
@@ -48,7 +46,7 @@ namespace Rsdn.SmartApp
 		public TInfo GetElement(TKey key)
 		{
 			if (key == null)
-				throw new ArgumentNullException("key");
+				throw new ArgumentNullException(nameof(key));
 			TInfo elementInfo;
 			if (_byNameMap.TryGetValue(key, out elementInfo))
 				return elementInfo;

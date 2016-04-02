@@ -1,6 +1,6 @@
 using System;
 
-namespace Rsdn.SmartApp.Services
+namespace CodeJam.Extensibility.Services
 {
 	internal class DisposableService : IDisposableService, IDisposable
 	{

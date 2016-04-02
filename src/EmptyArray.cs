@@ -1,4 +1,4 @@
-﻿namespace Rsdn.SmartApp
+﻿namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Хелпер для получения пустого массива.

@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Базовая реализация <see cref="IServicePublisher"/>
@@ -55,9 +56,9 @@ namespace Rsdn.SmartApp
 		public IServiceRegistrationCookie Publish(Type serviceType, object serviceInstance)
 		{
 			if (serviceType == null)
-				throw new ArgumentNullException("serviceType");
+				throw new ArgumentNullException(nameof(serviceType));
 			if (serviceInstance == null)
-				throw new ArgumentNullException("serviceInstance");
+				throw new ArgumentNullException(nameof(serviceInstance));
 			return Publish(serviceType, new SvcInstanceProvider(serviceInstance));
 		}
 
@@ -67,9 +68,9 @@ namespace Rsdn.SmartApp
 		public IServiceRegistrationCookie Publish(Type serviceType, ServiceCreator serviceCreator)
 		{
 			if (serviceType == null)
-				throw new ArgumentNullException("serviceType");
+				throw new ArgumentNullException(nameof(serviceType));
 			if (serviceCreator == null)
-				throw new ArgumentNullException("serviceCreator");
+				throw new ArgumentNullException(nameof(serviceCreator));
 
 			return Publish(serviceType, new SvcCreatorProvider(serviceType, this, serviceCreator));
 		}
@@ -80,11 +81,11 @@ namespace Rsdn.SmartApp
 		public void Unpublish(IServiceRegistrationCookie cookie)
 		{
 			if (cookie == null)
-				throw new ArgumentNullException("cookie");
+				throw new ArgumentNullException(nameof(cookie));
 
 			var svcCookie = (ServiceCookie)cookie;
 			if (!_byCookieMap.ContainsKey(svcCookie))
-				throw new ArgumentException(ServiceResources.ServiceManagerCookieIinvalid, "cookie");
+				throw new ArgumentException(ServiceResources.ServiceManagerCookieIinvalid, nameof(cookie));
 			lock (_changeLockFlag)
 			{
 				_byTypeMap.Remove(_byCookieMap[svcCookie]);
@@ -99,7 +100,7 @@ namespace Rsdn.SmartApp
 		public virtual object GetService([NotNull] Type serviceType)
 		{
 			if (serviceType == null)
-				throw new ArgumentNullException("serviceType");
+				throw new ArgumentNullException(nameof(serviceType));
 
 			IServiceInstanceProvider instanceProvider;
 			return
@@ -138,11 +139,9 @@ namespace Rsdn.SmartApp
 		private object GetParentService(Type serviceType)
 		{
 			return
-				_parentProviders != null
-					? _parentProviders
-						.Select(sp => sp.GetService(serviceType))
-						.FirstOrDefault(svc => svc != null)
-					: null;
+				_parentProviders
+					?.Select(sp => sp.GetService(serviceType))
+					.FirstOrDefault(svc => svc != null);
 		}
 
 		#region ServiceCookie class
@@ -193,10 +192,7 @@ namespace Rsdn.SmartApp
 			}
 
 			#region IServiceInstanceProvider Members
-			public bool IsInstanceCreated
-			{
-				get { return _svcInstance != null; }
-			}
+			public bool IsInstanceCreated => _svcInstance != null;
 
 			public object GetInstance()
 			{
@@ -225,10 +221,7 @@ namespace Rsdn.SmartApp
 			}
 
 			#region IServiceInstanceProvider Members
-			public bool IsInstanceCreated
-			{
-				get { return true; }
-			}
+			public bool IsInstanceCreated => true;
 
 			public object GetInstance()
 			{

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.Extensibility
+namespace CodeJam.Extensibility
 {
-	public class SimpleExtensionInfo : ElementInfo
+	public class SimpleExtensionInfo : TestElementInfo
 	{
 		public SimpleExtensionInfo(Type type) : base(type)
 		{

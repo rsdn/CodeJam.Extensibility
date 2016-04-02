@@ -2,25 +2,22 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Simple element info implementation.
 	/// </summary>
 	public abstract class ElementInfo
 	{
-		private readonly Type _type;
-		private readonly string _description;
-
 		/// <summary>
 		/// Initialize instance.
 		/// </summary>
 		protected ElementInfo([NotNull] Type type, string description)
 		{
 			if (type == null)
-				throw new ArgumentNullException("type");
-			_type = type;
-			_description = description;
+				throw new ArgumentNullException(nameof(type));
+			Type = type;
+			Description = description;
 		}
 
 		/// <summary>
@@ -32,17 +29,11 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Element description.
 		/// </summary>
-		public string Description
-		{
-			get { return _description; }
-		}
+		public string Description { get; }
 
 		/// <summary>
 		/// Element type.
 		/// </summary>
-		public Type Type
-		{
-			get { return _type; }
-		}
+		public Type Type { get; }
 	}
 }

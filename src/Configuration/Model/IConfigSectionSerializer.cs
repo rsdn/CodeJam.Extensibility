@@ -1,6 +1,6 @@
 using System.Xml;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Сериализатор секции конфигурации.

@@ -1,9 +1,7 @@
 using System;
 
+using CodeJam.Extensibility.Demos.FruitModel;
 using CodeJam.Extensibility.Registration;
-
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Demos;
 
 namespace CodeJam.Extensibility.Demos
 {

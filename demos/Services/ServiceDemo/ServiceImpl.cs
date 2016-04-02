@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Rsdn.SmartApp.Demos
+namespace CodeJam.Extensibility.Demos
 {
 	/// <summary>
 	/// ServiceImpl implementation.

@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Кеш элементов с ограничением максимального размера.
 	/// </summary>
 	public class LimitedElementsCache<TKey, TElement> : ElementsCache<TKey, TElement>
 	{
-		private readonly int _maxSize;
 		private readonly Queue<TKey> _queue = new Queue<TKey>();
 
 		/// <summary>
@@ -17,16 +16,13 @@ namespace Rsdn.SmartApp
 		public LimitedElementsCache(CreateElement<TKey, TElement> elementCreator, int maxSize)
 			: base(elementCreator)
 		{
-			_maxSize = maxSize;
+			MaxSize = maxSize;
 		}
 
 		/// <summary>
 		/// Максимальный размер кеша.
 		/// </summary>
-		public int MaxSize
-		{
-			get { return _maxSize; }
-		}
+		public int MaxSize { get; }
 
 		/// <summary>
 		/// Вызывается после создания нового элемента.

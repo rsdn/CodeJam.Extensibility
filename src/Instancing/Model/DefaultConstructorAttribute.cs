@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Instancing
 {
 	/// <summary>
 	/// Помечает конструктор по умолчанию, если класс содержит несколько публичных конструкторов.

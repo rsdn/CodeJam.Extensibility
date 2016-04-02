@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Cookie, описывающий опубликованный сервис.

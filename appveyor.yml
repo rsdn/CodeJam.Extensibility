@@ -1,0 +1,37 @@
+version: 1.0.{build}
+configuration: Release
+
+environment:
+  packageVersion: 1.0
+
+cache:
+- packages -> **\packages.config
+
+init:
+- cmd: git config --global core.autocrlf true
+- ps: $env:buildVersion = "$env:packageVersion.$env:appveyor_build_number"
+- ps: $env:nugetVersion = "$env:packageVersion-alpha$env:appveyor_build_number"
+- ps: Update-AppveyorBuild -Version $env:buildVersion
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '$(buildVersion)'
+  assembly_file_version: '$(buildVersion)'
+  assembly_informational_version: '$(nugetVersion)'
+
+nuget:
+  account_feed: false
+  project_feed: false
+
+before_build:
+- cmd: nuget restore
+
+build:
+  project: CodeJam.Extensibility.sln
+  publish_nuget: false
+  verbosity: minimal
+
+after_build:
+- ps: nuget pack nuget\CodeJam.Extensibility.nuspec -version "$env:nugetVersion"
+- ps: Push-AppveyorArtifact CodeJam.Extensibility.$env:nugetVersion.nupkg

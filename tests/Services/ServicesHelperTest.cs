@@ -16,11 +16,10 @@ namespace Rsdn.SmartApp.Services
 		private ServiceManager _serviceManager;
 
 		[Test]
-		[ExpectedException(typeof (ServiceNotFoundException))]
 		public void AssignNonExistentRequiredService()
 		{
 			var su = new ServiceUser();
-			su.AssignServices(_serviceManager);
+			Assert.Throws<ServiceNotFoundException>(() => su.AssignServices(_serviceManager));
 		}
 
 		[Test]

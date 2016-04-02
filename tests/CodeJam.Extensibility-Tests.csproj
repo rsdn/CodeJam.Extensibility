@@ -42,8 +42,9 @@
       <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\NUnit\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -67,11 +68,8 @@
   <ItemGroup>
     <Compile Include="ActiveParts\ActivePartsTest.cs" />
     <Compile Include="ActiveParts\TestActivePart.cs" />
-    <Compile Include="CommandLine\CheckerTest.cs" />
     <Compile Include="CommandLine\CmdLineProviderMock.cs" />
     <Compile Include="CommandLine\CmdLineSvcMock.cs" />
-    <Compile Include="CommandLine\ParserTest.cs" />
-    <Compile Include="CommandLine\PrintUsageTest.cs" />
     <Compile Include="CommandLine\ServiceTest.cs" />
     <Compile Include="Configuration\ConfigServiceTest.cs" />
     <Compile Include="Configuration\FileConfigDataProviderTest.cs" />

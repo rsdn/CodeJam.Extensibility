@@ -29,11 +29,10 @@ namespace Rsdn.SmartApp.Services
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void DuplicatePublishing()
 		{
 			_serviceManager.Publish(typeof (ISampleService), new SampleService(_name));
-			_serviceManager.Publish(typeof (ISampleService), new SampleService(_name));
+			Assert.Throws<ArgumentException>(() => _serviceManager.Publish(typeof (ISampleService), new SampleService(_name)));
 		}
 
 		[Test]
@@ -91,29 +90,25 @@ namespace Rsdn.SmartApp.Services
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void ServiceCreatorNull()
 		{
-// ReSharper disable AssignNullToNotNullAttribute
-			_serviceManager.Publish((ServiceCreator)null);
-// ReSharper restore AssignNullToNotNullAttribute
+			// ReSharper disable once AssignNullToNotNullAttribute
+			Assert.Throws<ArgumentNullException>(() => _serviceManager.Publish((ServiceCreator)null));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void ServiceCreatorReturnNull()
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			_serviceManager.Publish(typeof(ISampleService), (type, pub) => null);
-			_serviceManager.GetService<ISampleService>();
+			Assert.Throws<ArgumentException>(() => _serviceManager.GetService<ISampleService>());
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void ServiceInstanceNull()
 		{
-// ReSharper disable AssignNullToNotNullAttribute
-			_serviceManager.Publish(typeof(ISampleService), (ISampleService)null);
-// ReSharper restore AssignNullToNotNullAttribute
+			// ReSharper disable once AssignNullToNotNullAttribute
+			Assert.Throws<ArgumentNullException>(() => _serviceManager.Publish(typeof(ISampleService), (ISampleService)null));
 		}
 
 		[Test]

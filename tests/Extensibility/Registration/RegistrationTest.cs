@@ -42,19 +42,17 @@ namespace Rsdn.SmartApp.Extensibility.Registration
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void NamedSvcContainsParamIsNull()
 		{
 			var svc = new NamedSvc();
-			svc.ContainsElement(null);
+			Assert.Throws<ArgumentNullException>(() => svc.ContainsElement(null));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void NamedSvcGetParamIsNull()
 		{
 			var svc = new NamedSvc();
-			svc.GetElement(null);
+			Assert.Throws<ArgumentNullException>(() => svc.GetElement(null));
 		}
 
 		[Test]
@@ -75,11 +73,10 @@ namespace Rsdn.SmartApp.Extensibility.Registration
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void RegElementsServiceInfoIsNull()
 		{
 			var svc = new RegElementsService<ElementInfo>();
-			svc.Register(null);
+			Assert.Throws<ArgumentNullException>(() => svc.Register(null));
 		}
 
 		[Test]

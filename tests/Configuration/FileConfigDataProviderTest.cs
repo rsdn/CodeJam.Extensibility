@@ -40,24 +40,24 @@ namespace Rsdn.SmartApp.Configuration
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void FileNameEmpty()
 		{
-			new FileConfigDataProvider("");
+			// ReSharper disable once ObjectCreationAsStatement
+			Assert.Throws<ArgumentNullException>(() => new FileConfigDataProvider(""));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void FileNameNull()
 		{
-			new FileConfigDataProvider(null);
+			// ReSharper disable once ObjectCreationAsStatement
+			Assert.Throws<ArgumentNullException>(() => new FileConfigDataProvider(null));
 		}
 
 		[Test]
-		[ExpectedException(typeof (FileNotFoundException))]
 		public void FileNotExists()
 		{
-			new FileConfigDataProvider("X:/y/z");
+			// ReSharper disable once ObjectCreationAsStatement
+			Assert.Throws<FileNotFoundException>(() =>new FileConfigDataProvider("X:/y/z"));
 		}
 	}
 }

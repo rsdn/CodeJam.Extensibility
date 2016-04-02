@@ -36,17 +36,16 @@ namespace Rsdn.SmartApp.Extensibility
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void NullStrategy()
 		{
-			_extManager.Scan(null, new Type[0]);
+			// ReSharper disable once AssignNullToNotNullAttribute
+			Assert.Throws<ArgumentNullException>(() => _extManager.Scan(null, new Type[0]));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentNullException))]
 		public void NullTypes()
 		{
-			_extManager.Scan(null, new Assembly[0]);
+			Assert.Throws<ArgumentNullException>(() => _extManager.Scan(null, new Assembly[0]));
 		}
 
 		[Test]

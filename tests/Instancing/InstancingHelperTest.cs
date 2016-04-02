@@ -21,10 +21,7 @@ namespace Rsdn.SmartApp.Instancing
 		private class TestSvc : ITestSvc
 		{
 			#region ITestSvc Members
-			public string Message
-			{
-				get { return "TestSvc"; }
-			}
+			public string Message => "TestSvc";
 			#endregion
 		}
 
@@ -39,19 +36,18 @@ namespace Rsdn.SmartApp.Instancing
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void NoCustomParam()
 		{
-			InstancingHelper.CreateInstance<CustomParamsCtor>(_svcMgr);
+			Assert.Throws<ArgumentException>(() => InstancingHelper.CreateInstance<CustomParamsCtor>(_svcMgr));
 		}
 
 		[Test]
-		[ExpectedException(typeof(ArgumentException))]
 		public void WrongCustomParam()
 		{
-			InstancingHelper.CreateInstance<MarkedDefaultCtor>(
-				_svcMgr,
-				new InstancingCustomParam("message", "", false));
+			Assert.Throws<ArgumentException>(() => 
+				InstancingHelper.CreateInstance<MarkedDefaultCtor>(
+					_svcMgr,
+					new InstancingCustomParam("message", "", false)));
 		}
 
 		[Test]
@@ -63,12 +59,12 @@ namespace Rsdn.SmartApp.Instancing
 		}
 
 		[Test]
-		[ExpectedException(typeof(ArgumentException))]
 		public void ReqCustomParamAbsent()
 		{
-			InstancingHelper.CreateInstance<CustomParamsCtor>(
-				_svcMgr,
-				new InstancingCustomParam("messag", ""));
+			Assert.Throws<ArgumentException>(() =>
+				InstancingHelper.CreateInstance<CustomParamsCtor>(
+					_svcMgr,
+					new InstancingCustomParam("messag", "")));
 		}
 
 		[Test]
@@ -79,24 +75,21 @@ namespace Rsdn.SmartApp.Instancing
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void MultipleDefaultCtors()
 		{
-			InstancingHelper.CreateInstance<MultipleDefaultCtors>(_svcMgr);
+			Assert.Throws<ArgumentException>(() => InstancingHelper.CreateInstance<MultipleDefaultCtors>(_svcMgr));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void NoDefaultCtor()
 		{
-			InstancingHelper.CreateInstance<NoDefaultCtor>(_svcMgr);
+			Assert.Throws<ArgumentException>(() => InstancingHelper.CreateInstance<NoDefaultCtor>(_svcMgr));
 		}
 
 		[Test]
-		[ExpectedException(typeof (ArgumentException))]
 		public void NoPublicCtors()
 		{
-			InstancingHelper.CreateInstance<NoPublicCtors>(_svcMgr);
+			Assert.Throws<ArgumentException>(() => InstancingHelper.CreateInstance<NoPublicCtors>(_svcMgr));
 		}
 
 		[Test]

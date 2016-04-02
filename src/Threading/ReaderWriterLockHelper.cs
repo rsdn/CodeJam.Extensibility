@@ -2,7 +2,7 @@
 using System.Reactive.Disposables;
 using System.Threading;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Threading
 {
 	/// <summary>
 	/// Реализация паттерна IDisposable для <see cref="ReaderWriterLock"/>

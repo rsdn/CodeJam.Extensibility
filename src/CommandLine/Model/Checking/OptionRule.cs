@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Option rule.
@@ -11,12 +11,6 @@ namespace Rsdn.SmartApp.CommandLine
 	[Localizable(false)]
 	public class OptionRule
 	{
-		private readonly string _name;
-		private readonly string _description;
-		private readonly OptionType _type;
-		private readonly bool _required;
-		private readonly string[] _dependOnCommands;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
@@ -90,58 +84,43 @@ namespace Rsdn.SmartApp.CommandLine
 			[NotNull] params string[] dependOnCommands)
 		{
 			if (name == null)
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			if (dependOnCommands == null)
-				throw new ArgumentNullException("dependOnCommands");
+				throw new ArgumentNullException(nameof(dependOnCommands));
 			if (type == OptionType.Valueless && required)
 				throw new ArgumentException("Valueless property cannot be required");
 
-			_name = name;
-			_description = description;
-			_type = type;
-			_required = required;
-			_dependOnCommands = dependOnCommands;
+			Name = name;
+			Description = description;
+			Type = type;
+			Required = required;
+			DependOnCommands = dependOnCommands;
 		}
 
 		/// <summary>
 		/// Option name.
 		/// </summary>
 		[NotNull]
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name { get; }
 
 		/// <summary>
 		/// Option description.
 		/// </summary>
-		public string Description
-		{
-			get { return _description; }
-		}
+		public string Description { get; }
 
 		/// <summary>
 		/// Option type.
 		/// </summary>
-		public OptionType Type
-		{
-			get { return _type; }
-		}
+		public OptionType Type { get; }
 
 		/// <summary>
 		/// Option required.
 		/// </summary>
-		public bool Required
-		{
-			get { return _required; }
-		}
+		public bool Required { get; }
 
 		/// <summary>
 		/// List of command names, that option depend on.
 		/// </summary>
-		public string[] DependOnCommands
-		{
-			get { return _dependOnCommands; }
-		}
+		public string[] DependOnCommands { get; }
 	}
 }

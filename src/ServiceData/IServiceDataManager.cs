@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.ServiceData
 {
 	/// <summary>
 	/// Менеджер персистентных служебных данных.

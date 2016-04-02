@@ -5,8 +5,6 @@ using CodeJam.Extensibility.Instancing;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp.CommandLine;
-
 namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>

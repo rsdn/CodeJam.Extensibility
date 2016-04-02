@@ -5,7 +5,7 @@ using System.Threading;
 
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	[TestFixture]
 	public class FileConfigDataProviderTest

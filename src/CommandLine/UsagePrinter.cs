@@ -1,12 +1,10 @@
 using System;
 using System.IO;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
-using CodeJam.Extensibility;
-
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	internal static class UsagePrinter
 	{

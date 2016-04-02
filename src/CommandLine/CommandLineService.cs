@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 
-using JetBrains.Annotations;
+using CodeJam.Extensibility.CommandLine.Parsing;
 
-using Rsdn.SmartApp.CommandLine;
+using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility.CommandLine
 {

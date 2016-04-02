@@ -31,8 +31,8 @@ namespace CodeJam.Extensibility
 			ExtensionStrategyFactoryAttribute attr)
 		{
 			if (!typeof (IExtensionStrategyFactory).IsAssignableFrom(context.Type))
-				throw new InvalidExtensionTypeException("Strategy factory must implement"
-					+ " 'Rsdn.SmartApp.IExtensionStrategyFactory' interface");
+				throw new InvalidExtensionTypeException(
+					$"Strategy factory must implement '{typeof (IExtensionStrategyFactory)}' interface");
 			return new ExtensionStrategyFactoryInfo(context.Type);
 		}
 

@@ -1,19 +1,17 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.Instancing
+using JetBrains.Annotations;
+
+namespace CodeJam.Extensibility.Instancing
 {
+	[UsedImplicitly]
 	public class OnlyProviderParam
 	{
-		private readonly IServiceProvider _provider;
-
 		public OnlyProviderParam(IServiceProvider provider)
 		{
-			_provider = provider;
+			Provider = provider;
 		}
 
-		public IServiceProvider Provider
-		{
-			get { return _provider; }
-		}
+		public IServiceProvider Provider { get; }
 	}
 }

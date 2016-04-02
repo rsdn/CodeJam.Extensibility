@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Параметры сервиса конфигурирования, обеспечивающие хранение конфигурации
@@ -22,7 +22,7 @@ namespace Rsdn.SmartApp.Configuration
 		public FileConfigDataProvider(string fileName)
 		{
 			if (string.IsNullOrEmpty(fileName))
-				throw new ArgumentNullException("fileName");
+				throw new ArgumentNullException(nameof(fileName));
 			_dirName = Path.GetDirectoryName(fileName) ?? Path.PathSeparator.ToString();
 			_fileName = fileName;
 			var shortName = Path.GetFileName(fileName);
@@ -40,10 +40,7 @@ namespace Rsdn.SmartApp.Configuration
 		/// <summary>
 		/// Имя файла конфигурации.
 		/// </summary>
-		public string FileName
-		{
-			get { return _fileName; }
-		}
+		public string FileName => _fileName;
 
 		#region IConfigDataProvider Members
 		/// <summary>
@@ -71,6 +68,7 @@ namespace Rsdn.SmartApp.Configuration
 				_configChanged += value;
 				_changeWatcher.EnableRaisingEvents = true;
 			}
+			// ReSharper disable once DelegateSubtraction
 			remove { _configChanged -= value; }
 		}
 		#endregion
@@ -106,8 +104,7 @@ namespace Rsdn.SmartApp.Configuration
 		/// </summary>
 		protected virtual void OnConfigChanged()
 		{
-			if (_configChanged != null)
-				_configChanged(this);
+			_configChanged?.Invoke(this);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.EventBroker
 {
 	/// <summary>
 	/// Брокер событий.

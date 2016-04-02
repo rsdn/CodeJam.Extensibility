@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace Rsdn.SmartApp.Instancing
+using JetBrains.Annotations;
+
+namespace CodeJam.Extensibility.Instancing
 {
+	[UsedImplicitly]
 	public class CustomParamsCtor
 	{
 		public CustomParamsCtor(IServiceProvider provider, string message)

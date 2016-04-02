@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-using Rsdn.SmartApp.CommandLine;
-
 namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>

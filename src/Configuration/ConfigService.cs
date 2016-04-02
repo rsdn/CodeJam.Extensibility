@@ -4,9 +4,6 @@ using System.Linq;
 
 using CodeJam.Extensibility.Configuration.Serialization;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Configuration;
-
 namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
@@ -50,7 +47,7 @@ namespace CodeJam.Extensibility.Configuration
 		/// <summary>
 		/// Вызывается при изменении конфигурации.
 		/// </summary>
-		public event Rsdn.SmartApp.EventHandler<IConfigService> ConfigChanged;
+		public event EventHandler<IConfigService> ConfigChanged;
 
 		/// <summary>
 		/// Получить содержимое секции.

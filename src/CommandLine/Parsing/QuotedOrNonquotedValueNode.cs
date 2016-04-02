@@ -1,12 +1,10 @@
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	/// <summary>
 	/// Quoted or nonquoted value;
 	/// </summary>
 	public class QuotedOrNonquotedValueNode : CmdLineNodeBase
 	{
-		private readonly bool _quoted;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
@@ -16,15 +14,12 @@ namespace Rsdn.SmartApp.CommandLine
 			int length,
 			bool quoted) : base(text, position, length)
 		{
-			_quoted = quoted;
+			Quoted = quoted;
 		}
 
 		/// <summary>
 		/// True, if value quoted.
 		/// </summary>
-		public bool Quoted
-		{
-			get { return _quoted; }
-		}
+		public bool Quoted { get; }
 	}
 }

@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.ActiveParts
 {
 	[TestFixture]

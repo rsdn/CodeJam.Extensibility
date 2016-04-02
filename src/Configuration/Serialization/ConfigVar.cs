@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	/// <include file='../../CommonXmlDocs.xml' path='common-docs/not-use-directly/*'/>
 	public class ConfigVar

@@ -2,9 +2,6 @@
 
 using NUnit.Framework;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.Instancing;
-
 namespace CodeJam.Extensibility.Instancing
 {
 	[TestFixture]

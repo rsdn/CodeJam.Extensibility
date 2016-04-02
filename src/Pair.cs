@@ -1,5 +1,5 @@
 #pragma warning disable 1692
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Pair of elements.
@@ -21,18 +21,12 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// First element.
 		/// </summary>
-		public T1 First
-		{
-			get { return _first; }
-		}
+		public T1 First => _first;
 
 		/// <summary>
 		/// Second element.
 		/// </summary>
-		public T2 Second
-		{
-			get { return _second; }
-		}
+		public T2 Second => _second;
 
 		/// <summary>
 		/// See <see cref="object.Equals(object)"/>

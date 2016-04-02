@@ -9,8 +9,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 //[assembly: InternalsVisibleTo(ServiceDataManager.ImplementationTypesAssemblyName)]
 
 namespace CodeJam.Extensibility.ServiceData
@@ -28,7 +26,7 @@ namespace CodeJam.Extensibility.ServiceData
 		/// </summary>
 		public const string FileNamePostfix = ".ServiceData";
 
-		internal const string ImplementationTypesAssemblyName = "@@ServiceDataManagerDynamicAssembly";
+		private const string ImplementationTypesAssemblyName = "@@ServiceDataManagerDynamicAssembly";
 
 		private readonly string _dataFolder;
 

@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Константы, связанные с XML-представлением конфигурации.
@@ -8,14 +8,13 @@ namespace Rsdn.SmartApp.Configuration
 		/// <summary>
 		/// XML-неймспейс.
 		/// </summary>
-		public const string XmlNamespace =
-			"http://rsdn.ru/R.SAT/ConfigSectionSchema.xsd";
+		public const string XmlNamespace = "http://rsdn.ru/CodeJam/Extensibility/ConfigSectionSchema.xsd";
 
 		/// <summary>
 		/// Имя ресурса со схемой.
 		/// </summary>
 		public const string XmlSchemaResource =
-			"Rsdn.SmartApp.Configuration.ConfigSectionSchema.xsd";
+			"CodeJam.Extensibility.Configuration.Model.ConfigSectionSchema.xsd";
 
 		/// <summary>
 		/// Имя тега с инклюдом.

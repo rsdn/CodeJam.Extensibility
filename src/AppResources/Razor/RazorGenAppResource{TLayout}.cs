@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.Razor
 {
 	/// <summary>

@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Сервис конфигурации.

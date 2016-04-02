@@ -3,8 +3,6 @@ using System.Reactive.Subjects;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.EventBroker
 {
 	public delegate void TestDelegate(int arg);

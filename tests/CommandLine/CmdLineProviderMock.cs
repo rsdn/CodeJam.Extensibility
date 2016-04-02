@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	[UsedImplicitly]
 	internal class CmdLineProviderMock : ICommandLineRulesProvider

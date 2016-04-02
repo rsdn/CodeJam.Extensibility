@@ -1,36 +1,27 @@
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Parse result.
 	///</summary>
 	public class ParseResult<T>
 	{
-		private readonly T _result;
-		private readonly ICharInput _inputRest;
-
 		///<summary>
 		/// Initialize instance with result.
 		///</summary>
 		public ParseResult(T result, ICharInput inputRest)
 		{
-			_result = result;
-			_inputRest = inputRest;
+			Result = result;
+			InputRest = inputRest;
 		}
 
 		/// <summary>
 		/// Parsing result.
 		/// </summary>
-		public T Result
-		{
-			get { return _result; }
-		}
+		public T Result { get; }
 
 		/// <summary>
 		/// Input rest.
 		/// </summary>
-		public ICharInput InputRest
-		{
-			get { return _inputRest; }
-		}
+		public ICharInput InputRest { get; }
 	}
 }

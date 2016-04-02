@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Reflection;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.SystemType
 {
 	/// <summary>

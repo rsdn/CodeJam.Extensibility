@@ -1,46 +1,33 @@
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Base class for command line AST node
 	///</summary>
 	public abstract class CmdLineNodeBase
 	{
-		private readonly string _text;
-		private readonly int _position;
-		private readonly int _length;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
 		protected CmdLineNodeBase(string text, int position, int length)
 		{
-			_text = text;
-			_position = position;
-			_length = length;
+			Text = text;
+			Position = position;
+			Length = length;
 		}
 
 		/// <summary>
 		/// Node text.
 		/// </summary>
-		public string Text
-		{
-			get { return _text; }
-		}
+		public string Text { get; }
 
 		/// <summary>
 		/// Node position.
 		/// </summary>
-		public int Position
-		{
-			get { return _position; }
-		}
+		public int Position { get; }
 
 		/// <summary>
 		/// Node length.
 		/// </summary>
-		public int Length
-		{
-			get { return _length; }
-		}
+		public int Length { get; }
 	}
 }

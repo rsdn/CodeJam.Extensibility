@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Вспомогательный класс для работы со сборками.
@@ -20,7 +20,7 @@ namespace Rsdn.SmartApp
 		public void AddAssembly(Assembly asm)
 		{
 			if (asm == null)
-				throw new ArgumentNullException("asm");
+				throw new ArgumentNullException(nameof(asm));
 			if (_assemblies.ContainsKey(asm))
 				throw new ArgumentException("Assembly '" + asm.GetName().Name + "' already added");
 			_types = null;
@@ -33,7 +33,7 @@ namespace Rsdn.SmartApp
 		public void AddAssembly(Type type)
 		{
 			if (type == null)
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException(nameof(type));
 			AddAssembly(type.Assembly);
 		}
 
@@ -43,7 +43,7 @@ namespace Rsdn.SmartApp
 		public void AddAssembly(string name)
 		{
 			if (string.IsNullOrEmpty(name))
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			var asm = Assembly.Load(name);
 			if (asm == null)
 				throw new ArgumentException("Could not load assembly '" + name + "'");

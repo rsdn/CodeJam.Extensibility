@@ -5,7 +5,7 @@ using System.Linq;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Утилиты для работы с коллекциями.
@@ -16,12 +16,12 @@ namespace Rsdn.SmartApp
 		/// <summary>
 		/// Делегат, описывающий метод преобразования коллекции к словарю.
 		/// </summary>
-		public delegate TKey GetKey<TKey, TValue>(TValue source);
+		public delegate TKey GetKey<out TKey, in TValue>(TValue source);
 
 		/// <summary>
 		/// Селектор.
 		/// </summary>
-		public delegate T2 Selector<T1, T2>(T1 source);
+		public delegate T2 Selector<in T1, out T2>(T1 source);
 		#endregion
 
 		/// <summary>
@@ -61,7 +61,7 @@ namespace Rsdn.SmartApp
 		public static T[] ToArray<T>(ICollection collection, IComparer<T> comparer)
 		{
 			if (comparer == null)
-				throw new ArgumentNullException("comparer");
+				throw new ArgumentNullException(nameof(comparer));
 			var res = ToArray<T>(collection);
 			Array.Sort(res, comparer);
 			return res;
@@ -74,7 +74,7 @@ namespace Rsdn.SmartApp
 		public static T[] ToArray<T>(ICollection collection, Comparison<T> comparison)
 		{
 			if (comparison == null)
-				throw new ArgumentNullException("comparison");
+				throw new ArgumentNullException(nameof(comparison));
 			var res = ToArray<T>(collection);
 			Array.Sort(res, comparison);
 			return res;
@@ -87,7 +87,7 @@ namespace Rsdn.SmartApp
 		public static T[] ToArray<T>(ICollection<T> collection, Comparison<T> comparison)
 		{
 			if (comparison == null)
-				throw new ArgumentNullException("comparison");
+				throw new ArgumentNullException(nameof(comparison));
 			var res = ToArray(collection);
 			Array.Sort(res, comparison);
 			return res;
@@ -145,7 +145,7 @@ namespace Rsdn.SmartApp
 		public static T FirstOrValue<T>([NotNull] this IEnumerable<T> source, T value)
 		{
 			if (source == null)
-				throw new ArgumentNullException("source");
+				throw new ArgumentNullException(nameof(source));
 			foreach (var item in source)
 				return item;
 			return value;
@@ -160,9 +160,9 @@ namespace Rsdn.SmartApp
 			[NotNull] Func<T, bool> predicate)
 		{
 			if (source == null)
-				throw new ArgumentNullException("source");
+				throw new ArgumentNullException(nameof(source));
 			if (predicate == null)
-				throw new ArgumentNullException("predicate");
+				throw new ArgumentNullException(nameof(predicate));
 			foreach (var item in source.Where(predicate))
 				return item;
 			return value;

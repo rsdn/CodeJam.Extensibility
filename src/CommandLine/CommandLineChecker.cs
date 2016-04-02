@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-using Rsdn.SmartApp;
-using Rsdn.SmartApp.CommandLine;
+using CodeJam.Extensibility.CommandLine.Parsing;
 
 namespace CodeJam.Extensibility.CommandLine
 {

@@ -1,14 +1,10 @@
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Represents a path.
 	/// </summary>
 	public class Path<T>
 	{
-		private readonly Path<T> _parentPath;
-		private readonly T _lastPathComponent;
-		private readonly int _length;
-
 		///<summary>
 		/// Initialize instance.
 		///</summary>
@@ -19,33 +15,24 @@ namespace Rsdn.SmartApp
 		///</summary>
 		public Path(Path<T> parentPath, T lastPathComponent)
 		{
-			_parentPath = parentPath;
-			_lastPathComponent = lastPathComponent;
-			_length = ParentPath != null ? ParentPath.Length + 1 : 1;
+			ParentPath = parentPath;
+			LastPathComponent = lastPathComponent;
+			Length = ParentPath?.Length + 1 ?? 1;
 		}
 
 		/// <summary>
 		/// Returns the last component of this path.
 		/// </summary>
-		public T LastPathComponent
-		{
-			get { return _lastPathComponent; }
-		}
+		public T LastPathComponent { get; }
 
 		/// <summary>
 		/// Returns a path containing all the elements of this path, except the last path component.
 		/// </summary>
-		public Path<T> ParentPath
-		{
-			get { return _parentPath; }
-		}
+		public Path<T> ParentPath { get; }
 
 		/// <summary>
 		/// Returns the number of elements in the path.
 		/// </summary>
-		public int Length
-		{
-			get { return _length; }
-		}
+		public int Length { get; }
 	}
 }

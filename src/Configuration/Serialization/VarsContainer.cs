@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	internal class VarsContainer
 	{
 		private readonly VarsContainer _parent;
 		private readonly IDictionary<string, string> _varsDic;
 
-		public VarsContainer(IDictionary<string, string> varsDic, VarsContainer parent)
+		public VarsContainer(IDictionary<string, string> varsDic, VarsContainer parent = null)
 		{
 			_varsDic = varsDic;
 			_parent = parent;
-		}
-
-		public VarsContainer(IDictionary<string, string> varsDic) : this(varsDic, null)
-		{
 		}
 
 		public string GetVar(string name)

@@ -1,7 +1,5 @@
 using NUnit.Framework;
 
-using Rsdn.SmartApp.CommandLine;
-
 namespace CodeJam.Extensibility.CommandLine
 {
 	[TestFixture]

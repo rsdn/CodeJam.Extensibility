@@ -2,7 +2,7 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Mark command line rules provider.

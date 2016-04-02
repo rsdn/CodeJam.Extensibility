@@ -1,6 +1,6 @@
 using System;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Character input.
@@ -30,15 +30,9 @@ namespace Rsdn.SmartApp.CommandLine
 		}
 
 		#region Implementation of ICharInput
-		public char Current
-		{
-			get { return _current; }
-		}
+		public char Current => _current;
 
-		public int Position
-		{
-			get { return _position; }
-		}
+		public int Position => _position;
 
 		public ICharInput GetNext()
 		{

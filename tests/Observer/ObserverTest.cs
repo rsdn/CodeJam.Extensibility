@@ -1,8 +1,9 @@
 using System;
 using System.Reactive.Subjects;
+
 using NUnit.Framework;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Observer
 {
 	[TestFixture]
 	public class ObserverTest

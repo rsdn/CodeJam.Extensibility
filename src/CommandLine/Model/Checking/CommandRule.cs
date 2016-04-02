@@ -1,24 +1,22 @@
 using System;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	///<summary>
 	/// Command rule.
 	///</summary>
 	public class CommandRule
 	{
-		private readonly string _name;
-		private readonly string _description;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
 		public CommandRule([NotNull] string name, string description)
 		{
-			if (name == null) throw new ArgumentNullException("name");
-			_name = name;
-			_description = description;
+			if (name == null) throw new ArgumentNullException(nameof(name));
+			Name = name;
+			Description = description;
 		}
 
 		/// <summary>
@@ -31,17 +29,11 @@ namespace Rsdn.SmartApp.CommandLine
 		/// Command name.
 		/// </summary>
 		[NotNull]
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name { get; }
 
 		/// <summary>
 		/// Command description.
 		/// </summary>
-		public string Description
-		{
-			get { return _description; }
-		}
+		public string Description { get; }
 	}
 }

@@ -1,28 +1,23 @@
 using System;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Information about command line rules provider.
 	/// </summary>
 	public class CommandLineRulesProviderInfo
 	{
-		private readonly Type _providerType;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
 		public CommandLineRulesProviderInfo(Type providerType)
 		{
-			_providerType = providerType;
+			ProviderType = providerType;
 		}
 
 		/// <summary>
 		/// Provider type.
 		/// </summary>
-		public Type ProviderType
-		{
-			get { return _providerType; }
-		}
+		public Type ProviderType { get; }
 	}
 }

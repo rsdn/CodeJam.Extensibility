@@ -1,10 +1,8 @@
 using System;
 
-using CodeJam.Extensibility;
-
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility
 {
 	/// <summary>
 	/// Helper methods for <see cref="Path{T}"/>.

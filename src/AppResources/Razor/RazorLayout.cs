@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.IO;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.Razor
 {
 	/// <summary>
 	/// Base class for layouts.

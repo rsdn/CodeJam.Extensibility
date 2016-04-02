@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 
-using JetBrains.Annotations;
+using CodeJam.Extensibility.CommandLine.Parsing;
 
-using Rsdn.SmartApp.CommandLine;
+using JetBrains.Annotations;
 
 using CommandLineParser = CodeJam.Extensibility.CommandLine.Parsing.CommandLineParser;
 

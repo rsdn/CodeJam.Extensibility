@@ -3,8 +3,6 @@ using System.IO;
 
 using NUnit.Framework;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.ServiceData
 {
 	[TestFixture]

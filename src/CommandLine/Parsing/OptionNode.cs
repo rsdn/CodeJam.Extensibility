@@ -1,21 +1,17 @@
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	/// <summary>
 	/// Node for command line option.
 	/// </summary>
 	public class OptionNode : CmdLineNodeBase
 	{
-		private readonly QuotedOrNonquotedValueNode _value;
-		private readonly OptionType _type;
-		private readonly bool _boolValue;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
 		private OptionNode(string text, int position, int length, OptionType type)
 			: base(text, position, length)
 		{
-			_type = type;
+			Type = type;
 		}
 
 		/// <summary>
@@ -38,7 +34,7 @@ namespace Rsdn.SmartApp.CommandLine
 			bool boolValue)
 			: this(text, position, length, OptionType.Bool)
 		{
-			_boolValue = boolValue;
+			BoolValue = boolValue;
 		}
 
 		/// <summary>
@@ -51,31 +47,22 @@ namespace Rsdn.SmartApp.CommandLine
 			QuotedOrNonquotedValueNode value)
 			: this(text, position, length, OptionType.Value)
 		{
-			_value = value;
+			Value = value;
 		}
 
 		/// <summary>
 		/// Type of node.
 		/// </summary>
-		public OptionType Type
-		{
-			get { return _type; }
-		}
+		public OptionType Type { get; }
 
 		/// <summary>
 		/// Boolean value.
 		/// </summary>
-		public bool BoolValue
-		{
-			get { return _boolValue; }
-		}
+		public bool BoolValue { get; }
 
 		/// <summary>
 		/// Option value.
 		/// </summary>
-		public QuotedOrNonquotedValueNode Value
-		{
-			get { return _value; }
-		}
+		public QuotedOrNonquotedValueNode Value { get; }
 	}
 }

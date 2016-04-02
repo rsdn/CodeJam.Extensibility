@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-using CodeJam.Extensibility.Configuration;
-
-namespace Rsdn.SmartApp.Configuration
+namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
 	/// Исключение, возникающее при работе с конфигурацией.

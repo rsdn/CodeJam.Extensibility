@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-using JetBrains.Annotations;
+using CodeJam.Extensibility.Threading;
 
-using Rsdn.SmartApp;
+using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility
 {

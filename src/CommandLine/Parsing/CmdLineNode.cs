@@ -2,17 +2,13 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>
 	/// Root of the command line AST.
 	///</summary>
 	public class CmdLineNode : CmdLineNodeBase
 	{
-		private readonly QuotedOrNonquotedValueNode _programName;
-		private readonly CommandNode[] _commands;
-		private readonly OptionNode[] _options;
-
 		/// <summary>
 		/// Initializes a new instance.
 		/// </summary>
@@ -25,39 +21,30 @@ namespace Rsdn.SmartApp.CommandLine
 			[NotNull] OptionNode[] options) : base(text, position, length)
 		{
 			if (programName == null)
-				throw new ArgumentNullException("programName");
+				throw new ArgumentNullException(nameof(programName));
 			if (commands == null)
-				throw new ArgumentNullException("commands");
+				throw new ArgumentNullException(nameof(commands));
 			if (options == null)
-				throw new ArgumentNullException("options");
-			_programName = programName;
-			_commands = commands;
-			_options = options;
+				throw new ArgumentNullException(nameof(options));
+			ProgramName = programName;
+			Commands = commands;
+			Options = options;
 		}
 
 		///<summary>
 		/// Program name node.
 		///</summary>
 		[NotNull]
-		public QuotedOrNonquotedValueNode ProgramName
-		{
-			get { return _programName; }
-		}
+		public QuotedOrNonquotedValueNode ProgramName { get; }
 
 		/// <summary>
 		/// Commands.
 		/// </summary>
-		public CommandNode[] Commands
-		{
-			get { return _commands; }
-		}
+		public CommandNode[] Commands { get; }
 
 		/// <summary>
 		/// Options.
 		/// </summary>
-		public OptionNode[] Options
-		{
-			get { return _options; }
-		}
+		public OptionNode[] Options { get; }
 	}
 }

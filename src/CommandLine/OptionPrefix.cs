@@ -1,4 +1,4 @@
-namespace Rsdn.SmartApp.CommandLine
+namespace CodeJam.Extensibility.CommandLine
 {
 	/// <summary>
 	/// Type of option prefix.

@@ -2,7 +2,7 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.EventBroker
 {
 	/// <summary>
 	/// Атрибут, помечающий обработчик события.
@@ -11,22 +11,17 @@ namespace Rsdn.SmartApp
 	[MeansImplicitUse]
 	public class EventHandlerAttribute : Attribute
 	{
-		private readonly string _eventName;
-
 		/// <summary>
 		/// Инициализиурет экземпляр.
 		/// </summary>
 		public EventHandlerAttribute(string eventName)
 		{
-			_eventName = eventName;
+			EventName = eventName;
 		}
 
 		/// <summary>
 		/// Имя события.
 		/// </summary>
-		public string EventName
-		{
-			get { return _eventName; }
-		}
+		public string EventName { get; }
 	}
 }

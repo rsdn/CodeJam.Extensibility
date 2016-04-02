@@ -1,4 +1,4 @@
-﻿namespace Rsdn.SmartApp
+﻿namespace CodeJam.Extensibility.ServiceData
 {
 	public interface ISimpleDataMock
 	{

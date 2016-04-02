@@ -5,9 +5,11 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Threading;
 
+using CodeJam.Extensibility.Threading;
+
 using JetBrains.Annotations;
 
-namespace Rsdn.SmartApp
+namespace CodeJam.Extensibility.EventBroker
 {
 	/// <summary>
 	/// Стандартная реализация <see cref="IEventBroker"/>.
@@ -25,7 +27,7 @@ namespace Rsdn.SmartApp
 		public void Fire<T>([NotNull] string eventName, T arg)
 		{
 			if (eventName == null)
-				throw new ArgumentNullException("eventName");
+				throw new ArgumentNullException(nameof(eventName));
 
 			IObserver<T>[] observers;
 			using (_rwLock.GetReaderLock())
@@ -46,9 +48,9 @@ namespace Rsdn.SmartApp
 		public IDisposable Subscribe<T>([NotNull] string eventName, [NotNull] IObserver<T> observer)
 		{
 			if (eventName == null)
-				throw new ArgumentNullException("eventName");
+				throw new ArgumentNullException(nameof(eventName));
 			if (observer == null)
-				throw new ArgumentNullException("observer");
+				throw new ArgumentNullException(nameof(observer));
 
 			using (_rwLock.GetWriterLock())
 			{
@@ -100,23 +102,14 @@ namespace Rsdn.SmartApp
 		#region EventLinker class
 		private class EventLinker
 		{
-			private readonly Type _argumentType;
-			private readonly HashSet<object> _observers = new HashSet<object>();
-
 			public EventLinker(Type itemType)
 			{
-				_argumentType = itemType;
+				ArgumentType = itemType;
 			}
 
-			public Type ArgumentType
-			{
-				get { return _argumentType; }
-			}
+			public Type ArgumentType { get; }
 
-			public HashSet<object> Observers
-			{
-				get { return _observers; }
-			}
+			public HashSet<object> Observers { get; } = new HashSet<object>();
 		}
 		#endregion
 	}

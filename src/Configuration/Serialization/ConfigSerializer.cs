@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-using Rsdn.SmartApp.Configuration;
-
 namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	internal class ConfigSerializer : IDisposable
@@ -179,7 +177,7 @@ namespace CodeJam.Extensibility.Configuration.Serialization
 			_providers.Clear();
 		}
 
-		public event Rsdn.SmartApp.EventHandler<ConfigSerializer> ConfigChanged;
+		public event EventHandler<ConfigSerializer> ConfigChanged;
 
 		private void OnConfigChanged()
 		{

@@ -6,8 +6,6 @@ using System.Reflection;
 
 using JetBrains.Annotations;
 
-using Rsdn.SmartApp;
-
 namespace CodeJam.Extensibility.EventBroker
 {
 	/// <summary>
@@ -51,7 +49,7 @@ namespace CodeJam.Extensibility.EventBroker
 					.GetType()
 					.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
 					.SelectMany(
-						method => ReflectionHelper.GetCustomAttributes<EventHandlerAttribute>(method, true),
+						method => method.GetCustomAttributes<EventHandlerAttribute>(true),
 						(method, attr) =>
 							WrapException(
 								() => eventBroker.SubscribeMethod(attr.EventName, method, instance),
@@ -90,7 +88,7 @@ namespace CodeJam.Extensibility.EventBroker
 				instanceType
 					.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
 					.SelectMany(
-						property => ReflectionHelper.GetCustomAttributes<EventSourceAttribute>(property, true),
+						property => property.GetCustomAttributes<EventSourceAttribute>(true),
 						(property, attr) =>
 							WrapException(
 								() => eventBroker.RegisterProperty(attr.EventName, property, instance),
@@ -99,7 +97,7 @@ namespace CodeJam.Extensibility.EventBroker
 							instanceType
 								.GetEvents(BindingFlags.Instance | BindingFlags.Public)
 								.SelectMany(
-									ev => ReflectionHelper.GetCustomAttributes<EventSourceAttribute>(ev, true),
+									ev => ev.GetCustomAttributes<EventSourceAttribute>(true),
 									(ev, attr) =>
 										WrapException(
 											() => eventBroker.RegisterEvent(attr.EventName, ev, instance),

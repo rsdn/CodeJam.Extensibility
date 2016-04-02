@@ -2,8 +2,6 @@
 using System.Xml;
 using System.Xml.Linq;
 
-using Rsdn.SmartApp.Configuration;
-
 namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	/// <summary>

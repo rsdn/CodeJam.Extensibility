@@ -1,8 +1,4 @@
-using System.Reactive;
-
 using NUnit.Framework;
-
-using Rsdn.SmartApp;
 
 namespace CodeJam.Extensibility.EventBroker
 {
@@ -12,15 +8,15 @@ namespace CodeJam.Extensibility.EventBroker
 		[Test]
 		public void RegisterSubscribeTest()
 		{
-			var eb = new Rsdn.SmartApp.EventBroker();
+			var eb = new EventBroker();
 			var i = 0;
 			const string eventName = "TestEvent";
-			using (eb.Subscribe(eventName, Observer.Create<int>(item => i += item)))
+			using (eb.Subscribe(eventName, System.Reactive.Observer.Create<int>(item => i += item)))
 			{
 				eb.Fire(eventName,1);
 				Assert.AreEqual(1, i);
 
-				using (eb.Subscribe(eventName, Observer.Create<int>(item => i += item)))
+				using (eb.Subscribe(eventName, System.Reactive.Observer.Create<int>(item => i += item)))
 				{
 					eb.Fire(eventName, 1);
 					Assert.AreEqual(3, i);
@@ -33,7 +29,7 @@ namespace CodeJam.Extensibility.EventBroker
 		{
 			using (var serviceManager = new ServiceManager())
 			{
-				serviceManager.Publish<IEventBroker>(new Rsdn.SmartApp.EventBroker());
+				serviceManager.Publish<IEventBroker>(new EventBroker());
 
 				using (var testObject = new MappingTestObject(serviceManager))
 				{

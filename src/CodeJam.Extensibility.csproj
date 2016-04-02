@@ -122,7 +122,6 @@
     <Compile Include="Configuration\Serialization\ConfigVar.cs" />
     <Compile Include="Configuration\Serialization\SectionName.cs" />
     <Compile Include="Configuration\Serialization\VarsContainer.cs" />
-    <Compile Include="DisposableHelper.cs" />
     <Compile Include="EventBroker\Model\EventHandlerAttribute.cs" />
     <Compile Include="EventBroker\Model\EventSourceAttribute.cs" />
     <Compile Include="EventBroker\Model\IEventBroker.cs" />
@@ -182,9 +181,7 @@
     <Compile Include="Instancing\InstancingHelper.cs" />
     <Compile Include="NamedElementAttribute.cs" />
     <Compile Include="NamedElementInfo.cs" />
-    <Compile Include="Pair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Threading\ReaderWriterLockHelper.cs" />
     <Compile Include="ServiceData\ServiceDataManager.cs" />
     <Compile Include="Services\ServiceConsumer.cs" />
     <Compile Include="Services\ServiceManager.cs" />

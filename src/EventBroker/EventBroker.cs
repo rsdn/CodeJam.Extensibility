@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Threading;
 
-using CodeJam.Extensibility.Threading;
+using CodeJam.Threading;
 
 using JetBrains.Annotations;
 
@@ -30,7 +29,7 @@ namespace CodeJam.Extensibility.EventBroker
 				throw new ArgumentNullException(nameof(eventName));
 
 			IObserver<T>[] observers;
-			using (_rwLock.GetReaderLock())
+			using (_rwLock.GetReadLock())
 			{
 				var eventLinker = GetEventLinker<T>(eventName);
 				if (eventLinker == null)
@@ -52,7 +51,7 @@ namespace CodeJam.Extensibility.EventBroker
 			if (observer == null)
 				throw new ArgumentNullException(nameof(observer));
 
-			using (_rwLock.GetWriterLock())
+			using (_rwLock.GetWriteLock())
 			{
 				var eventLinker = EnsureEventLinker<T>(eventName);
 
@@ -63,7 +62,7 @@ namespace CodeJam.Extensibility.EventBroker
 					Disposable.Create(
 						() =>
 						{
-							using (_rwLock.GetWriterLock())
+							using (_rwLock.GetWriteLock())
 								eventLinker.Observers.Remove(observer);
 							observer.OnCompleted();
 						});

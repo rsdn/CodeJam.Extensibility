@@ -7,6 +7,8 @@ using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
+using CodeJam.Collections;
+
 using JetBrains.Annotations;
 
 //[assembly: InternalsVisibleTo(ServiceDataManager.ImplementationTypesAssemblyName)]
@@ -30,11 +32,11 @@ namespace CodeJam.Extensibility.ServiceData
 
 		private readonly string _dataFolder;
 
-		private static readonly ElementsCache<Type, Type> _implTypes =
-			new ElementsCache<Type, Type>(CreateImplType);
+		private static readonly ILazyDictionary<Type, Type> _implTypes =
+			LazyDictionary.Create<Type, Type>(CreateImplType, true);
 
-		private static readonly ElementsCache<Type, IValsDic> _defValues =
-			new ElementsCache<Type, IValsDic>(CreateDefValues);
+		private static readonly ILazyDictionary<Type, IValsDic> _defValues =
+			LazyDictionary.Create<Type, IValsDic>(CreateDefValues, true);
 
 		private static AssemblyBuilder _dynAsm;
 		private static ModuleBuilder _dynModule;
@@ -54,7 +56,7 @@ namespace CodeJam.Extensibility.ServiceData
 		private static readonly PropertyInfo _valuesProperty =
 			typeof (IDataInstance).GetProperty("Values");
 
-		private readonly ElementsCache<Type, object> _instances;
+		private readonly ILazyDictionary<Type, object> _instances;
 		private ChangeNotificationConsumer _notificationConsumer;
 		private readonly BinaryFormatter _formatter = new BinaryFormatter();
 		private int _cacheVersion;
@@ -191,7 +193,7 @@ namespace CodeJam.Extensibility.ServiceData
 				Directory.CreateDirectory(dataFolder);
 			_dataFolder = dataFolder;
 			_notificationConsumer = new ChangeNotificationConsumer(this);
-			_instances = new ElementsCache<Type, object>(CreateNewInstance);
+			_instances = LazyDictionary.Create<Type, object>(CreateNewInstance, true);
 		}
 
 		/// <summary>
@@ -214,7 +216,7 @@ namespace CodeJam.Extensibility.ServiceData
 		private object CreateNewInstance(Type type)
 		{
 			return Activator.CreateInstance(
-				_implTypes.Get(type),
+				_implTypes[type],
 				_notificationConsumer,
 				LoadData(type));
 		}
@@ -229,7 +231,7 @@ namespace CodeJam.Extensibility.ServiceData
 		{
 			var fileName = GetDataFileName(type);
 			if (!File.Exists(fileName))
-				return new ValsDic(_defValues.Get(type));
+				return new ValsDic(_defValues[type]);
 			try
 			{
 				using (var fs = new FileStream(fileName, FileMode.Open))
@@ -238,7 +240,7 @@ namespace CodeJam.Extensibility.ServiceData
 			catch
 			{
 				// Load failed. return default.
-				return new ValsDic(_defValues.Get(type));
+				return new ValsDic(_defValues[type]);
 			}
 		}
 
@@ -263,7 +265,7 @@ namespace CodeJam.Extensibility.ServiceData
 			var type = typeof (T);
 			if (!type.IsInterface)
 				throw new ArgumentException("Type must be an interface");
-			return (T)_instances.Get(type);
+			return (T)_instances[type];
 		}
 
 		/// <summary>
@@ -272,7 +274,7 @@ namespace CodeJam.Extensibility.ServiceData
 		[MethodImpl(MethodImplOptions.Synchronized)]
 		public void ResetCache()
 		{
-			_instances.Reset();
+			_instances.Clear();
 			_cacheVersion++;
 			_notificationConsumer = new ChangeNotificationConsumer(this);
 		}

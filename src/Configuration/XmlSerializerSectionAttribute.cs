@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
+using CodeJam.Collections;
+
 namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
@@ -12,8 +14,8 @@ namespace CodeJam.Extensibility.Configuration
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
 	public class XmlSerializerSectionAttribute : ConfigSectionAttribute
 	{
-		private static readonly ElementsCache<Type, XmlRootAttribute> _rootAttrs =
-			new ElementsCache<Type, XmlRootAttribute>(
+		private static readonly ILazyDictionary<Type, XmlRootAttribute> _rootAttrs =
+			LazyDictionary.Create<Type, XmlRootAttribute>(
 				type =>
 				{
 					var xras =
@@ -21,9 +23,10 @@ namespace CodeJam.Extensibility.Configuration
 							.GetCustomAttributes<XmlRootAttribute>(true)
 							.ToArray();
 					return xras.Length == 0 ? null : xras[0];
-				});
-		private static readonly ElementsCache<SchemaLocation, XmlSchema> _schemas =
-			new ElementsCache<SchemaLocation, XmlSchema>(LoadSchema);
+				},
+				true);
+		private static readonly ILazyDictionary<SchemaLocation, XmlSchema> _schemas =
+			LazyDictionary.Create<SchemaLocation, XmlSchema>(LoadSchema, true);
 
 		private static XmlSchema LoadSchema(SchemaLocation loc)
 		{
@@ -67,18 +70,18 @@ namespace CodeJam.Extensibility.Configuration
 		{
 			return string.IsNullOrEmpty(SchemaResource)
 				? null
-				: _schemas.Get(new SchemaLocation(contractType.Assembly, SchemaResource));
+				: _schemas[new SchemaLocation(contractType.Assembly, SchemaResource)];
 		}
 
 		private static string GetSectionName(Type type)
 		{
-			var xra = _rootAttrs.Get(type);
+			var xra = _rootAttrs[type];
 			return xra == null ? type.Name : xra.ElementName; 
 		}
 
 		private static string GetSectionNamespace(Type type)
 		{
-			var xra = _rootAttrs.Get(type);
+			var xra = _rootAttrs[type];
 			return xra.Namespace ?? ""; 
 		}
 

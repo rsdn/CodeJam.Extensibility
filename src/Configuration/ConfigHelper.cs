@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Registration;
 
 namespace CodeJam.Extensibility.Configuration
@@ -38,7 +40,7 @@ namespace CodeJam.Extensibility.Configuration
 			var secSvc = provider.GetService<SectionRegSvc>();
 			return new ConfigService(
 				secSvc == null
-					? EmptyArray<ConfigSectionInfo>.Value
+					? Array<ConfigSectionInfo>.Empty
 					: secSvc.GetRegisteredElements(),
 				dataProvider,
 				externalVars);

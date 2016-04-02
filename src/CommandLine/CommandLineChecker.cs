@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.CommandLine.Parsing;
 
 namespace CodeJam.Extensibility.CommandLine
@@ -23,7 +24,7 @@ namespace CodeJam.Extensibility.CommandLine
 			foreach (var command in rules.Commands)
 				if (!cmds.Add(command.Name))
 					throw new CommandLineCheckException($"Duplicate commands \'{command.Name}\'");
-			var cmdOpts = new ElementsCache<string, HashSet<string>>(cn => new HashSet<string>());
+			var cmdOpts = LazyDictionary.Create<string, HashSet<string>>(cn => new HashSet<string>(), false);
 			foreach (var cmdOpt in 
 				rules
 					.Options
@@ -33,7 +34,7 @@ namespace CodeJam.Extensibility.CommandLine
 								? new[] { new {Cmd = "", Opt = opt.Name} }
 								: opt.DependOnCommands.Select(cn => new {Cmd = cn, Opt = opt.Name})))
 			{
-				if (!cmdOpts.Get(cmdOpt.Cmd).Add(cmdOpt.Opt))
+				if (!cmdOpts[cmdOpt.Cmd].Add(cmdOpt.Opt))
 					throw new CommandLineCheckException(
 						"Duplicate option {0}{1}"
 							.FormatWith(

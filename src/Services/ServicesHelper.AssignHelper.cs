@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Model;
 
 namespace CodeJam.Extensibility
@@ -16,8 +17,8 @@ namespace CodeJam.Extensibility
 		/// </summary>
 		public class AssignHelper
 		{
-			private static readonly ElementsCache<Type, AssignDelegate> _assignMethods =
-				new ElementsCache<Type, AssignDelegate>(CreateAssignMethod);
+			private static readonly ILazyDictionary<Type, AssignDelegate> _assignMethods =
+				LazyDictionary.Create<Type, AssignDelegate>(CreateAssignMethod, true);
 
 			private static readonly MethodInfo _getRequiredServiceMethod =
 				typeof (ServicesHelper).GetMethod("GetRequiredService", new[] {typeof (IServiceProvider)});
@@ -87,7 +88,7 @@ namespace CodeJam.Extensibility
 				if (provider == null)
 					throw new ArgumentNullException(nameof(provider));
 
-				var method = _assignMethods.Get(instance.GetType());
+				var method = _assignMethods[instance.GetType()];
 				method?.Invoke(provider, instance);
 			}
 

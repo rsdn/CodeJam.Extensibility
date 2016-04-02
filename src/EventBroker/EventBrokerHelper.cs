@@ -157,6 +157,19 @@ namespace CodeJam.Extensibility.EventBroker
 		private static readonly Type _invokerType = typeof(Invoker);
 		private static readonly MethodInfo _invokerFireMethod = _invokerType.GetMethod("Fire");
 
+		/// <summary>
+		/// Returns delegate parameter infos.
+		/// </summary>
+		/// <param name="delegateType">Type of delegate</param>
+		/// <returns>Array of <see cref="ParameterInfo"/>.</returns>
+		[NotNull]
+		private static ParameterInfo[] GetDelegateParams([NotNull] Type delegateType)
+		{
+			if (delegateType == null)
+				throw new ArgumentNullException(nameof(delegateType));
+			return delegateType.GetMethod("Invoke").GetParameters();
+		}
+
 		private static IDisposable RegisterEvent(
 			this IEventBroker eventBroker,
 			string eventName,
@@ -167,7 +180,7 @@ namespace CodeJam.Extensibility.EventBroker
 			if (eventHandlerType == null)
 				throw new ApplicationException();
 
-			var parameters = ReflectionHelper.GetDelegateParams(eventHandlerType);
+			var parameters = GetDelegateParams(eventHandlerType);
 			if (parameters.Length != 1)
 				throw new ApplicationException("Delegate must have one argument.");
 

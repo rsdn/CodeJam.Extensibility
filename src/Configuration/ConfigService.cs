@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Configuration.Serialization;
 
 namespace CodeJam.Extensibility.Configuration
@@ -12,7 +13,7 @@ namespace CodeJam.Extensibility.Configuration
 	public class ConfigService : IConfigService, IDisposable
 	{
 		private readonly Dictionary<Type, ConfigSectionInfo> _sectionInfos;
-		private readonly ElementsCache<ConfigSectionInfo, object> _sections;
+		private readonly ILazyDictionary<ConfigSectionInfo, object> _sections;
 		private readonly ConfigSerializer _serializer;
 
 		/// <summary>
@@ -28,7 +29,7 @@ namespace CodeJam.Extensibility.Configuration
 
 			_sectionInfos = sectionInfos.ToDictionary(info => info.ContractType);
 			_serializer = new ConfigSerializer(dataProvider, externalVars);
-			_sections = new ElementsCache<ConfigSectionInfo, object>(DeserializeSection);
+			_sections = LazyDictionary.Create<ConfigSectionInfo, object>(DeserializeSection, true);
 			_serializer.ConfigChanged += SerializerConfigChanged;
 		}
 
@@ -58,7 +59,7 @@ namespace CodeJam.Extensibility.Configuration
 			if (!_sectionInfos.ContainsKey(contract))
 				throw new ArgumentException("Section of type '" + contract.FullName + "' not exists");
 			var secInfo = _sectionInfos[contract];
-			return (T) _sections.Get(secInfo);
+			return (T) _sections[secInfo];
 		}
 		#endregion
 
@@ -98,7 +99,7 @@ namespace CodeJam.Extensibility.Configuration
 
 		private void SerializerConfigChanged(ConfigSerializer sender)
 		{
-			_sections.Reset();
+			_sections.Clear();
 			OnConfigChanged();
 		}
 	}

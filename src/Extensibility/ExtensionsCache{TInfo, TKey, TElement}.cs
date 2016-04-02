@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Instancing;
 
 using JetBrains.Annotations;
@@ -17,7 +18,7 @@ namespace CodeJam.Extensibility
 	{
 		private readonly InstancingCustomParam[] _customParams;
 		private readonly IServiceProvider _provider;
-		private readonly ElementsCache<TKey, TElement> _cache;
+		private readonly ILazyDictionary<TKey, TElement> _cache;
 
 		/// <summary>
 		/// Initialize instance.
@@ -29,12 +30,13 @@ namespace CodeJam.Extensibility
 			if (provider == null)
 				throw new ArgumentNullException(nameof(provider));
 			_provider = provider;
-			_customParams = EmptyArray<InstancingCustomParam>.Value;
+			_customParams = Array<InstancingCustomParam>.Empty;
 			_cache =
-				new ElementsCache<TKey, TElement>(
+				LazyDictionary.Create(
 					instanceCreator == null
-						? (CreateElement<TKey, TElement>)CreateByHelper
-						: key => CreateByCreator(instanceCreator, key));
+						? (Func<TKey, TElement>)CreateByHelper
+						: key => CreateByCreator(instanceCreator, key),
+					true);
 		}
 
 		/// <summary>
@@ -106,7 +108,7 @@ namespace CodeJam.Extensibility
 		[CanBeNull]
 		public TElement GetExtension(TKey key)
 		{
-			return _cache.Get(key);
+			return _cache[key];
 		}
 	}
 }

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Registration;
 
 using JetBrains.Annotations;
@@ -390,7 +391,7 @@ namespace CodeJam.Extensibility
 			var svc = provider.GetRegService<TInfo>();
 			return
 				svc == null
-					? EmptyArray<TInfo>.Value
+					? Array<TInfo>.Empty
 					: svc.GetRegisteredElements();
 		}
 
@@ -403,7 +404,7 @@ namespace CodeJam.Extensibility
 			var svc = provider.GetRegService<TKey, TInfo>();
 			return
 				svc == null
-					? EmptyArray<TInfo>.Value
+					? Array<TInfo>.Empty
 					: svc.GetRegisteredElements();
 		}
 

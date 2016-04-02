@@ -155,7 +155,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizableStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReflectionHelper.cs" />
     <Compile Include="ServiceData\IServiceDataManager.cs" />
     <Compile Include="Services\Model\ExpectServiceAttribute.cs" />
     <Compile Include="Services\Model\IServicePublisher.cs" />
@@ -170,11 +169,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ServiceResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="XmlUtils.cs" />
     <Compile Include="Configuration\XmlSectionSerializer.cs" />
     <Compile Include="Configuration\XmlSerializerSectionAttribute.cs" />
-    <Compile Include="ElementsCache.cs" />
-    <Compile Include="EmptyArray.cs" />
     <Compile Include="Extensibility\AssemblyScanHelper.cs" />
     <Compile Include="Extensibility\SystemType\AttachmentStrategyBaseA.cs" />
     <Compile Include="Extensibility\ExtensionManager.cs" />
@@ -184,7 +180,6 @@
     <Compile Include="Extensibility\Registration\RegKeyedElementsService.cs" />
     <Compile Include="Extensibility\StrategyFactoryStrategy.cs" />
     <Compile Include="Instancing\InstancingHelper.cs" />
-    <Compile Include="LimitedElementsCache.cs" />
     <Compile Include="NamedElementAttribute.cs" />
     <Compile Include="NamedElementInfo.cs" />
     <Compile Include="Pair.cs" />
@@ -196,7 +191,6 @@
     <Compile Include="Services\ServicePublishingStrategy.cs" />
     <Compile Include="Services\ServicesHelper.AssignHelper.cs" />
     <Compile Include="Services\ServicesHelper.cs" />
-    <Compile Include="StringUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CodeJam, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7662d8fd5b220919, processorArchitecture=MSIL">

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Instancing;
 
 using JetBrains.Annotations;
@@ -30,7 +31,7 @@ namespace CodeJam.Extensibility
 			if (provider == null)
 				throw new ArgumentNullException(nameof(provider));
 			_provider = provider;
-			_customParams = EmptyArray<InstancingCustomParam>.Value;
+			_customParams = Array<InstancingCustomParam>.Empty;
 			_instanceCreator = instanceCreator;
 			_cache =
 				new Lazy<TElement[]>(

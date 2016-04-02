@@ -1,5 +1,6 @@
 using System;
 
+using CodeJam.Collections;
 using CodeJam.Extensibility.Registration;
 using CodeJam.Extensibility.StratFactories;
 
@@ -13,9 +14,10 @@ namespace CodeJam.Extensibility
 	public class StrategyFactoryStrategy :
 		RegKeyedElementsStrategy<Type, ExtensionStrategyFactoryInfo,ExtensionStrategyFactoryAttribute>
 	{
-		private static readonly ElementsCache<Type, IExtensionStrategyFactory> _factories =
-			new ElementsCache<Type, IExtensionStrategyFactory>(
-				type => (IExtensionStrategyFactory) Activator.CreateInstance(type));
+		private static readonly ILazyDictionary<Type, IExtensionStrategyFactory> _factories =
+			LazyDictionary.Create<Type, IExtensionStrategyFactory>(
+				type => (IExtensionStrategyFactory) Activator.CreateInstance(type),
+				true);
 
 		/// <summary>
 		/// Инициализирует экземпляр.
@@ -82,7 +84,7 @@ namespace CodeJam.Extensibility
 			ExtensionStrategyFactoryInfo factoryInfo,
 			Type[] types)
 		{
-			var factory = _factories.Get(factoryInfo.Type);
+			var factory = _factories[factoryInfo.Type];
 			foreach (var strat in factory.CreateStrategies(provider))
 				extManager.Scan(strat, types);
 		}

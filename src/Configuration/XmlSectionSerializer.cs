@@ -3,6 +3,8 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
+using CodeJam.Collections;
+
 namespace CodeJam.Extensibility.Configuration
 {
 	/// <summary>
@@ -10,8 +12,8 @@ namespace CodeJam.Extensibility.Configuration
 	/// </summary>
 	public class XmlSectionSerializer : IConfigSectionSerializer
 	{
-		private static readonly ElementsCache<Type, XmlSerializer> _xmlSerializers =
-			new ElementsCache<Type, XmlSerializer>(type => new XmlSerializer(type));
+		private static readonly ILazyDictionary<Type, XmlSerializer> _xmlSerializers =
+			LazyDictionary.Create<Type, XmlSerializer>(type => new XmlSerializer(type), true);
 
 		private readonly Type _contractType;
 		private readonly XmlSchema _schema;
@@ -37,7 +39,7 @@ namespace CodeJam.Extensibility.Configuration
 		/// </summary>
 		public object Deserialize(XmlReader reader)
 		{
-			var xs = _xmlSerializers.Get(_contractType);
+			var xs = _xmlSerializers[_contractType];
 			if (_schema != null)
 			{
 				var rdrSettings = new XmlReaderSettings();

@@ -1,5 +1,7 @@
 using System;
 
+using CodeJam.Collections;
+
 using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility
@@ -49,7 +51,7 @@ namespace CodeJam.Extensibility
 		public static T[] GetPath<T>(this Path<T> path)
 		{
 			if (path == null)
-				return EmptyArray<T>.Value;
+				return Array<T>.Empty;
 
 			var i = path.Length;
 			var result = new T[i--];

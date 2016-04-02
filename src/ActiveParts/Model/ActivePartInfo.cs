@@ -9,24 +9,19 @@ namespace CodeJam.Extensibility
 	/// </summary>
 	public class ActivePartInfo
 	{
-		private readonly string _typeName;
-
 		/// <summary>
 		/// »нициализирует экземпл€р.
 		/// </summary>
 		public ActivePartInfo([NotNull] string typeName)
 		{
-			_typeName = typeName;
+			TypeName = typeName;
 			if (typeName == null)
-				throw new ArgumentNullException("typeName");
+				throw new ArgumentNullException(nameof(typeName));
 		}
 
 		/// <summary>
 		/// “ип, реализующий расширение.
 		/// </summary>
-		public string TypeName
-		{
-			get { return _typeName; }
-		}
+		public string TypeName { get; }
 	}
 }

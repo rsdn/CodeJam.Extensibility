@@ -53,6 +53,7 @@ namespace CodeJam.Extensibility.EventBroker
 							WrapException(
 								() => eventBroker.SubscribeMethod(attr.EventName, method, instance),
 								() => $"Error subscribing method \'{method}\'."))
+					.ToArray() // Merge is lazy, so it need to iterate
 					.Merge();
 		}
 
@@ -96,11 +97,12 @@ namespace CodeJam.Extensibility.EventBroker
 							instanceType
 								.GetEvents(BindingFlags.Instance | BindingFlags.Public)
 								.SelectMany(
-									ev => ev.GetCustomAttributes<EventSourceAttribute>(true),
+									ev => ev.GetCustomAttributes<EventSourceAttribute>(),
 									(ev, attr) =>
 										WrapException(
 											() => eventBroker.RegisterEvent(attr.EventName, ev, instance),
 											() => $"Error while registering event \'{ev}\'.")))
+						.ToArray() // Merge is lazy, so it need to iterate
 						.Merge();
 		}
 

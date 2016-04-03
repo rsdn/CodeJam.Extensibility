@@ -11,7 +11,7 @@
         <description>CodeJamExtensibility helps you create extensible applications.</description>
         <tags>extensibility plugin dynamic</tags>
         <dependencies>
-            <dependency id="CodeJam" version="1.0.0-beta4" />
+            <dependency id="CodeJam" version="1.0.0-beta5" />
             <dependency id="Rx-Interfaces" version="2.2.5" />
             <dependency id="Rx-Core" version="2.2.5" />
             <dependency id="Rx-Linq" version="2.2.5" />

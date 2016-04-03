@@ -5,4 +5,4 @@ cd ..\..\NuGet
 
 del *.nupkg
 
-NuGet Pack CodeJam.Main.nuspec
+NuGet Pack CodeJam.Extensibility.nuspec

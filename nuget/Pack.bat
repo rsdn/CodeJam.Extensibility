@@ -1,7 +1,7 @@
-cd ..\Main\src
+cd ..\src
 call Compile.cmd
 
-cd ..\..\NuGet
+cd ..\NuGet
 
 del *.nupkg
 

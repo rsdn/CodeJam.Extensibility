@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>CodeJam.Extensibility</id>
-        <version>1.0.0-beta4</version>
+        <version>1.0.0-beta5</version>
         <title>CodeJam Extensibility .NET Library</title>
         <authors>andrewvk</authors>
         <licenseUrl>https://github.com/rsdn/CodeJam.Extensibility/blob/master/LICENSE.md</licenseUrl>
@@ -18,9 +18,9 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\src\bin\Release\CodeJam.Extensibility.dll" target="lib\net45\CodeJam.Extensibility.dll" />
-        <file src="..\src\bin\Release\CodeJam.Extensibility.pdb" target="lib\net45\CodeJam.Extensibility.pdb" />
-        <file src="..\src\bin\Release\CodeJam.Extensibility.xml" target="lib\net45\CodeJam.Extensibility.xml" />
+        <file src="..\src\bin\Release.4.5\CodeJam.Extensibility.dll" target="lib\net45\CodeJam.Extensibility.dll" />
+        <file src="..\src\bin\Release.4.5\CodeJam.Extensibility.pdb" target="lib\net45\CodeJam.Extensibility.pdb" />
+        <file src="..\src\bin\Release.4.5\CodeJam.Extensibility.xml" target="lib\net45\CodeJam.Extensibility.xml" />
         <file src="Readme.txt" target="Readme.txt" />
     </files>
 </package>

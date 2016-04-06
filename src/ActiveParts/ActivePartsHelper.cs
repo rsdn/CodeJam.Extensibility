@@ -1,5 +1,7 @@
 using System;
 
+using CodeJam.Services;
+
 using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility

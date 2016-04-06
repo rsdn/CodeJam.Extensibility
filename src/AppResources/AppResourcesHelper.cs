@@ -1,5 +1,7 @@
 ﻿using System;
 
+using CodeJam.Services;
+
 namespace CodeJam.Extensibility
 {
 	/// <summary>

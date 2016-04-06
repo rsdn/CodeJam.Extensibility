@@ -1,5 +1,7 @@
 ﻿using System;
 
+using CodeJam.Services;
+
 using NUnit.Framework;
 
 namespace CodeJam.Extensibility.Instancing
@@ -11,12 +13,12 @@ namespace CodeJam.Extensibility.Instancing
 		[SetUp]
 		protected void SetUp()
 		{
-			_svcMgr = new ServiceManager();
+			_svcMgr = new ServiceContainer();
 			_svcMgr.Publish<ITestSvc>(new TestSvc());
 		}
 		#endregion
 
-		private ServiceManager _svcMgr;
+		private ServiceContainer _svcMgr;
 
 		private class TestSvc : ITestSvc
 		{

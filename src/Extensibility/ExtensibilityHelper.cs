@@ -4,6 +4,7 @@ using System.Reflection;
 
 using CodeJam.Collections;
 using CodeJam.Extensibility.Registration;
+using CodeJam.Services;
 
 using JetBrains.Annotations;
 

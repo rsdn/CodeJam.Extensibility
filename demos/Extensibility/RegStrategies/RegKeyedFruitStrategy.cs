@@ -1,5 +1,6 @@
 using CodeJam.Extensibility.Demos.FruitModel;
 using CodeJam.Extensibility.Registration;
+using CodeJam.Services;
 
 namespace CodeJam.Extensibility.Demos
 {

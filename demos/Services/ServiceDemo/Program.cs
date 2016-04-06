@@ -1,28 +1,27 @@
 using System;
 
+using CodeJam.Services;
+
 namespace CodeJam.Extensibility.Demos
 {
 	internal class Program
 	{
 		private static void Main()
 		{
-			var rootMgr = new ServiceManager();
+			var rootMgr = new ServiceContainer();
 
 			// Publish service
 			rootMgr.Publish<IService>(new ServiceImpl("Root service"));
 			Print(rootMgr);
 
 			// Cascade managers
-			var cascadedMgr = new ServiceManager(rootMgr);
+			var cascadedMgr = new ServiceContainer(rootMgr);
 			Print(cascadedMgr);
 
 			// Override service implementation
-			var cookie = cascadedMgr.Publish<IService>(
-				new ServiceImpl("Cascaded service"));
-			Print(cascadedMgr);
+			using (cascadedMgr.Publish<IService>(new ServiceImpl("Cascaded service")))
+				Print(cascadedMgr);
 
-			// Remove service implementation
-			cascadedMgr.Unpublish(cookie);
 			Print(cascadedMgr);
 
 			// Automatic service publishing

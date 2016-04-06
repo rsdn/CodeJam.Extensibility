@@ -1,5 +1,7 @@
 ﻿using System;
 
+using CodeJam.Services;
+
 using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility.Demos
@@ -42,7 +44,7 @@ namespace CodeJam.Extensibility.Demos
 	{
 		static void Main()
 		{
-			var root = new ServiceManager(true);
+			var root = new ServiceContainer();
 			var strategy = root.CreateStrategy<FruitInfo, FruitAttribute>(type => new FruitInfo(type));
 			root.ScanExtensions(strategy);
 			var cache = new ExtensionsCache<FruitInfo, IFruit>(root);

@@ -1,6 +1,7 @@
 using System;
 
 using CodeJam.Extensibility.SystemType;
+using CodeJam.Services;
 
 namespace CodeJam.Extensibility.Registration
 {

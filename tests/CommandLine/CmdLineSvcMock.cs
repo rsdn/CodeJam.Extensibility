@@ -1,3 +1,5 @@
+using CodeJam.Services;
+
 namespace CodeJam.Extensibility.CommandLine
 {
 	internal class CmdLineSvcMock : CommandLineExtensibleService
@@ -9,7 +11,7 @@ namespace CodeJam.Extensibility.CommandLine
 		/// </summary>
 		public CmdLineSvcMock(string commandLineText)
 			: base(
-				new ServiceManager(),
+				new ServiceContainer(), 
 				() => new[] { new CommandLineRulesProviderInfo(typeof(CmdLineProviderMock)) },
 				CommandQuantifier.ZeroOrOne)
 		{

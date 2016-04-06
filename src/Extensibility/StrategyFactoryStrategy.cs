@@ -3,6 +3,7 @@ using System;
 using CodeJam.Collections;
 using CodeJam.Extensibility.Registration;
 using CodeJam.Extensibility.StratFactories;
+using CodeJam.Services;
 
 namespace CodeJam.Extensibility
 {

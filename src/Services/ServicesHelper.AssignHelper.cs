@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 
 using CodeJam.Collections;
 using CodeJam.Extensibility.Model;
+using CodeJam.Services;
 
 namespace CodeJam.Extensibility
 {
@@ -21,9 +22,10 @@ namespace CodeJam.Extensibility
 				LazyDictionary.Create<Type, AssignDelegate>(CreateAssignMethod, true);
 
 			private static readonly MethodInfo _getRequiredServiceMethod =
-				typeof (ServicesHelper).GetMethod("GetRequiredService", new[] {typeof (IServiceProvider)});
+				typeof (ServiceProviderHelper).GetMethod("GetRequiredService", new []{typeof(IServiceProvider)});
 
-			private static readonly MethodInfo _getServiceMethod = typeof (ServicesHelper).GetMethod("GetService");
+			private static readonly MethodInfo _getServiceMethod =
+				typeof(ServiceProviderHelper).GetMethod("GetService");
 
 			private static AssignDelegate CreateAssignMethod(Type type)
 			{

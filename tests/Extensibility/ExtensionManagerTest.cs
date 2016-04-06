@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
 
+using CodeJam.Services;
+
 using NUnit.Framework;
 
 namespace CodeJam.Extensibility
@@ -12,12 +14,12 @@ namespace CodeJam.Extensibility
 		[SetUp]
 		protected void SetUp()
 		{
-			_svcManager = new ServiceManager(true);
+			_svcManager = new ServiceContainer(true);
 			_extManager = new ExtensionManager(_svcManager);
 		}
 		#endregion
 
-		private ServiceManager _svcManager;
+		private ServiceContainer _svcManager;
 		private ExtensionManager _extManager;
 
 		[Test]
@@ -75,7 +77,7 @@ namespace CodeJam.Extensibility
 		[Test]
 		public void ExtensionCache()
 		{
-			var root = new ServiceManager(true);
+			var root = new ServiceContainer(true);
 			var strategy =
 				root
 					.CreateStrategy<SimpleExtensionInfo, SimpleExtensionAttribute>(
@@ -93,7 +95,7 @@ namespace CodeJam.Extensibility
 		[Test]
 		public void AttrProps()
 		{
-			var root = new ServiceManager(true);
+			var root = new ServiceContainer(true);
 			var propValue = false;
 			var strategy =
 				root

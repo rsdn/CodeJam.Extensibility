@@ -3,6 +3,8 @@ using System.Linq;
 using System.Reactive;
 using System.Reflection;
 
+using CodeJam.Services;
+
 using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility.EventBroker

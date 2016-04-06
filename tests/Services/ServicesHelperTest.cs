@@ -1,3 +1,7 @@
+using System;
+
+using CodeJam.Services;
+
 using NUnit.Framework;
 
 namespace CodeJam.Extensibility.Services
@@ -9,17 +13,17 @@ namespace CodeJam.Extensibility.Services
 		[SetUp]
 		protected void SetUp()
 		{
-			_serviceManager = new ServiceManager();
+			_serviceManager = new ServiceContainer();
 		}
 		#endregion
 
-		private ServiceManager _serviceManager;
+		private ServiceContainer _serviceManager;
 
 		[Test]
 		public void AssignNonExistentRequiredService()
 		{
 			var su = new ServiceUser();
-			Assert.Throws<ServiceNotFoundException>(() => su.AssignServices(_serviceManager));
+			Assert.Throws<ArgumentException>(() => su.AssignServices(_serviceManager));
 		}
 
 		[Test]
@@ -52,7 +56,7 @@ namespace CodeJam.Extensibility.Services
 		[Test]
 		public void PublishDisposableCreator()
 		{
-			using (_serviceManager.PublishDisposable<ISampleService>(pub => new SampleService()))
+			using (_serviceManager.Publish<ISampleService>(pub => new SampleService()))
 				Assert.IsNotNull(_serviceManager.GetService<ISampleService>());
 			Assert.IsNull(_serviceManager.GetService<ISampleService>());
 		}
@@ -67,7 +71,7 @@ namespace CodeJam.Extensibility.Services
 		[Test]
 		public void PublishDisposableInstance()
 		{
-			using (_serviceManager.PublishDisposable<ISampleService>(new SampleService()))
+			using (_serviceManager.Publish<ISampleService>(new SampleService()))
 				Assert.IsNotNull(_serviceManager.GetService<ISampleService>());
 			Assert.IsNull(_serviceManager.GetService<ISampleService>());
 		}

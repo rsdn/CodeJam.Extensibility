@@ -2,6 +2,7 @@ using System;
 
 using CodeJam.Extensibility.Instancing;
 using CodeJam.Extensibility.SystemType;
+using CodeJam.Services;
 
 namespace CodeJam.Extensibility
 {
@@ -30,7 +31,7 @@ namespace CodeJam.Extensibility
 			foreach (var contract in attribute.ContractTypes)
 				_publisher.Publish(
 					contract,
-					(type, pub) => holder.CreateInstance(_publisher));
+					pub => holder.CreateInstance(_publisher));
 		}
 
 		#region ServiceHolder class

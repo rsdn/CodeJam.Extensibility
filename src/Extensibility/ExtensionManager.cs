@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
+using CodeJam.Services;
+
 using JetBrains.Annotations;
 
 namespace CodeJam.Extensibility
@@ -12,24 +14,24 @@ namespace CodeJam.Extensibility
 	/// </summary>
 	public class ExtensionManager : IExtensionManager, IServiceProvider
 	{
-		private readonly ServiceManager _serviceManager;
+		private readonly ServiceContainer _serviceContainer;
 
 		/// <summary>
 		/// Инициализирует экземпляр.
 		/// </summary>
 		public ExtensionManager([CanBeNull] IServiceProvider serviceProvider)
 		{
-			_serviceManager =
+			_serviceContainer =
 				serviceProvider == null
-					? new ServiceManager()
-					: new ServiceManager(serviceProvider);
-			_serviceManager.Publish<IExtensionManager>(this);
+					? new ServiceContainer()
+					: new ServiceContainer(serviceProvider);
+			_serviceContainer.Publish<IExtensionManager>(this);
 		}
 
 		/// <summary>
 		/// Внутренний ServiceManager.
 		/// </summary>
-		protected ServiceManager ServiceManager => _serviceManager;
+		protected ServiceContainer ServiceContainer => _serviceContainer;
 
 		#region IExtensionManager Members
 		/// <summary>
@@ -44,7 +46,7 @@ namespace CodeJam.Extensibility
 
 			foreach (var asm in assemblies)
 			{
-				var ctx = new ExtensionAttachmentContext(ServiceManager, this, asm);
+				var ctx = new ExtensionAttachmentContext(ServiceContainer, this, asm);
 				foreach (var attr in CustomAttributeData.GetCustomAttributes(asm))
 					strategy.Attach(ctx, attr);
 				Scan(asm, asm.GetTypes(), strategy);
@@ -68,7 +70,7 @@ namespace CodeJam.Extensibility
 		{
 			foreach (var type in types)
 			{
-				var ctx = new ExtensionAttachmentContext(ServiceManager, this, asm, type);
+				var ctx = new ExtensionAttachmentContext(ServiceContainer, this, asm, type);
 				foreach (var attr in CustomAttributeData.GetCustomAttributes(type))
 					strategy.Attach(ctx, attr);
 			}
@@ -81,7 +83,7 @@ namespace CodeJam.Extensibility
 		/// </summary>
 		public object GetService(Type serviceType)
 		{
-			return _serviceManager.GetService(serviceType);
+			return _serviceContainer.GetService(serviceType);
 		}
 		#endregion
 	}

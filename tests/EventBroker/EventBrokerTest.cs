@@ -1,3 +1,5 @@
+using CodeJam.Services;
+
 using NUnit.Framework;
 
 namespace CodeJam.Extensibility.EventBroker
@@ -27,7 +29,7 @@ namespace CodeJam.Extensibility.EventBroker
 		[Test]
 		public void MappingTest()
 		{
-			using (var serviceManager = new ServiceManager())
+			using (var serviceManager = new ServiceContainer())
 			{
 				serviceManager.Publish<IEventBroker>(new EventBroker());
 

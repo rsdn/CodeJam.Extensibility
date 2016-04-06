@@ -38,6 +38,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeJam, Version=1.0.245.0, Culture=neutral, PublicKeyToken=7662d8fd5b220919, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeJam.1.0-alpha245\lib\net45\CodeJam.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
@@ -117,7 +121,6 @@
     <Compile Include="Services\MultiContractSvc.cs" />
     <Compile Include="Services\ServicesHelperTest.cs" />
     <Compile Include="Services\SampleService.cs" />
-    <Compile Include="Services\ServiceManagerTest.cs" />
     <Compile Include="Services\ServiceUser.cs" />
   </ItemGroup>
   <ItemGroup>

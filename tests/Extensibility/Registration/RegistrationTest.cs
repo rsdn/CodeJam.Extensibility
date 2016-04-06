@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 
 using CodeJam.Extensibility.Registration;
+using CodeJam.Services;
 
 using NUnit.Framework;
 
@@ -18,12 +19,12 @@ namespace CodeJam.Extensibility
 		[SetUp]
 		protected void SetUp()
 		{
-			_svcManager = new ServiceManager();
+			_svcManager = new ServiceContainer();
 			_extManager = new ExtensionManager(_svcManager);
 		}
 		#endregion
 
-		private ServiceManager _svcManager;
+		private ServiceContainer _svcManager;
 		private ExtensionManager _extManager;
 
 		private static void TestRegElementsInService<TInfo>(IRegElementsService<TInfo> svc)

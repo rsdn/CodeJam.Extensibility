@@ -1,5 +1,10 @@
-CodeJam 1.0.0-beta1 Release Notes
+CodeJam 1.0.0-beta7 Release Notes
 ---------------------------------------
+
+What's new in 1.0.0-beta7
+-------------------------
+* Update CodeJam, use CodeJam.Blocks
+* Replace Rx to new packages System.Reactive.*
 
 What's new in 1.0.0-beta6
 -------------------------

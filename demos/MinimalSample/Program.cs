@@ -1,8 +1,8 @@
 ﻿using System;
 
-using CodeJam.Services;
-
 using JetBrains.Annotations;
+
+using ServiceContainer = CodeJam.Services.ServiceContainer;
 
 namespace CodeJam.Extensibility.Demos
 {

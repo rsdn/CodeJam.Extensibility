@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.Serialization;
 
+using CodeJam.Strings;
+
 namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>

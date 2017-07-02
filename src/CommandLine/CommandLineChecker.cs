@@ -5,6 +5,7 @@ using System.Linq;
 
 using CodeJam.Collections;
 using CodeJam.Extensibility.CommandLine.Parsing;
+using CodeJam.Strings;
 
 namespace CodeJam.Extensibility.CommandLine
 {

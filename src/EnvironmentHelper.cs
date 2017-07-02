@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 
+using CodeJam.Strings;
+
 namespace CodeJam.Extensibility
 {
 	/// <summary>

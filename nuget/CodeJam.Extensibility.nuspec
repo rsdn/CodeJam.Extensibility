@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>CodeJam.Extensibility</id>
-        <version>1.0.0-beta6</version>
+        <version>1.0.0-beta7</version>
         <title>CodeJam Extensibility .NET Library</title>
         <authors>andrewvk</authors>
         <licenseUrl>https://github.com/rsdn/CodeJam.Extensibility/blob/master/LICENSE.md</licenseUrl>
@@ -11,7 +11,7 @@
         <description>CodeJamExtensibility helps you create extensible applications.</description>
         <tags>extensibility plugin dynamic</tags>
         <dependencies>
-            <dependency id="CodeJam" version="1.0.0-beta5" />
+            <dependency id="CodeJam" version="1.3.0" />
             <dependency id="Rx-Interfaces" version="2.2.5" />
             <dependency id="Rx-Core" version="2.2.5" />
             <dependency id="Rx-Linq" version="2.2.5" />

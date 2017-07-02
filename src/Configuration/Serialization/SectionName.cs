@@ -2,6 +2,8 @@
 using System.Xml;
 using System.Xml.Linq;
 
+using CodeJam.Strings;
+
 namespace CodeJam.Extensibility.Configuration.Serialization
 {
 	/// <summary>

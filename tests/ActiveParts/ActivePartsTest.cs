@@ -7,7 +7,7 @@ namespace CodeJam.Extensibility.ActiveParts
 	[TestFixture]
 	public class ActivePartsTest
 	{
-		private ServiceContainer _svcContainer;
+		private CodeJam.Services.ServiceContainer _svcContainer;
 		private ExtensionManager _extMgr;
 
 		#region Setup/Teardown

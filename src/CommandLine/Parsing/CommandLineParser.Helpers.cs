@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using CodeJam.Strings;
+
 namespace CodeJam.Extensibility.CommandLine.Parsing
 {
 	///<summary>

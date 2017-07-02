@@ -1,5 +1,6 @@
 using CodeJam.Extensibility.Registration;
 using CodeJam.Services;
+using CodeJam.Strings;
 
 namespace CodeJam.Extensibility.CommandLine
 {
